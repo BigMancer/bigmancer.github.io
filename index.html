@@ -56,7 +56,9 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+				<li><a href="/suibi/">随笔</a></li>
+	        
+				<li><a href="/Tags/">标签</a></li>
 	        
 			</ul>
 		</nav>
@@ -114,6 +116,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -131,12 +135,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/suibi/">随笔</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/Tags/">标签</a></li>
 		        
 				</ul>
 			</nav>
@@ -152,6 +158,122 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-注册表修改右键菜单" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/20/%E6%B3%A8%E5%86%8C%E8%A1%A8%E4%BF%AE%E6%94%B9%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/">注册表修改右键菜单</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/20/%E6%B3%A8%E5%86%8C%E8%A1%A8%E4%BF%AE%E6%94%B9%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/" class="archive-article-date">
+  	<time datetime="2020-08-19T17:14:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>起因</strong></p>
+<p>由于个人方便需要，需要在右键菜单添加选项，就查了相关资料。好吧，说真的。其实是因为everything没有右键了。我想添加一个。</p>
+<p><strong>经过</strong></p>
+<p>查询了相关资料。因为之前知道需要对注册表动手脚。如果是过去，就“不求甚解”了。今天突然就想“知其然，亦知其所以然”。查了控制右键菜单的注册表结构</p>
+<p>首先，是常规操作，备份注册表</p>
+<p>其次，是修改注册表，先这样改，在那样改，再添加这个，写上这个。就搞定了，懂了吗？</p>
+<p>不懂啊~那我再说一遍。</p>
+<p>regedit打开注册表。</p>
+<p>次元展开</p>
+<p><img src="/2020/08/20/%E6%B3%A8%E5%86%8C%E8%A1%A8%E4%BF%AE%E6%94%B9%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/Users\Machine\Desktop\1.png" alt="这是个图片"></p>
+<p>&gt; HKEY_CLASSES_ROOT（HKCR）</p>
+<p>HKEY_CLASSES_ROOT包含了所有应用程序运行时必须的信息，包括但不限于</p>
+<p>```</p>
+<p>\1. 扩建名及其关联程序</p>
+<p>\2. 所有驱动名称</p>
+<p>\3. 类的ID数字（所要存取项的名字用数字来代替）</p>
+<p>\4. 用于应用程序和文件的图标</p>
+<p>\5. 等等</p>
+<p>```</p>
+<p>和linux相对的。在Linux看来万物皆文件，在windows图形界面下，每一件事情，包括每个文件，每个目录，每个用户动作，都被看做一个对象</p>
+<p>HKCR包含了这些对象的对象类型和他们的属性列表。它的主要功能被设计为酱紫：</p>
+<p>```</p>
+<p>一个文件扩展名的关联——&gt;   一个对象类型</p>
+<p>一种图标的关联————&gt;   一个对象类型</p>
+<p>一个动作的执行————&gt;   一个对象类型</p>
+<p>然后</p>
+<p>定义每一个对象类型的相关菜单选项及属性选项</p>
+<p>```</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">注册表</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/随笔//" class="article-tag-list-link color3">随笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/20/%E6%B3%A8%E5%86%8C%E8%A1%A8%E4%BF%AE%E6%94%B9%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-hexo使用指南-四" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -249,7 +371,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="菜单栏的分类"><a href="#菜单栏的分类" class="headerlink" title="菜单栏的分类"></a>菜单栏的分类</h1><p>使用过程中，发现菜单栏的随笔部分不能用，点击404，所以接下来我们要让它生效。</p>
-<p>在hexo中标签和分类是不一样的概念，具体可参见官方文档–[Front-matter 中分类标签部分]<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/front-matter#%E5%88%86%E7%B1%BB%E5%92%8C%E6%A0%87%E7%AD%BE">https://hexo.io/zh-cn/docs/front-matter#%E5%88%86%E7%B1%BB%E5%92%8C%E6%A0%87%E7%AD%BE</a></p>
+<p>在hexo中标签和分类是不一样的概念，具体可参见官方文档–<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/front-matter#%E5%88%86%E7%B1%BB%E5%92%8C%E6%A0%87%E7%AD%BE">Front-matter 中分类标签部分</a></p>
 
       
 
@@ -673,6 +795,17 @@
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/随笔//" class="article-tag-list-link color3">随笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
         <p class="article-more-link">
@@ -799,11 +932,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">注册表</a>
               </li>
             
             <div class="clearfix"></div>
