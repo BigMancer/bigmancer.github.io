@@ -151,6 +151,101 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-python-虚拟环境" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/15/python-%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/">python-虚拟环境</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/15/python-%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/" class="archive-article-date">
+  	<time datetime="2020-09-15T03:32:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="python-虚拟环境-virtualenv的使用"><a href="#python-虚拟环境-virtualenv的使用" class="headerlink" title="python-虚拟环境-virtualenv的使用"></a>python-虚拟环境-virtualenv的使用</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m pip install virtualenv</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="虚拟环境创建"><a href="#虚拟环境创建" class="headerlink" title="虚拟环境创建"></a>虚拟环境创建</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">python -m virtualenv ENV          #创建一个虚拟环境，虚拟环境的名字为ENV</span><br><span class="line">python -n venv ENV                #这个语句同等效力</span><br></pre></td></tr></table></figure>
+
+<h2 id="虚拟环境启动"><a href="#虚拟环境启动" class="headerlink" title="虚拟环境启动"></a>虚拟环境启动</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ENV\Scripts\activate             #windows下</span><br><span class="line">ENV/bin/activate               #linux下</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/09/15/python-%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/file\code\Blog\source_posts\2020-09-15-python-虚拟环境\image-20200915125130838.png" alt="image-20200915125130838"></p>
+<p>括号内为虚拟环境名称</p>
+<p>之后可以按正常CMD命令进行工作</p>
+<p>相当于临时修改了操作系统的变量，将python命令重定向到虚拟环境内</p>
+<h2 id="虚拟环境退出"><a href="#虚拟环境退出" class="headerlink" title="虚拟环境退出"></a>虚拟环境退出</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deactivate</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/09/15/python-%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/file\code\Blog\source_posts\2020-09-15-python-虚拟环境\image-20200915125628527.png" alt="image-20200915125628527"></p>
+<p>之后就可以使用系统环境变量的python了</p>
+<h2 id="虚拟环境删除"><a href="#虚拟环境删除" class="headerlink" title="虚拟环境删除"></a>虚拟环境删除</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python <span class="literal">-m</span> rmvirtualenv ENV</span><br></pre></td></tr></table></figure>
+
+<h2 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h2><p>建立一个bat文件，用来一键打开虚拟环境</p>
+<p>(待续)</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/15/python-%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-旧版本CentOS下载" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1121,15 +1216,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BAT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CMD</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Windows</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BAT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1141,11 +1236,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">奇奇怪怪的工具</a>
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+                <a href="javascript:void(0)" class="js-tag color3">奇奇怪怪的工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1182,6 +1277,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">浏览器，开发</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">阿里云</a>
               </li>
              
               <li class="article-tag-list-item">
