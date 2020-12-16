@@ -151,6 +151,96 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-信道隐藏" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/12/10/%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/">信道隐藏</a>
+    </h1>
+  
+
+        
+        <a href="/2020/12/10/%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/" class="archive-article-date">
+  	<time datetime="2020-12-10T06:35:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h1><p>正向代理：隐藏客户端地址</p>
+<p>反向代理：隐藏服务端地址</p>
+<h1 id="端口转发与端口映射的关系"><a href="#端口转发与端口映射的关系" class="headerlink" title="端口转发与端口映射的关系"></a>端口转发与端口映射的关系</h1><p>转发是主机与主机间的隧道</p>
+<p>端口映射是端口与端口的通信</p>
+<p>端口转发(Port forwarding)，有时被叫做隧道，是安全壳(SSH) 为网络安全通信使用的一种方法。端口转发是转发一个网络端口从一个网络节点到另一个网络节点的行为，其使一个外部用户从外部经过一个被激活的NAT路由器到达一个在私有内部IP地址(局域网内部)上的一个端口。</p>
+<p>端口映射是将外网的一个端口完全映射给内网一个地址的指定端口，</p>
+<p>端口转发是将发往外网的一个端口的通信完全转发给内网一个地址的指定端口。</p>
+<p><strong>端口映射</strong>可以实现外网到内网和内网到外网双向的通信，</p>
+<p><strong>端口转发</strong>只能实现外网到内网的单向通信。（为什么？）</p>
+<p>转发是一种与其他网络应用程序交互的方式。在SSH连接的一端，SSH截取其他程序的服务请求，将其通过加密的SSH连接发送，传给另一端的适当服务接收者。多数情况下，这一过程对连接的两端而言都是透明的：每端都相信它在与对方直接对话，丝毫意识不到转发的存在。SSH转发还有更强大的功能，可以实现几种原来无法实现的通信。</p>
+<p><strong>端口多路复用（**</strong>Port address Translation,PAT)**是指改变外出数据包的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%BA%90%E7%AB%AF%E5%8F%A3">源端口</a>并进行端口转换，即端口<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2">地址转换</a>（PAT，Port Address Translation).采用端口多路复用方式。内部网络的所有<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%BB%E6%9C%BA">主机</a>均可共享一个合法外部IP地址实现对Internet的访问，从而可以最大限度地节约IP地址资源。同时，又可隐藏网络内部的所有<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%BB%E6%9C%BA">主机</a>，有效避免来自internet的攻击。因此，目前网络中应用最多的就是端口多路复用方式。</p>
+<h1 id="端口复用"><a href="#端口复用" class="headerlink" title="端口复用"></a>端口复用</h1>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">代理</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">端口转发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/12/10/%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-shell反弹简单记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1110,92 +1200,6 @@
 
 
   
-    <article id="post-奇奇怪怪的工具收集" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/28/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E7%9A%84%E5%B7%A5%E5%85%B7%E6%94%B6%E9%9B%86/">奇奇怪怪的工具收集</a>
-    </h1>
-  
-
-        
-        <a href="/2020/10/28/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E7%9A%84%E5%B7%A5%E5%85%B7%E6%94%B6%E9%9B%86/" class="archive-article-date">
-  	<time datetime="2020-10-28T01:59:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="效率类"><a href="#效率类" class="headerlink" title="效率类"></a>效率类</h1><p><strong>Wox</strong>(windows)：可以用来替代win自带的搜索，能够兼容插件everything，可使用命令行</p>
-<p><strong>typora：</strong>MarkDown文本可视化编辑器</p>
-<p><strong>honeyview：</strong>图片查看工具</p>
-<p><strong>lily（免费）、Rolan（收费）：</strong>图标型快速启动工具</p>
-<p>**finalshell:**界面不错的shell工具</p>
-<h1 id="系统"><a href="#系统" class="headerlink" title="系统"></a>系统</h1><p><strong>360驱动大师</strong>：可独立安装，虽然很奇怪，但它目前确实是最“干净”的驱动安装程序</p>
-<p>**cmder:**替代Cmd</p>
-<p>**Spaceketeer:**饼状图查看磁盘内文件空间占比（包含文件夹及多级目录），微软商店免费</p>
-<h1 id="文件类"><a href="#文件类" class="headerlink" title="文件类"></a>文件类</h1><p><strong>Beyond_Compare：</strong>文件夹、文件变化对比</p>
-<p>**FreePic2Pdf:**快速图片转PDF（可以文本导出PDF标签，可以带页码）</p>
-<h1 id="安全测试"><a href="#安全测试" class="headerlink" title="安全测试"></a>安全测试</h1><h2 id="资产扫描"><a href="#资产扫描" class="headerlink" title="资产扫描"></a>资产扫描</h2><p><strong>goby：</strong>资产扫描及识别</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工具</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/28/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E7%9A%84%E5%B7%A5%E5%85%B7%E6%94%B6%E9%9B%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1410,6 +1414,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">其它</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">代理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">端口转发</a>
               </li>
             
             <div class="clearfix"></div>
