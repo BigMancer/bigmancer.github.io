@@ -15,12 +15,21 @@
 <meta property="og:site_name" content="招女朋友（doge）">
 <meta property="og:description" content="代理正向代理：隐藏客户端地址 反向代理：隐藏服务端地址 端口转发与端口映射的关系转发是主机与主机间的隧道 端口映射是端口与端口的通信 端口转发(Port forwarding)，有时被叫做隧道，是安全壳(SSH) 为网络安全通信使用的一种方法。端口转发是转发一个网络端口从一个网络节点到另一个网络节点的行为，其使一个外部用户从外部经过一个被激活的NAT路由器到达一个在私有内部IP地址(局域网内部)上">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://bigmancer.github.io/2020/12/10/%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/file/code/Blog/source_posts/2020-12-10-信道隐藏/image-20201229115659517.png">
+<meta property="og:image" content="https://bigmancer.github.io/2020/12/10/%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/file/code/Blog/source_posts/2020-12-10-信道隐藏/image-20201229115723915.png">
+<meta property="og:image" content="https://bigmancer.github.io/2020/12/10/%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/file/code/Blog/source_posts/2020-12-10-信道隐藏/image-20201229115952583.png">
+<meta property="og:image" content="https://bigmancer.github.io/2020/12/10/%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/file/code/Blog/source_posts/2020-12-10-信道隐藏/image-20201229120010011.png">
+<meta property="og:image" content="https://bigmancer.github.io/2020/12/10/%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/file/code/Blog/source_posts/2020-12-10-信道隐藏/image-20201229131121395.png">
+<meta property="og:image" content="https://bigmancer.github.io/2020/12/10/%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/file/code/Blog/source_posts/2020-12-10-信道隐藏/image-20201229131134890.png">
+<meta property="og:image" content="https://bigmancer.github.io/2020/12/10/%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/file/code/Blog/source_posts/2020-12-10-信道隐藏/image-20201229132259934.png">
+<meta property="og:image" content="https://bigmancer.github.io/2020/12/10/%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/file/code/Blog/source_posts/2020-12-10-信道隐藏/image-20201229132458792.png">
 <meta property="article:published_time" content="2020-12-10T06:35:51.000Z">
-<meta property="article:modified_time" content="2020-12-10T08:12:37.240Z">
+<meta property="article:modified_time" content="2020-12-29T05:25:20.071Z">
 <meta property="article:author" content="Machine">
 <meta property="article:tag" content="代理">
 <meta property="article:tag" content="端口转发">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://bigmancer.github.io/2020/12/10/%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/file/code/Blog/source_posts/2020-12-10-信道隐藏/image-20201229115659517.png">
   
     <link rel="alternative" href="/atom.xml" title="招女朋友（doge）" type="application/atom+xml">
   
@@ -185,7 +194,33 @@
 <p><strong>端口转发</strong>只能实现外网到内网的单向通信。（为什么？）</p>
 <p>转发是一种与其他网络应用程序交互的方式。在SSH连接的一端，SSH截取其他程序的服务请求，将其通过加密的SSH连接发送，传给另一端的适当服务接收者。多数情况下，这一过程对连接的两端而言都是透明的：每端都相信它在与对方直接对话，丝毫意识不到转发的存在。SSH转发还有更强大的功能，可以实现几种原来无法实现的通信。</p>
 <p><strong>端口多路复用（**</strong>Port address Translation,PAT)**是指改变外出数据包的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%BA%90%E7%AB%AF%E5%8F%A3">源端口</a>并进行端口转换，即端口<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2">地址转换</a>（PAT，Port Address Translation).采用端口多路复用方式。内部网络的所有<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%BB%E6%9C%BA">主机</a>均可共享一个合法外部IP地址实现对Internet的访问，从而可以最大限度地节约IP地址资源。同时，又可隐藏网络内部的所有<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%BB%E6%9C%BA">主机</a>，有效避免来自internet的攻击。因此，目前网络中应用最多的就是端口多路复用方式。</p>
-<h1 id="端口复用"><a href="#端口复用" class="headerlink" title="端口复用"></a>端口复用</h1>
+<h1 id="端口复用"><a href="#端口复用" class="headerlink" title="端口复用"></a>端口复用</h1><h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1><h2 id="FRP"><a href="#FRP" class="headerlink" title="FRP"></a>FRP</h2><p>下载地址：<a target="_blank" rel="noopener" href="https://github.com/fatedier/frp/releases">https://github.com/fatedier/frp/releases</a></p>
+<p>frp 主要由客户端(frpc)和服务端(frps)组成，服务端部署在具有公⽹ IP 的机器上，客户端部署在需要穿<br>透的内⽹服务所在的机器上</p>
+<p>服务端配置文件</p>
+<p><img src="/2020/12/10/%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/file\code\Blog\source_posts\2020-12-10-信道隐藏\image-20201229115659517.png" alt="image-20201229115659517"></p>
+<p>客户端配置文件</p>
+<p><img src="/2020/12/10/%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/file\code\Blog\source_posts\2020-12-10-信道隐藏\image-20201229115723915.png" alt="image-20201229115723915"></p>
+<blockquote>
+<p> local_port本地要映射出去的端口</p>
+<p> remote_port  要映射成的公网端口</p>
+</blockquote>
+<p>连接</p>
+<p><img src="/2020/12/10/%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/file\code\Blog\source_posts\2020-12-10-信道隐藏\image-20201229115952583.png" alt="image-20201229115952583"></p>
+<p><img src="/2020/12/10/%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/file\code\Blog\source_posts\2020-12-10-信道隐藏\image-20201229120010011.png" alt="image-20201229120010011"></p>
+<h2 id="LCX"><a href="#LCX" class="headerlink" title="LCX"></a>LCX</h2><h2 id="EW"><a href="#EW" class="headerlink" title="EW"></a>EW</h2><p>下载地址：<a target="_blank" rel="noopener" href="https://github.com/idlefire/ew">https://github.com/idlefire/ew</a></p>
+<p>VPS：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./ew_for_linux64 -s rcsocks -l 10800 -e 18888</span><br></pre></td></tr></table></figure>
+
+<p>内网机器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ew_for_win.exe -s rssocks -p vpsip -e 18888</span><br></pre></td></tr></table></figure>
+
+<p>网络配置代理</p>
+<p><img src="/2020/12/10/%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/file\code\Blog\source_posts\2020-12-10-信道隐藏\image-20201229131121395.png" alt="image-20201229131121395"></p>
+<p><img src="/2020/12/10/%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/file\code\Blog\source_posts\2020-12-10-信道隐藏\image-20201229131134890.png" alt="image-20201229131134890"></p>
+<h2 id="端口复用（TcpTunnel）"><a href="#端口复用（TcpTunnel）" class="headerlink" title="端口复用（TcpTunnel）"></a>端口复用（TcpTunnel）</h2><p>项目地址：<a target="_blank" rel="noopener" href="https://github.com/YDHCUI/TcpTunnel">https://github.com/YDHCUI/TcpTunnel</a></p>
+<p><img src="/2020/12/10/%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/file\code\Blog\source_posts\2020-12-10-信道隐藏\image-20201229132259934.png" alt="image-20201229132259934"></p>
+<p><img src="/2020/12/10/%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/file\code\Blog\source_posts\2020-12-10-信道隐藏\image-20201229132458792.png" alt="image-20201229132458792"></p>
+
       
 
       
@@ -295,6 +330,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2020/12/17/kali%E5%AE%89%E8%A3%85%E5%AE%8C%E5%90%8E%E7%9A%84%E5%88%9D%E5%A7%8B%E9%85%8D%E7%BD%AE/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          kali安装完后的初始配置
+        
+      </div>
+    </a>
+  
   
     <a href="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">shell反弹简单记</div>
@@ -324,7 +368,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%A3%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">代理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91%E4%B8%8E%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">2.</span> <span class="toc-text">端口转发与端口映射的关系</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%A4%8D%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">端口复用</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%A3%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">代理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91%E4%B8%8E%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">2.</span> <span class="toc-text">端口转发与端口映射的关系</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%A4%8D%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">端口复用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BA%94%E7%94%A8"><span class="toc-number">4.</span> <span class="toc-text">应用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#FRP"><span class="toc-number">4.1.</span> <span class="toc-text">FRP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LCX"><span class="toc-number">4.2.</span> <span class="toc-text">LCX</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EW"><span class="toc-number">4.3.</span> <span class="toc-text">EW</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%A4%8D%E7%94%A8%EF%BC%88TcpTunnel%EF%BC%89"><span class="toc-number">4.4.</span> <span class="toc-text">端口复用（TcpTunnel）</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -440,26 +484,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Robocopy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">文件管理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">excel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">注册表</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">工作</a>
               </li>
              
@@ -472,7 +496,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Robocopy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">文件管理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">GIT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">注册表</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">excel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -532,15 +576,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">阿里云</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">JS</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">浏览器，开发</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">阿里云</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -553,6 +597,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">端口转发</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">kali</a>
               </li>
              
               <li class="article-tag-list-item">

