@@ -151,6 +151,818 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-docker" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/16/docker/">docker</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/16/docker/" class="archive-article-date">
+  	<time datetime="2020-10-16T01:57:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https:&#x2F;&#x2F;get.docker.com | bash -s docker --mirror Aliyun</span><br></pre></td></tr></table></figure>
+
+<p>1、使用 sudo 或 root 权限登录 Centos。</p>
+<p>2、确保 yum 包更新到最新。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum update</span><br></pre></td></tr></table></figure>
+
+<p>3、执行 Docker 安装脚本。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ curl -fsSL https:&#x2F;&#x2F;get.docker.com -o get-docker.sh </span><br><span class="line">$ sudo sh get-docker.sh</span><br></pre></td></tr></table></figure>
+
+<p>执行这个脚本会添加 docker.repo 源并安装 Docker。</p>
+<p>4、启动 Docker 进程。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl start docker</span><br></pre></td></tr></table></figure>
+
+<p>5、验证 docker 是否安装成功并在容器中执行一个测试的镜像。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo docker run hello-world docker ps</span><br></pre></td></tr></table></figure>
+
+<p>到此，Docker 在 CentOS 系统的安装完成。</p>
+<h1 id="docker帮助列表"><a href="#docker帮助列表" class="headerlink" title="docker帮助列表"></a>docker帮助列表</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line">Usage:  docker [OPTIONS] COMMAND</span><br><span class="line"></span><br><span class="line">A self-sufficient runtime for containers</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line">      --config string      Location of client config files (default &quot;&#x2F;root&#x2F;.docker&quot;)</span><br><span class="line">  -c, --context string     Name of the context to use to connect to the daemon</span><br><span class="line">                           (overrides DOCKER_HOST env var and default context set with</span><br><span class="line">                           &quot;docker context use&quot;)</span><br><span class="line">  -D, --debug              Enable debug mode</span><br><span class="line">  -H, --host list          Daemon socket(s) to connect to</span><br><span class="line">  -l, --log-level string   Set the logging level</span><br><span class="line">                           (&quot;debug&quot;|&quot;info&quot;|&quot;warn&quot;|&quot;error&quot;|&quot;fatal&quot;) (default &quot;info&quot;)</span><br><span class="line">      --tls                Use TLS; implied by --tlsverify</span><br><span class="line">      --tlscacert string   Trust certs signed only by this CA (default</span><br><span class="line">                           &quot;&#x2F;root&#x2F;.docker&#x2F;ca.pem&quot;)</span><br><span class="line">      --tlscert string     Path to TLS certificate file (default &quot;&#x2F;root&#x2F;.docker&#x2F;cert.pem&quot;)</span><br><span class="line">      --tlskey string      Path to TLS key file (default &quot;&#x2F;root&#x2F;.docker&#x2F;key.pem&quot;)</span><br><span class="line">      --tlsverify          Use TLS and verify the remote</span><br><span class="line">  -v, --version            Print version information and quit</span><br><span class="line"></span><br><span class="line">Management Commands:</span><br><span class="line">  builder     Manage builds</span><br><span class="line">  config      Manage Docker configs</span><br><span class="line">  container   Manage containers</span><br><span class="line">  context     Manage contexts</span><br><span class="line">  engine      Manage the docker engine</span><br><span class="line">  image       Manage images</span><br><span class="line">  network     Manage networks</span><br><span class="line">  node        Manage Swarm nodes</span><br><span class="line">  plugin      Manage plugins</span><br><span class="line">  secret      Manage Docker secrets</span><br><span class="line">  service     Manage services</span><br><span class="line">  stack       Manage Docker stacks</span><br><span class="line">  swarm       Manage Swarm</span><br><span class="line">  system      Manage Docker</span><br><span class="line">  trust       Manage trust on Docker images</span><br><span class="line">  volume      Manage volumes</span><br><span class="line"></span><br><span class="line">Commands: </span><br><span class="line">  attach      Attach local standard input, output, and error streams to a running container  </span><br><span class="line">                将本地标准输入、输出和错误流附加到运行的容器</span><br><span class="line">  build       Build an image from a Dockerfile</span><br><span class="line">                从Dockerfile构建映像</span><br><span class="line">  commit      Create a new image from a container&#39;s changes</span><br><span class="line">              根据容器的更改创建新映像</span><br><span class="line">  cp          Copy files&#x2F;folders between a container and the local filesystem</span><br><span class="line">  </span><br><span class="line">  create      Create a new container</span><br><span class="line">  </span><br><span class="line">  diff        Inspect changes to files or directories on a container&#39;s filesystem</span><br><span class="line">  </span><br><span class="line">  events      Get real time events from the server</span><br><span class="line">  </span><br><span class="line">  exec        Run a command in a running container</span><br><span class="line">  export      Export a container&#39;s filesystem as a tar archive</span><br><span class="line">  history     Show the history of an image</span><br><span class="line">  images      List images</span><br><span class="line">  import      Import the contents from a tarball to create a filesystem image</span><br><span class="line">  info        Display system-wide information</span><br><span class="line">  inspect     Return low-level information on Docker objects</span><br><span class="line">  kill        Kill one or more running containers</span><br><span class="line">  load        Load an image from a tar archive or STDIN</span><br><span class="line">  login       Log in to a Docker registry</span><br><span class="line">  logout      Log out from a Docker registry</span><br><span class="line">  logs        Fetch the logs of a container</span><br><span class="line">  pause       Pause all processes within one or more containers</span><br><span class="line">  port        List port mappings or a specific mapping for the container</span><br><span class="line">  ps          List containers</span><br><span class="line">  pull        Pull an image or a repository from a registry</span><br><span class="line">  push        Push an image or a repository to a registry</span><br><span class="line">  rename      Rename a container</span><br><span class="line">  restart     Restart one or more containers</span><br><span class="line">  rm          Remove one or more containers</span><br><span class="line">  rmi         Remove one or more images</span><br><span class="line">  run         Run a command in a new container</span><br><span class="line">  save        Save one or more images to a tar archive (streamed to STDOUT by default)</span><br><span class="line">  search      Search the Docker Hub for images</span><br><span class="line">  start       Start one or more stopped containers</span><br><span class="line">  stats       Display a live stream of container(s) resource usage statistics</span><br><span class="line">  stop        Stop one or more running containers</span><br><span class="line">  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE</span><br><span class="line">  top         Display the running processes of a container</span><br><span class="line">  unpause     Unpause all processes within one or more containers</span><br><span class="line">  update      Update configuration of one or more containers</span><br><span class="line">  version     Show the Docker version information</span><br><span class="line">  wait        Block until one or more containers stop, then print their exit codes</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+<h1 id="运行已有的容器"><a href="#运行已有的容器" class="headerlink" title="运行已有的容器"></a>运行已有的容器</h1><p>查看已有的容器列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$docker ps -a</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-16-docker/image-20201016100910621.png" alt="image-20201016100910621"></p>
+<p>运行已有容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$docker start b4f5d4ab673e </span><br></pre></td></tr></table></figure>
+
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-16-docker/image-20201016101233861.png" alt="image-20201016101233861"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/16/docker/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Avatarify的使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/29/Avatarify%E7%9A%84%E4%BD%BF%E7%94%A8/">Avatarify的使用-windows</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/29/Avatarify%E7%9A%84%E4%BD%BF%E7%94%A8/" class="archive-article-date">
+  	<time datetime="2020-09-29T09:07:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="拖网络权重"><a href="#拖网络权重" class="headerlink" title="拖网络权重"></a>拖网络权重</h2><p><a target="_blank" rel="noopener" href="https://openavatarify.s3.amazonaws.com/weights/vox-adv-cpk.pth.tar">here</a>，<a target="_blank" rel="noopener" href="https://yadi.sk/d/M0FWpz2ExBfgAA">here</a>，or <a target="_blank" rel="noopener" href="https://drive.google.com/file/d/1coUCdyRXDbpWnEkA99NLNY60mb9dQ_n3/view?usp=sharing">here</a>将文件放在目录中（不要解压缩）</p>
+<p>MD5:  <code>8a45a24037871c045fbb8a6a8aa95ebc</code></p>
+<h2 id="下载Miniconda"><a href="#下载Miniconda" class="headerlink" title="下载Miniconda"></a>下载Miniconda</h2><p><a target="_blank" rel="noopener" href="https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe">Miniconda python3.X</a></p>
+<h2 id="拖项目"><a href="#拖项目" class="headerlink" title="拖项目"></a>拖项目</h2><p><a target="_blank" rel="noopener" href="https://github.com/alievk/avatarify">avatarify</a></p>
+<p>下载安装命令</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/alievk/avatarify.git</span><br><span class="line"><span class="built_in">cd</span> avatarify</span><br><span class="line">scripts\install_windows.bat</span><br></pre></td></tr></table></figure>
+
+<p>完成后，不要关闭命令行</p>
+<h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">run_windows.bat</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装OBS"><a href="#安装OBS" class="headerlink" title="安装OBS"></a>安装OBS</h2><p><a target="_blank" rel="noopener" href="https://obsproject.com/">OBS 工作室</a></p>
+<h2 id="安装虚拟摄像头插件"><a href="#安装虚拟摄像头插件" class="headerlink" title="安装虚拟摄像头插件"></a>安装虚拟摄像头插件</h2><p><a target="_blank" rel="noopener" href="https://obsproject.com/forum/resources/obs-virtualcam.949/">虚拟摄像头插件</a></p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>运行OBS工作室</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">奇奇怪怪的工具</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/29/Avatarify%E7%9A%84%E4%BD%BF%E7%94%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-bat脚本撰写" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/15/bat%E8%84%9A%E6%9C%AC%E6%92%B0%E5%86%99/">bat脚本撰写</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/15/bat%E8%84%9A%E6%9C%AC%E6%92%B0%E5%86%99/" class="archive-article-date">
+  	<time datetime="2020-09-15T06:18:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><p>批处理定义：顾名思义，批处理文件是将一系列命令按一定的顺序集合为一个可执行的文本文件，其扩展名为BAT或者CMD。这些命令统称批处理命令。</p>
+<p>在批处理过程中，可以通过Ctrl+C来结束执行过程</p>
+<h1 id="命令介绍"><a href="#命令介绍" class="headerlink" title="命令介绍"></a>命令介绍</h1><h2 id="REM和"><a href="#REM和" class="headerlink" title="REM和::"></a>REM和::</h2><p>REM为注释命令，一般用来给程序加上注解，该命令后的内容不被执行，但能回显。<br>其次, :: 也可以起到rem 的注释作用, 而且更简洁有效; 但有两点需要注意：</p>
+<p>第一, 任何以冒号:开头的字符行, 在批处理中都被视作标号, 而直接忽略其后的所有内容。<br>有效标号：冒号后紧跟一个以字母数字开头的字符串，goto语句可以识别。<br>无效标号：冒号后紧跟一个非字母数字的一个特殊符号，goto无法识别的标号，可以起到注释作用，所以 :: 常被用作注释符号，其实 :+ 也可起注释作用。</p>
+<p>第 二, 与rem 不同的是, ::后的字符行在执行时不会回显, 无论是否用echo on打开命令行回显状态, 因为命令解释器不认为他是一个有效的命令行, 就此点来看, rem 在某些场合下将比 :: 更为适用; 另外, rem 可以用于 config.sys 文件中。</p>
+<p>行内注释格式：%注释内容% （不常用，慎用）</p>
+<h2 id="ECHO-和"><a href="#ECHO-和" class="headerlink" title="ECHO 和@"></a>ECHO 和@</h2><p>@字符放在命令前将关闭该命令回显，无论此时echo是否为打开状态。</p>
+<p>echo命令的作用列举如下：<br>（1）打开回显或关闭回显功能<br>格式:echo [{ on|off }]<br>如果想关闭“ECHO OFF”命令行自身的显示，则需要在该命令行前加上“@”。</p>
+<p>（2）显示当前ECHO设置状态<br>格式:echo</p>
+<p>（3）输出提示信息<br>格式：ECHO 信息内容<br>上述是ECHO命令常见的三种用法，也是大家熟悉和会用的，但作为DOS命令淘金者你还应该知道下面的技巧：</p>
+<p>（4）关闭DOS命令提示符<br>在DOS提示符状态下键入ECHO OFF，能够关闭DOS提示符的显示使屏幕只留下光标，直至键入ECHO ON，提示符才会重新出现。</p>
+<p>（5）输出空行，即相当于输入一个回车<br>格式：ECHO．<br>值得注意的是命令行中的“．”要紧跟在ECHO后面中间不能有空格，否则“．”将被当作提示信息输出到屏幕。另外“．”可以用，：；”／[]＋等任一符号替代。<br>命令ECHO．输出的回车，经DOS管道转向可以作为其它命令的输入，比如echo.|time即相当于在TIME命令执行后给出一个回车。所以执行时系统会在显示当前时间后，自动返回到DOS提示符状态</p>
+<p>（6）答复命令中的提问<br>格式：ECHO 答复语|命令文件名<br>上述格式可以用于简化一些需要人机对话的命令（如：CHKDSK／F；FORMAT Drive:；del <em>.<em>）的操作，它是通过DOS管道命令把ECHO命令输出的预置答复语作为人机对话命令的输入。下面的例子就相当于在调用的命令出现人机对话时输入“Y”回车：<br>C:&gt;ECHO Y|CHKDSK/F<br>C:&gt;ECHO Y|DEL A :</em>.</em></p>
+<p>（7）建立新文件或增加文件内容<br>格式：ECHO 文件内容&gt;文件名<br>ECHO 文件内容&gt;&gt;文件名</p>
+<p>例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; C:&gt;ECHO @ECHO OFF&gt;AUTOEXEC.BAT                       建立自动批处理文件</span><br><span class="line">&gt; C:&gt;ECHO C:\CPAV\BOOTSAFE&gt;&gt;AUTOEXEC.BAT               向自动批处理文件中追加内容</span><br><span class="line">&gt; C:&gt;TYPE AUTOEXEC.BAT                                 显示该自动批处理文件</span><br><span class="line">&gt; @ECHO OFF</span><br><span class="line">&gt; C:\CPAV\BOOTSAFE</span><br></pre></td></tr></table></figure>
+
+<p>（8）向打印机输出打印内容或打印控制码<br>格式：ECHO 打印机控制码&gt;;PRN<br>ECHO 打印内容&gt;;PRN</p>
+<p>下面的例子是向M－1724打印机输入打印控制码。＜Alt＞156是按住Alt键在小键盘键入156，类似情况依此类推：</p>
+<p>C:&gt;ECHO +156+42+116&gt;;PRN（输入下划线命令FS＊t）<br>C:&gt;ECHO [email=+155@]+155@&gt;;PRN[/email]（输入初始化命令ESC@）<br>C:&gt;ECHO.&gt;;PRN（换行）<br>（9）使喇叭鸣响<br>C:&gt;ECHO ^G<br>“^G”是在dos窗口中用Ctrl＋G或Alt＋007输入，输入多个^G可以产生多声鸣响。使用方法是直接将其加入批处理文件中或做成批处理文件调用。<br>这里的“^G”属于特殊符号的使用</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">BAT</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/15/bat%E8%84%9A%E6%9C%AC%E6%92%B0%E5%86%99/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-CMD命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/15/CMD%E5%91%BD%E4%BB%A4/">CMD命令</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/15/CMD%E5%91%BD%E4%BB%A4/" class="archive-article-date">
+  	<time datetime="2020-09-15T05:03:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="CMD命令"><a href="#CMD命令" class="headerlink" title="CMD命令"></a>CMD命令</h1><p>启动 Windows 命令解释器的一个新实例</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">CMD [/A | /U] [/Q] [/D] [/E:ON | /E:OFF] [/F:ON | /F:OFF] [/V:ON | /V:OFF]</span><br><span class="line">    [[/S] [/C | /K] string]</span><br><span class="line"></span><br><span class="line">/C      执行字符串指定的命令然后终止</span><br><span class="line">/K      执行字符串指定的命令但保留</span><br><span class="line">/S      修改 /C 或 /K 之后的字符串处理(见下)</span><br><span class="line">/Q      关闭回显</span><br><span class="line">/D      禁止从注册表执行 AutoRun 命令(见下)</span><br><span class="line">/A      使向管道或文件的内部命令输出成为 ANSI</span><br><span class="line">/U      使向管道或文件的内部命令输出成为</span><br><span class="line">        Unicode</span><br><span class="line">/T:fg   设置前台/背景颜色(详细信息见 COLOR /?)</span><br><span class="line">/E:ON   启用命令扩展(见下)</span><br><span class="line">/E:OFF  禁用命令扩展(见下)</span><br><span class="line">/F:ON   启用文件和目录名完成字符(见下)</span><br><span class="line">/F:OFF  禁用文件和目录名完成字符(见下)</span><br><span class="line">/V:ON   使用 ! 作为分隔符启用延迟的环境变量</span><br><span class="line">        扩展。例如，/V:ON 会允许 !var! 在执行时</span><br><span class="line">        扩展变量 var。var 语法会在输入时</span><br><span class="line">        扩展变量，这与在一个 FOR</span><br><span class="line">        循环内不同。</span><br><span class="line">/V:OFF  禁用延迟的环境扩展。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>注意，如果字符串加有引号，可以接受用命令分隔符 “&amp;&amp;”分隔多个命令。另外，由于兼容性原因，/X 与 /E:ON 相同，/Y 与 /E:OFF 相同，且 /R 与/C 相同。任何其他开关都将被忽略。如果指定了 /C 或 /K，则会将该开关之后的命令行的剩余部分作为一个命令行处理，其中，会使用下列逻辑处理引号(“)字符:</p>
+<pre><code>1.  如果符合下列所有条件，则会保留
+    命令行上的引号字符:
+
+    - 不带 /S 开关
+    - 正好两个引号字符
+    - 在两个引号字符之间无任何特殊字符，
+      特殊字符指下列字符: &amp;&lt;&gt;()@^|
+    - 在两个引号字符之间至少有
+      一个空格字符
+    - 在两个引号字符之间的字符串是某个
+      可执行文件的名称。
+
+2.  否则，老办法是看第一个字符
+    是否是引号字符，如果是，则去掉首字符并
+    删除命令行上最后一个引号，保留
+    最后一个引号之后的所有文本。</code></pre>
+<p>如果 /D 未在命令行上被指定，当 CMD.EXE 开始时，它会寻找以下 REG_SZ/REG_EXPAND_SZ 注册表变量。如果其中一个或两个都存在，这两个变量会先被执行。</p>
+<pre><code>HKEY_LOCAL_MACHINE\Software\Microsoft\Command Processor\AutoRun
+
+    和/或
+
+HKEY_CURRENT_USER\Software\Microsoft\Command Processor\AutoRun</code></pre>
+<p>命令扩展是按默认值启用的。你也可以使用 /E:OFF ，为某一特定调用而停用扩展。你可以在机器上和/或用户登录会话上启用或停用 CMD.EXE 所有调用的扩展，这要通过设置使用REGEDIT.EXE 的注册表中的一个或两个 REG_DWORD 值:</p>
+<pre><code>HKEY_LOCAL_MACHINE\Software\Microsoft\Command Processor\EnableExtensions
+
+    和/或
+
+HKEY_CURRENT_USER\Software\Microsoft\Command Processor\EnableExtensions</code></pre>
+<p>到 0x1 或 0x0。用户特定设置比机器设置有优先权。命令行开关比注册表设置有优先权。</p>
+<p>在批处理文件中，SETLOCAL ENABLEEXTENSIONS 或 DISABLEEXTENSIONS 参数比 /E:ON 或 /E:OFF 开关有优先权。请参阅 SETLOCAL /? 获取详细信息。命令扩展包括对下列命令所做的更改和/或添加:</p>
+<pre><code>DEL or ERASE
+COLOR
+CD or CHDIR
+MD or MKDIR
+PROMPT
+PUSHD
+POPD
+SET
+SETLOCAL
+ENDLOCAL
+IF
+FOR
+CALL
+SHIFT
+GOTO
+START (同时包括对外部命令调用所做的更改)
+ASSOC
+FTYPE</code></pre>
+<p>有关特定详细信息，请键入 commandname /? 查看。</p>
+<p>延迟环境变量扩展不按默认值启用。你可以用/V:ON 或 /V:OFF 开关，为 CMD.EXE 的某个调用而启用或停用延迟环境变量扩展。你可以在机器上和/或用户登录会话上启用或停用 CMD.EXE 所有调用的延迟扩展，这要通过设置使用 REGEDIT.EXE 的注册表中的一个或两个 REG_DWORD 值:</p>
+<pre><code>HKEY_LOCAL_MACHINE\Software\Microsoft\Command Processor\DelayedExpansion
+
+    和/或
+
+HKEY_CURRENT_USER\Software\Microsoft\Command Processor\DelayedExpansion</code></pre>
+<p>到 0x1 或 0x0。用户特定设置比机器设置有优先权。命令行开关比注册表设置有优先权。</p>
+<p>在批处理文件中，SETLOCAL ENABLEDELAYEDEXPANSION 或 DISABLEDELAYEDEXPANSION参数比 /V:ON 或 /V:OFF 开关有优先权。请参阅 SETLOCAL /? 获取详细信息。</p>
+<p>如果延迟环境变量扩展被启用，惊叹号字符可在执行时间被用来代替一个环境变量的数值。</p>
+<p>你可以用 /F:ON 或 /F:OFF 开关为 CMD.EXE 的某个调用而启用或禁用文件名完成。你可以在计算上和/或用户登录会话上启用或禁用 CMD.EXE 所有调用的完成，这可以通过使用 REGEDIT.EXE 设置注册表中的下列 REG_DWORD 的全部或其中之一:</p>
+<pre><code>HKEY_LOCAL_MACHINE\Software\Microsoft\Command Processor\CompletionChar
+HKEY_LOCAL_MACHINE\Software\Microsoft\Command Processor\PathCompletionChar
+
+    和/或
+
+HKEY_CURRENT_USER\Software\Microsoft\Command Processor\CompletionChar
+HKEY_CURRENT_USER\Software\Microsoft\Command Processor\PathCompletionChar</code></pre>
+<p>由一个控制字符的十六进制值作为一个特定参数(例如，0x4是Ctrl-D，0x6 是 Ctrl-F)。用户特定设置优先于机器设置。命令行开关优先于注册表设置。如果完成是用 /F:ON 开关启用的，两个要使用的控制符是: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">目录名完成用 Ctrl-D，文件名完成用 Ctrl-F。</span><br></pre></td></tr></table></figure>
+
+<p>要停用注册表中的某个字符，请用空格(0x20)的数值，因为此字符不是控制字符。</p>
+<p>如果键入两个控制字符中的一个，完成会被调用。完成功能将路径字符串带到光标的左边，如果没有通配符，将通配符附加到左边，并建立相符的路径列表。然后，显示第一个相符的路径。如果没有相符的路径，则发出嘟嘟声，不影响显示。之后，重复按同一个控制字符会循环显示相符路径的列表。将 Shift 键跟控制字符同时按下，会倒着显示列表。如果对该行进行了任何编辑，并再次按下控制字符，保存的相符路径的列表会被丢弃，新的会被生成。如果在文件和目录名完成之间切换，会发生同样现象。两个控制字符之间的唯一区别是文件完成字符符合文件和目录名，而目录完成字符只符合目录名。如果文件完成被用于内置式目录命令(CD、MD 或 RD)，就会使用目录完成。用引号将相符路径括起来，完成代码可以正确处理含有空格或其他特殊字符的文件名。同时，如果备份，然后从行内调用文件完成，完成被调用时位于光标右方的文字会被调用。</p>
+<p>需要引号的特殊字符是:<br>     <space><br>     ()[]{}^=;!’+,`~(&amp;()</space></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CMD</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Windows</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/15/CMD%E5%91%BD%E4%BB%A4/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-python-镜像源配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/15/python-%E9%95%9C%E5%83%8F%E6%BA%90%E9%85%8D%E7%BD%AE/">python-镜像源配置</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/15/python-%E9%95%9C%E5%83%8F%E6%BA%90%E9%85%8D%E7%BD%AE/" class="archive-article-date">
+  	<time datetime="2020-09-15T03:40:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="国内镜像源"><a href="#国内镜像源" class="headerlink" title="国内镜像源"></a>国内镜像源</h2><p>清华：<a target="_blank" rel="noopener" href="https://pypi.tuna.tsinghua.edu.cn/simple">https://pypi.tuna.tsinghua.edu.cn/simple</a></p>
+<p>阿里云：<a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/pypi/simple/">http://mirrors.aliyun.com/pypi/simple/</a></p>
+<p>中国科技大学 <a target="_blank" rel="noopener" href="https://pypi.mirrors.ustc.edu.cn/simple/">https://pypi.mirrors.ustc.edu.cn/simple/</a></p>
+<p>华中理工大学：<a target="_blank" rel="noopener" href="http://pypi.hustunique.com/">http://pypi.hustunique.com/</a></p>
+<p>山东理工大学：<a target="_blank" rel="noopener" href="http://pypi.sdutlinux.org/">http://pypi.sdutlinux.org/</a> </p>
+<p>豆瓣：<a target="_blank" rel="noopener" href="http://pypi.douban.com/simple/">http://pypi.douban.com/simple/</a></p>
+<h2 id="临时使用"><a href="#临时使用" class="headerlink" title="临时使用"></a>临时使用</h2><p> 在使用pip的时候加参数-i <a target="_blank" rel="noopener" href="https://pypi.tuna.tsinghua.edu.cn/simple">https://pypi.tuna.tsinghua.edu.cn/simple</a><br>例如：pip install -i <a target="_blank" rel="noopener" href="https://pypi.tuna.tsinghua.edu.cn/simple">https://pypi.tuna.tsinghua.edu.cn/simple</a> pyspider，这样就会从清华这边的镜像去安装pyspider库。</p>
+<h2 id="长久更改"><a href="#长久更改" class="headerlink" title="长久更改"></a>长久更改</h2><p> Linux下，修改 ~/.pip/pip.conf (没有就创建一个文件夹及文件。文件夹要加“.”，表示是隐藏文件夹)</p>
+<p>内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line">timeout &#x3D; 8</span><br><span class="line">index-url &#x3D;  http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;pypi&#x2F;simple&#x2F;</span><br><span class="line">extra-index-url&#x3D; http:&#x2F;&#x2F;pypi.douban.com&#x2F;simple&#x2F;</span><br><span class="line">[install]</span><br><span class="line">trusted-host&#x3D;</span><br><span class="line">    mirrors.aliyun.com</span><br><span class="line">    pypi.douban.com</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>a、此为设置pip的配置文件；</p>
+<p>b、第2行是设置超时时间，单位秒；</p>
+<p>c、第3行是指定优先下载源，第4行是备用下载源；</p>
+<p>d、6~8行内容是配置可能需要使用https方式通信。</p>
+</blockquote>
+<p>windows下，直接在user目录中创建一个pip目录，如：C:\Users\xx\pip，新建文件pip.ini。内容同上。</p>
+<p>本机win10操作系统，目录：C:\Users\DELL\AppData\Roaming\pip\pip.ini</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/15/python-%E9%95%9C%E5%83%8F%E6%BA%90%E9%85%8D%E7%BD%AE/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-python-虚拟环境" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/15/python-%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/">python-虚拟环境</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/15/python-%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/" class="archive-article-date">
+  	<time datetime="2020-09-15T03:32:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="python-虚拟环境-virtualenv的使用"><a href="#python-虚拟环境-virtualenv的使用" class="headerlink" title="python-虚拟环境-virtualenv的使用"></a>python-虚拟环境-virtualenv的使用</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m pip install virtualenv</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="虚拟环境创建"><a href="#虚拟环境创建" class="headerlink" title="虚拟环境创建"></a>虚拟环境创建</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">python -m virtualenv ENV          #创建一个虚拟环境，虚拟环境的名字为ENV</span><br><span class="line">python -n venv ENV                #这个语句同等效力</span><br></pre></td></tr></table></figure>
+
+<h2 id="虚拟环境启动"><a href="#虚拟环境启动" class="headerlink" title="虚拟环境启动"></a>虚拟环境启动</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ENV\Scripts\activate             #windows下</span><br><span class="line">ENV/bin/activate               #linux下</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-09-15-python-%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/image-20200915125130838.png" alt="image-20200915125130838"></p>
+<p>括号内为虚拟环境名称</p>
+<p>之后可以按正常CMD命令进行工作</p>
+<p>相当于临时修改了操作系统的变量，将python命令重定向到虚拟环境内</p>
+<h2 id="虚拟环境退出"><a href="#虚拟环境退出" class="headerlink" title="虚拟环境退出"></a>虚拟环境退出</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deactivate</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-09-15-python-%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/image-20200915125628527.png" alt="image-20200915125628527"></p>
+<p>之后就可以使用系统环境变量的python了</p>
+<h2 id="虚拟环境删除"><a href="#虚拟环境删除" class="headerlink" title="虚拟环境删除"></a>虚拟环境删除</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python <span class="literal">-m</span> rmvirtualenv ENV</span><br></pre></td></tr></table></figure>
+
+<h2 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h2><p>建立一个bat文件，用来一键打开虚拟环境</p>
+<p>(待续)</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/15/python-%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-旧版本CentOS下载" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/15/%E6%97%A7%E7%89%88%E6%9C%ACCentOS%E4%B8%8B%E8%BD%BD/">旧版本CentOS下载</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/15/%E6%97%A7%E7%89%88%E6%9C%ACCentOS%E4%B8%8B%E8%BD%BD/" class="archive-article-date">
+  	<time datetime="2020-09-15T02:46:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="旧版本CentOS下载"><a href="#旧版本CentOS下载" class="headerlink" title="旧版本CentOS下载"></a>旧版本CentOS下载</h1><p>进入<a target="_blank" rel="noopener" href="https://www.centos.org/">centos官网</a>)，选择<a target="_blank" rel="noopener" href="https://www.centos.org/download/">Download</a></p>
+<p>![1 (1)](<a target="_blank" rel="noopener" href="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-09-15-%E6%97%A7%E7%89%88%E6%9C%ACCentOS%E4%B8%8B%E8%BD%BD/1">https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-09-15-旧版本CentOS下载/1</a> (1).png)</p>
+<p>下拉找到Older  Versions，点击“<a target="_blank" rel="noopener" href="http://wiki.centos.org/Download">then click here</a>”</p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-09-15-%E6%97%A7%E7%89%88%E6%9C%ACCentOS%E4%B8%8B%E8%BD%BD/2-1603336587098.png" alt="2"></p>
+<p>下拉到下面选择所需版本对应的”Tree“</p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-09-15-%E6%97%A7%E7%89%88%E6%9C%ACCentOS%E4%B8%8B%E8%BD%BD/3-1603336597481.png" alt="3"></p>
+<p>进入目录后选择“isos”目录</p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-09-15-%E6%97%A7%E7%89%88%E6%9C%ACCentOS%E4%B8%8B%E8%BD%BD/4-1603336604711.png" alt="4"></p>
+<p>选择系统版本，此处选择的是64位</p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-09-15-%E6%97%A7%E7%89%88%E6%9C%ACCentOS%E4%B8%8B%E8%BD%BD/5-1603336613355.png" alt="5"></p>
+<p>进入后依照需求选择镜像文件。</p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-09-15-%E6%97%A7%E7%89%88%E6%9C%ACCentOS%E4%B8%8B%E8%BD%BD/6-1603336625886.png" alt="6"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">CentOS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/15/%E6%97%A7%E7%89%88%E6%9C%ACCentOS%E4%B8%8B%E8%BD%BD/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-git代理设置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/04/git%E4%BB%A3%E7%90%86%E8%AE%BE%E7%BD%AE/">git代理设置</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/04/git%E4%BB%A3%E7%90%86%E8%AE%BE%E7%BD%AE/" class="archive-article-date">
+  	<time datetime="2020-09-04T07:07:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="使用代理"><a href="#使用代理" class="headerlink" title="使用代理"></a>使用代理</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy 代理地址</span><br><span class="line">git config --global https.proxy 代理地址</span><br></pre></td></tr></table></figure>
+
+
+
+<p>例如</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy http://127.0.0.1:1080</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="取消代理"><a href="#取消代理" class="headerlink" title="取消代理"></a>取消代理</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset https.proxy</span><br></pre></td></tr></table></figure>
+
+<h1 id="查看代理"><a href="#查看代理" class="headerlink" title="查看代理"></a>查看代理</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global --get http.proxy</span><br><span class="line">git config --global --get https.proxy</span><br></pre></td></tr></table></figure>
+
+<p>查询时没有任何输出，意味着没有设置代理</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">GIT</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/04/git%E4%BB%A3%E7%90%86%E8%AE%BE%E7%BD%AE/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-单位安全防护平台建设情况-一句话简稿" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -326,512 +1138,9 @@
 
 
   
-    <article id="post-excel-版本控制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/20/excel-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">excel-版本控制</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/20/excel-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" class="archive-article-date">
-  	<time datetime="2020-08-20T02:24:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="日期型版本控制"><a href="#日期型版本控制" class="headerlink" title="日期型版本控制"></a>日期型版本控制</h1><p>ALT+F11     打开VBS编辑,在WORKBOOK中输入以下代码</p>
-<figure class="highlight vbscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Private</span> <span class="keyword">Sub</span> Workbook_BeforeSave(<span class="keyword">ByVal</span> SaveAsUI As Boolean, Cancel As Boolean)</span><br><span class="line"><span class="keyword">Dim</span> FileName As <span class="built_in">String</span></span><br><span class="line"><span class="keyword">With</span> ThisWorkbook</span><br><span class="line">FileName = <span class="built_in">Left</span>(.Name, <span class="built_in">InStrRev</span>(.Name, <span class="string">&quot;.&quot;</span>) - <span class="number">1</span>) &amp; <span class="string">&quot;_&quot;</span> &amp; Format(<span class="built_in">Date</span>, <span class="string">&quot;YYYYMMDD&quot;</span>) &amp; <span class="built_in">Right</span>(.Name, <span class="built_in">Len</span>(.Name) - <span class="built_in">InStrRev</span>(.Name, <span class="string">&quot;.&quot;</span>) + <span class="number">1</span>)</span><br><span class="line"><span class="keyword">End</span> <span class="keyword">With</span></span><br><span class="line"><span class="keyword">If</span> Dir(<span class="string">&quot;.\BACK\&quot;</span> &amp; FileName) = <span class="string">&quot;&quot;</span> <span class="keyword">Then</span></span><br><span class="line">​    ThisWorkbook.SaveCopyAs <span class="string">&quot;.\BACK\&quot;</span> &amp; FileName</span><br><span class="line"><span class="keyword">End</span> <span class="keyword">If</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Sub</span></span><br></pre></td></tr></table></figure>
-
-<p>作用:在保存前会以当天日期为后缀另保存一份文档,在同一目录下的BACK文件夹中</p>
-<p>注意:</p>
-<font color="red">
-1.要新建BACK文件夹.<br>
-2.要保存为"包含宏的工作簿"   既文件后缀名为xlsm的工作簿<br>
-3.需要启用宏(这个打开后会有提示)<br>
-</font>
-
-<h1 id="自动备份"><a href="#自动备份" class="headerlink" title="自动备份"></a>自动备份</h1><p>作用:在保存前备份上一次保存时的状态.便于回退.</p>
-<p>文件-&gt;另存为-&gt;工具-&gt;常规选项-&gt;备份文件(勾选)-&gt;完成</p>
-<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-08-20-excel-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/clipboard-1603336744786.png" alt="clipboard"></p>
-<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-08-20-excel-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/clipboard-1597891310387-1603336729441.png" alt="clipboard-1597891310387"></p>
-<p>这样,每次保存时会自动在相同文件夹下生成备份文件,如果和日期型备份结合,会有更好的备份效果.</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">excel</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/20/excel-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-注册表修改右键菜单" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/20/%E6%B3%A8%E5%86%8C%E8%A1%A8%E4%BF%AE%E6%94%B9%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/">注册表修改右键菜单</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/20/%E6%B3%A8%E5%86%8C%E8%A1%A8%E4%BF%AE%E6%94%B9%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/" class="archive-article-date">
-  	<time datetime="2020-08-19T17:14:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>起因</strong></p>
-<p>由于个人方便需要，需要在右键菜单添加选项，就查了相关资料。好吧，说真的。其实是因为everything没有右键了。我想添加一个。</p>
-<p><strong>经过</strong></p>
-<p>查询了相关资料。因为之前知道需要对注册表动手脚。如果是过去，就“不求甚解”了。今天突然就想“知其然，亦知其所以然”。查了控制右键菜单的注册表结构</p>
-<p>首先，是常规操作，备份注册表</p>
-<p>其次，是修改注册表，先这样改，在那样改，再添加这个，写上这个。就搞定了，懂了吗？</p>
-<p>不懂啊~那我再说一遍。</p>
-<p>regedit打开注册表。</p>
-<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-08-20-%E6%B3%A8%E5%86%8C%E8%A1%A8%E4%BF%AE%E6%94%B9%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/image-20200325163258318-1603336815017.png" alt="image-20200325163258318"></p>
-<p>次元展开</p>
-<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-08-20-%E6%B3%A8%E5%86%8C%E8%A1%A8%E4%BF%AE%E6%94%B9%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/1.png" alt="1"></p>
-<p>&gt; HKEY_CLASSES_ROOT（HKCR）</p>
-<p>HKEY_CLASSES_ROOT包含了所有应用程序运行时必须的信息，包括但不限于</p>
-<p>```</p>
-<p>\1. 扩建名及其关联程序</p>
-<p>\2. 所有驱动名称</p>
-<p>\3. 类的ID数字（所要存取项的名字用数字来代替）</p>
-<p>\4. 用于应用程序和文件的图标</p>
-<p>\5. 等等</p>
-<p>```</p>
-<p>和linux相对的。在Linux看来万物皆文件，在windows图形界面下，每一件事情，包括每个文件，每个目录，每个用户动作，都被看做一个对象</p>
-<p>HKCR包含了这些对象的对象类型和他们的属性列表。它的主要功能被设计为酱紫：</p>
-<p>```</p>
-<p>一个文件扩展名的关联——&gt;   一个对象类型</p>
-<p>一种图标的关联————&gt;   一个对象类型</p>
-<p>一个动作的执行————&gt;   一个对象类型</p>
-<p>然后</p>
-<p>定义每一个对象类型的相关菜单选项及属性选项</p>
-<p>```</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">注册表</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/随笔//" class="article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/20/%E6%B3%A8%E5%86%8C%E8%A1%A8%E4%BF%AE%E6%94%B9%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Markdown语言学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/19/Markdown%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/">Markdown语言学习</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/19/Markdown%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2020-08-19T09:51:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Markdown-语言学习"><a href="#Markdown-语言学习" class="headerlink" title="Markdown 语言学习"></a>Markdown 语言学习</h1><p>大部分常用标签后都需要添加空格</p>
-<h2 id="markdown标题"><a href="#markdown标题" class="headerlink" title="markdown标题"></a>markdown标题</h2><h3 id="第一种方式"><a href="#第一种方式" class="headerlink" title="第一种方式"></a>第一种方式</h3><p>​    一个“#”是一级标题</p>
-<p>​    两个“#”是二级标题</p>
-<p>​    以此类推</p>
-<p>​    注意“#”标签 完毕后的空格</p>
-<h3 id="第二种方式"><a href="#第二种方式" class="headerlink" title="第二种方式"></a>第二种方式</h3><p>​    使用 = 和 - 标记一级和二级标题</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">我展示的是一级标题</span><br><span class="line">=================</span><br><span class="line"></span><br><span class="line">我展示的是二级标题</span><br><span class="line">-----------------</span><br></pre></td></tr></table></figure>
-
-<h2 id="markdown段落样式"><a href="#markdown段落样式" class="headerlink" title="markdown段落样式"></a>markdown段落样式</h2><p>Markdown 段落没有特殊的格式，直接编写文字就好，段落的换行是使用两个以上空格加上回车。</p>
-<p>段落1</p>
-<p>段落2</p>
-<h2 id="markdown字体"><a href="#markdown字体" class="headerlink" title="markdown字体"></a>markdown字体</h2><p>Markdown 可以使用以下几种字体：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="emphasis">*斜体文本*</span></span><br><span class="line"><span class="emphasis">_斜体文本_</span></span><br><span class="line"><span class="strong">**粗体文本**</span></span><br><span class="line"><span class="strong">__粗体文本__</span></span><br><span class="line"><span class="strong">**<span class="emphasis">*粗斜体文本<span class="strong">**<span class="emphasis">*</span></span></span></span></span><br><span class="line"><span class="strong"><span class="emphasis"><span class="strong"><span class="emphasis"><span class="strong">__<span class="emphasis">_粗斜体文本<span class="strong">__<span class="emphasis">_</span></span></span></span></span></span></span></span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="markdown列表"><a href="#markdown列表" class="headerlink" title="markdown列表"></a>markdown列表</h2><p>markdown支持有序表和无序表。</p>
-<h3 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h3><p>无序列表有三种表达方式分别是<kbd>*</kbd><kbd>+</kbd><kbd>-</kbd></p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">*</span> 第一项</span><br><span class="line"></span><br><span class="line"><span class="bullet">*</span> 第二项</span><br><span class="line"></span><br><span class="line"><span class="bullet">*</span> 第三项</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 第一项</span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 第二项</span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 第三项</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 第一项</span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 第二项</span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 第三项</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<ul>
-<li>第一项</li>
-<li>第二项</li>
-<li>第三项</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>第一项</li>
-<li>第二项</li>
-<li>第三项</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>第一项</li>
-<li>第二项</li>
-<li>第三项</li>
-</ul>
-</blockquote>
-<h3 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h3><p>有序列表只需要数字并加上<kbd>.</kbd>即可</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span> 第一项</span><br><span class="line"><span class="bullet">2.</span> 第二项</span><br><span class="line"><span class="bullet">3.</span> 第三项</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>第一项</li>
-<li>第二项</li>
-<li>第三项</li>
-</ol>
-<h3 id="列表嵌套"><a href="#列表嵌套" class="headerlink" title="列表嵌套"></a>列表嵌套</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span> 第一项：</span><br><span class="line"><span class="bullet">    -</span> 第一项嵌套的第一个元素</span><br><span class="line"><span class="bullet">    -</span> 第一项嵌套的第二个元素</span><br><span class="line"><span class="bullet">2.</span> 第二项：</span><br><span class="line"><span class="bullet">    -</span> 第二项嵌套的第一个元素</span><br><span class="line"><span class="bullet">    -</span> 第二项嵌套的第二个元素</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>第一项：<ul>
-<li>第一项嵌套的第一个元素</li>
-<li>第一项嵌套的第二个元素</li>
-</ul>
-</li>
-<li>第二项：<ul>
-<li>第二项嵌套的第一个元素</li>
-<li>第二项嵌套的第二个元素</li>
-</ul>
-</li>
-</ol>
-<h2 id="markdown区块"><a href="#markdown区块" class="headerlink" title="markdown区块"></a>markdown区块</h2><h3 id="普通区块"><a href="#普通区块" class="headerlink" title="普通区块"></a>普通区块</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="quote">&gt; 区块</span></span><br><span class="line"><span class="quote">&gt; 区块</span></span><br><span class="line"><span class="quote">&gt; 区块</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>区块</p>
-<p>区块</p>
-<p>区块</p>
-</blockquote>
-<h3 id="区块嵌套"><a href="#区块嵌套" class="headerlink" title="区块嵌套"></a>区块嵌套</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="quote">&gt;  区块一</span></span><br><span class="line"><span class="quote">&gt; &gt; 区块二</span></span><br><span class="line"><span class="quote">&gt; &gt; &gt; 区块三</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p> 区块一</p>
-<blockquote>
-<p>区块二</p>
-<blockquote>
-<p>区块三</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<h3 id="区块及列表嵌套"><a href="#区块及列表嵌套" class="headerlink" title="区块及列表嵌套"></a>区块及列表嵌套</h3><blockquote>
-<ul>
-<li>第一项</li>
-<li>第二项</li>
-</ul>
-<ol>
-<li>第一项<ul>
-<li>第一项</li>
-<li>第二项</li>
-</ul>
-</li>
-<li>第二项</li>
-</ol>
-</blockquote>
-<h2 id="markdown代码"><a href="#markdown代码" class="headerlink" title="markdown代码"></a>markdown代码</h2><p>单行代码通常使用<kbd>`</kbd></p>
-<p>这个需要注意，这个不是单引号，而是….不知道它的专门的名称，所以特意去网上百度了一下</p>
-<blockquote>
-<p>重音符或抑音符，又称反单引号，是西文字符中的附加符号，主要用于计算机相关领域。位置在键盘中数字键“1”的左边，其上档符号是“~ ”，使用Shift键可以换挡输入。由于计算机显示的原因，反单引号非常容易和单引号 ‘ 混淆。</p>
-</blockquote>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">`print (&#x27;when i was young&#x27;)`</span></span><br></pre></td></tr></table></figure>
-<p><code>print (&#39;when i was young&#39;)</code></p>
-<p>多行代码通常使用三个连续的```符号,在开始的三个反单引号后面可以标注代码语言</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">​<span class="code">```python</span></span><br><span class="line"><span class="code">print （&#x27;when i was young&#x27;）</span></span><br><span class="line"><span class="code">​```</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span> （<span class="string">&#x27;when i was young&#x27;</span>）</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="markdown链接"><a href="#markdown链接" class="headerlink" title="markdown链接"></a>markdown链接</h2><p>超链接有两种方式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[链接名称](链接地址)</span><br><span class="line"></span><br><span class="line">&lt;链接地址&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">百度</span>](<span class="link">http://www.baidu.com</span>)</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">http:</span>//<span class="attr">www.baidu.com</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><a target="_blank" rel="noopener" href="http://www.baidu.com/">百度</a><br><a target="_blank" rel="noopener" href="http://www.baidu.com/">http://www.baidu.com</a></p>
-</blockquote>
-<h3 id="高级链接"><a href="#高级链接" class="headerlink" title="高级链接"></a>高级链接</h3><p>可以通过定义变量来设置一个链接，变量可以在后面进行赋值</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">这个链接通过变量a来做网址变量[<span class="string">百度a</span>][<span class="symbol">a</span>]</span><br><span class="line"></span><br><span class="line">这个链接通过变量b来做网址变量[<span class="string">百度b</span>][<span class="symbol">b</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">对变量进行赋值</span><br><span class="line">[<span class="symbol">a</span>]:<span class="link">http://www.baidu.com</span></span><br><span class="line">[<span class="symbol">b</span>]:<span class="link">http://www.baidu.com</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<p>这个链接通过变量a来做网址变量[百度a][a]</p>
-<p>这个链接通过变量b来做网址变量[百度b][b]</p>
-<p>对变量进行赋值<br>[a]:<a target="_blank" rel="noopener" href="http://www.baidu.com/">http://www.baidu.com</a><br>[b]:<a target="_blank" rel="noopener" href="http://www.baidu.com/">http://www.baidu.com</a></p>
-<h2 id="markdown图片"><a href="#markdown图片" class="headerlink" title="markdown图片"></a>markdown图片</h2><p>和超链接有点类似</p>
-<ul>
-<li>开头是感叹号！</li>
-<li>然后是方括号，里面填写图片的文字</li>
-<li>之后是普普通通圆括号，里面填写图片地址。圆括号内还有可选属性，使用双引号裹起来的“可选标题”</li>
-</ul>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">该死的温柔</span>](<span class="link">example.JPG</span>)</span><br><span class="line">![<span class="string">该死的温柔</span>](<span class="link">example.PNG &quot;花谢花飞花满天&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-08-19-Markdown%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/example-1603336313113.JPG" alt="该死的温柔"><br><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-08-19-Markdown%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/example-1603336338373.png" alt="该死的温柔"></p>
-<p>当然,也可以和超链接一样使用变量进行图片地址的赋值(无法显示图片,只能显示为超链接)</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">该死的温柔</span>](<span class="link">pen</span>)</span><br><span class="line">[<span class="symbol">pen</span>]: <span class="link">example.png</span></span><br></pre></td></tr></table></figure>
-<p><a href="pen">该死的温柔</a></p>
-<h2 id="markdown表格"><a href="#markdown表格" class="headerlink" title="markdown表格"></a>markdown表格</h2><p>Markdown 制作表格使用 <strong>|</strong> 来分隔不同的单元格，使用 <strong>-</strong> 来分隔表头和其他行。</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">| 表头   | 表头   |</span><br><span class="line">| ------ | ------ |</span><br><span class="line">| 单元格 | 单元格 |</span><br><span class="line">| 单元格 | 单元格 |</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th>表头</th>
-<th>表头</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>单元格</td>
-<td>单元格</td>
-</tr>
-<tr>
-<td>单元格</td>
-<td>单元格</td>
-</tr>
-</tbody></table>
-<h3 id="对齐方式"><a href="#对齐方式" class="headerlink" title="对齐方式"></a>对齐方式</h3><p>我们可以设置表格的对齐方式：</p>
-<p><code>-:</code> 设置内容和标题栏居右对齐。</p>
-<p><code>:-</code> 设置内容和标题栏居左对齐。</p>
-<p><code>:-:</code> 设置内容和标题栏居中对齐。</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">| 左对齐 | 右对齐 | 居中对齐 |</span><br><span class="line">| :----- | -----: | :------: |</span><br><span class="line">| 单元格 | 单元格 |  单元格  |</span><br><span class="line">| 单元格 | 单元格 |  单元格  |</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th align="left">左对齐</th>
-<th align="right">右对齐</th>
-<th align="center">居中对齐</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">单元格</td>
-<td align="right">单元格</td>
-<td align="center">单元格</td>
-</tr>
-<tr>
-<td align="left">单元格</td>
-<td align="right">单元格</td>
-<td align="center">单元格</td>
-</tr>
-</tbody></table>
-<h2 id="markdown高级应用"><a href="#markdown高级应用" class="headerlink" title="markdown高级应用"></a>markdown高级应用</h2><h3 id="MarkDown与HTML标签"><a href="#MarkDown与HTML标签" class="headerlink" title="MarkDown与HTML标签"></a>MarkDown与HTML标签</h3><h4 id="Markdown中支持的HTML标签"><a href="#Markdown中支持的HTML标签" class="headerlink" title="Markdown中支持的HTML标签"></a>Markdown中支持的HTML标签</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h5 id="details折叠标签"><a href="#details折叠标签" class="headerlink" title="details折叠标签"></a>details折叠标签</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">details</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">summary</span>&gt;</span>点击时的区域标题：点击查看详细内容<span class="tag">&lt;/<span class="name">summary</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span> - 测试 测试测试<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">pre</span>&gt;</span><span class="tag">&lt;<span class="name">code</span>&gt;</span>  title，value，callBack可以缺省  <span class="tag">&lt;/<span class="name">code</span>&gt;</span>  <span class="tag">&lt;/<span class="name">pre</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">details</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<details>
-  <summary>点击时的区域标题：点击查看详细内容</summary>
-  <p> - 测试 测试测试</p>
-  <pre><code>  title，value，callBack可以缺省  </code>  </pre>
-</details>
-##### kbd标签
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;kbd&gt;Alt&lt;&#x2F;kbd&gt;键</span><br></pre></td></tr></table></figure>
-
-<p><kbd>Alt</kbd>键</p>
-<h4 id="Markdown中如何使用HTML标签而不被解析"><a href="#Markdown中如何使用HTML标签而不被解析" class="headerlink" title="Markdown中如何使用HTML标签而不被解析"></a>Markdown中如何使用HTML标签而不被解析</h4><p>1、使用单引号括起来</p>
-<p>‘</p><h1>标题1<h1>‘<p></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#39;&lt;h1&gt;标题1&lt;h1&gt;&#39;</span><br></pre></td></tr></table></figure>
-
-<p>‘</p><h1>标题1<h1>‘<p></p>
-<p>2、使用转义字符来表示相应的标签</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;这是一个标题&lt;&#x2F;h1&gt;</span><br></pre></td></tr></table></figure>
-
-<p>&lt;h1&gt;这是一个标题&lt;/h1&gt;</p>
-<p><a target="_blank" rel="noopener" href="https://www.css88.com/tool/html-escape/">HTML转译工具</a></p>
-</h1></h1></h1></h1>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Markdown</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/随笔//" class="article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/19/Markdown%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+      <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -938,15 +1247,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">excel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">学习</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">注册表</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">excel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -974,19 +1283,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BAT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">CentOS</a>
+                <a href="javascript:void(0)" class="js-tag color4">BAT</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">奇奇怪怪的工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">CentOS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1006,11 +1315,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+                <a href="javascript:void(0)" class="js-tag color3">信息安全工程师，学习笔记</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">信息安全工程师，学习笔记</a>
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1031,10 +1340,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">阿里云</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1062,15 +1367,43 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">正则表达式</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">内网，学习笔记，安全攻防</a>
+                <a href="javascript:void(0)" class="js-tag color3">其它</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">其它</a>
+                <a href="javascript:void(0)" class="js-tag color5">burp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">渗透测试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">后渗透，Cobalt Strike</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">tool</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">信息收集</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">开发</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">内网，学习笔记，安全攻防</a>
               </li>
             
             <div class="clearfix"></div>

